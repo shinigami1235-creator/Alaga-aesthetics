@@ -112,14 +112,6 @@
     <p class="stage-note" data-t="stage.note"></p>
   </section>
 
-  <div class="tile-row" aria-hidden="true">
-    <img src="assets/img/tile-dna-top.webp" alt="" width="480" height="480">
-    <img src="assets/img/tile-cell-tl.webp" alt="" width="480" height="480">
-    <img src="assets/img/tile-pods.webp" alt="" width="480" height="480">
-    <img src="assets/img/tile-tissue-bl.webp" alt="" width="480" height="480">
-    <img src="assets/img/tile-dna-br.webp" alt="" width="480" height="480">
-    <img src="assets/img/tile-microscope-l.webp" alt="" width="480" height="480">
-  </div>
 
   <section class="why" id="why" aria-labelledby="why-h">
     <div class="why-text">
@@ -129,9 +121,9 @@
     </div>
     <figure class="loop">
       <ol class="loop-steps">
-        <li class="loop-step ls-1"><span class="ls-name" data-t="loop.n1"></span><span data-t="loop.s1"></span></li>
-        <li class="loop-step ls-2"><span class="ls-name" data-t="loop.n2"></span><span data-t="loop.s2"></span></li>
-        <li class="loop-step ls-3"><span class="ls-name" data-t="loop.n3"></span><span data-t="loop.s3"></span></li>
+        <li class="loop-step ls-1"><img class="step-tile" src="assets/img/tile-microscope-l.webp" alt="" width="480" height="480"><span class="ls-name" data-t="loop.n1"></span><span data-t="loop.s1"></span></li>
+        <li class="loop-step ls-2"><img class="step-tile" src="assets/img/tile-tissue-bl.webp" alt="" width="480" height="480"><span class="ls-name" data-t="loop.n2"></span><span data-t="loop.s2"></span></li>
+        <li class="loop-step ls-3"><img class="step-tile" src="assets/img/tile-cell-tl.webp" alt="" width="480" height="480"><span class="ls-name" data-t="loop.n3"></span><span data-t="loop.s3"></span></li>
       </ol>
       <figcaption data-t="loop.title"></figcaption>
     </figure>
@@ -162,9 +154,9 @@
   <section class="roadmap" id="roadmap" aria-labelledby="roadmap-h">
     <h2 id="roadmap-h" class="sec-title" data-t="roadmap.title">Roadmap</h2>
     <ol class="road">
-      <li><span class="road-when" data-t="r1.when"></span><span data-t="r1.what"></span></li>
-      <li><span class="road-when" data-t="r2.when"></span><span data-t="r2.what"></span></li>
-      <li><span class="road-when" data-t="r3.when"></span><span data-t="r3.what"></span></li>
+      <li><img class="step-tile" src="assets/img/tile-dna-top.webp" alt="" width="480" height="480"><span class="road-when" data-t="r1.when"></span><span data-t="r1.what"></span></li>
+      <li><img class="step-tile" src="assets/img/tile-pods.webp" alt="" width="480" height="480"><span class="road-when" data-t="r2.when"></span><span data-t="r2.what"></span></li>
+      <li><img class="step-tile" src="assets/img/tile-dots-r.webp" alt="" width="480" height="480"><span class="road-when" data-t="r3.when"></span><span data-t="r3.what"></span></li>
     </ol>
   </section>
 
@@ -198,8 +190,8 @@
   const host = document.querySelector("[data-wreath]");
   if (host) mountWreath(host, { distance: innerWidth < 720 ? 7 : 6, lift: 0.12, sway: 0.1, follow: 0.22 });
 
-  // Reveal the tile row and the panel photos once, as they scroll into view.
-  const items = document.querySelectorAll(".tile-row, .reveal");
+  // Reveal the panel photos once, as they scroll into view.
+  const items = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window) {
     const io = new IntersectionObserver((entries) => {
       entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); } });

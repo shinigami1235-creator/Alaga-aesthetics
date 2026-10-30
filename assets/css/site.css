@@ -189,24 +189,13 @@ section:not(.hero) { max-width: 1200px; margin: 0 auto; padding: clamp(72px, 10v
   .reveal.is-in { clip-path: inset(0 0 0 0 round calc(var(--r-xl) - 10px)); }
 }
 
-/* ---------- The one row of tiles ---------- */
-.tile-row {
-  max-width: 1200px; margin: clamp(72px, 10vw, 128px) auto 0; padding: 0 var(--gutter);
-  display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px;
+/* ---------- Engraving tiles as step illustrations ---------- */
+.step-tile {
+  width: 72px; height: 72px; object-fit: cover; border-radius: 18px;
+  background: var(--glaze); padding: 5px; box-shadow: inset 0 0 0 1px var(--line);
+  mix-blend-mode: multiply; margin-bottom: 6px;
 }
-.tile-row img {
-  width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: var(--r-md);
-  background: #fff; padding: 10%; box-shadow: var(--shadow-soft);
-}
-@media (prefers-reduced-motion: no-preference) {
-  .tile-row img { opacity: 0; transform: translateY(12px); transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out); }
-  .tile-row.is-in img { opacity: 1; transform: none; }
-  .tile-row.is-in img:nth-child(2) { transition-delay: 50ms; }
-  .tile-row.is-in img:nth-child(3) { transition-delay: 100ms; }
-  .tile-row.is-in img:nth-child(4) { transition-delay: 150ms; }
-  .tile-row.is-in img:nth-child(5) { transition-delay: 200ms; }
-  .tile-row.is-in img:nth-child(6) { transition-delay: 250ms; }
-}
+.ls-1 .step-tile, .ls-3 .step-tile { background: #fff; mix-blend-mode: normal; box-shadow: none; }
 
 /* ---------- Why + loop ---------- */
 .why { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(28px, 5vw, 64px); align-items: center; }
@@ -298,8 +287,6 @@ section:not(.hero) { max-width: 1200px; margin: 0 auto; padding: clamp(72px, 10v
   .bar-nav { display: none; }
   .hero-row { grid-template-columns: 1fr 1fr; }
   .hero-lead { grid-column: 1 / -1; }
-  .tile-row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .tile-row img:nth-child(n+4) { display: none; }
 }
 @media (max-width: 720px) {
   .stage { height: min(92vw, 440px); border-radius: var(--r-lg); }
