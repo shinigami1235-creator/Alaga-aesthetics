@@ -1,0 +1,17 @@
+/* Self-hosted so no visitor data goes to a font service. */
+@font-face { font-family: "Spectral"; font-weight: 300; font-style: normal; font-display: swap; src: url("../fonts/spectral-latin-300-normal.woff2") format("woff2"); }
+@font-face { font-family: "Spectral"; font-weight: 400; font-style: normal; font-display: swap; src: url("../fonts/spectral-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Spectral"; font-weight: 400; font-style: italic; font-display: swap; src: url("../fonts/spectral-latin-400-italic.woff2") format("woff2"); }
+@font-face { font-family: "Spectral"; font-weight: 500; font-style: normal; font-display: swap; src: url("../fonts/spectral-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Spectral"; font-weight: 600; font-style: normal; font-display: swap; src: url("../fonts/spectral-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "Libre Franklin"; font-weight: 400; font-display: swap; src: url("../fonts/libre-franklin-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Libre Franklin"; font-weight: 500; font-display: swap; src: url("../fonts/libre-franklin-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Libre Franklin"; font-weight: 600; font-display: swap; src: url("../fonts/libre-franklin-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "Marcellus"; font-weight: 400; font-display: swap; src: url("../fonts/marcellus-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Nunito Sans"; font-weight: 400; font-display: swap; src: url("../fonts/nunito-sans-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Nunito Sans"; font-weight: 600; font-display: swap; src: url("../fonts/nunito-sans-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "Nunito Sans"; font-weight: 700; font-display: swap; src: url("../fonts/nunito-sans-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Hanken Grotesk"; font-weight: 400; font-display: swap; src: url("../fonts/hanken-grotesk-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Hanken Grotesk"; font-weight: 500; font-display: swap; src: url("../fonts/hanken-grotesk-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Hanken Grotesk"; font-weight: 600; font-display: swap; src: url("../fonts/hanken-grotesk-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "Young Serif"; font-weight: 400; font-display: swap; src: url("../fonts/young-serif-latin-400-normal.woff2") format("woff2"); }
