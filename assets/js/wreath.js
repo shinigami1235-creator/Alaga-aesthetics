@@ -13,7 +13,8 @@
 import * as THREE from "three";
 import { RoomEnvironment } from "./RoomEnvironment.js";
 
-export function mountWreath(host) {
+export function mountWreath(host, opts = {}) {
+  const sway = opts.sway ?? 0.12, follow = opts.follow ?? 0.25;
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   let renderer;
   try {
@@ -34,7 +35,7 @@ export function mountWreath(host) {
   scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
 
   const camera = new THREE.PerspectiveCamera(30, 1, 0.1, 50);
-  camera.position.set(0, 0, 5.5);
+  camera.position.set(0, 0, opts.distance ?? 5.5);
 
   const key = new THREE.DirectionalLight(0xffffff, 1.6);
   key.position.set(2.5, 3, 4);
@@ -139,7 +140,8 @@ export function mountWreath(host) {
     l.add(r);
   });
 
-  wreath.rotation.set(-0.18, 0.32, 0);
+  wreath.rotation.set(-0.08, 0.12, 0);
+  wreath.position.y = opts.lift ?? 0;
 
   const pointer = { x: 0, y: 0 };
   host.addEventListener("pointermove", (e) => {
@@ -171,8 +173,8 @@ export function mountWreath(host) {
     const ease = 1 - Math.pow(1 - Math.min(t / 1.6, 1), 4);
     wreath.scale.setScalar(0.86 + 0.14 * ease);
     wreath.rotation.z = -0.9 * (1 - ease) + t * 0.06;
-    wreath.rotation.y += ((0.32 + pointer.x * 0.35 + Math.sin(t * 0.4) * 0.12) - wreath.rotation.y) * 0.05;
-    wreath.rotation.x += ((-0.18 + pointer.y * 0.25) - wreath.rotation.x) * 0.05;
+    wreath.rotation.y += ((0.12 + pointer.x * follow + Math.sin(t * 0.4) * sway) - wreath.rotation.y) * 0.04;
+    wreath.rotation.x += ((-0.08 + pointer.y * follow * 0.6) - wreath.rotation.x) * 0.04;
     render();
   }
 
