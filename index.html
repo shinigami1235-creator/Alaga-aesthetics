@@ -39,7 +39,7 @@
         <span class="seal-sub">Aesthetics</span>
         <span class="seal-by" data-t="brand.by">by Bosselaar</span>
       </h1>
-      <p class="stage-meaning" data-t="def.meaning">Alaga is the Filipino word for care.</p>
+      <p class="stage-meaning" data-t="hero.tagline">The regenerative aesthetics partner for Dutch clinics.</p>
     </div>
 
     <div class="hero-row">
@@ -50,15 +50,15 @@
       <a class="door door-clinic" href="#practitioners">
         <img src="assets/img/tile-microscope-r.webp" alt="" width="480" height="480">
         <span class="door-text">
-          <span class="door-label" data-t="b.tile.prac">I run a clinic</span>
-          <span class="door-sub" data-t="prac.title">The Clinical Alliance</span>
+          <span class="door-label" data-t="prac.title">The Clinical Alliance</span>
+          <span class="door-sub" data-t="prac.name">For practitioners</span>
         </span>
       </a>
       <a class="door door-patient" href="#patients">
         <img src="assets/img/tile-cells-tr.webp" alt="" width="480" height="480">
         <span class="door-text">
-          <span class="door-label" data-t="b.tile.pat">I look after my skin</span>
-          <span class="door-sub" data-t="pat.title">The Skin Concierge</span>
+          <span class="door-label" data-t="pat.title">The Skin Concierge</span>
+          <span class="door-sub" data-t="pat.name">For patients</span>
         </span>
       </a>
     </div>
@@ -196,7 +196,7 @@
 <script type="module">
   import { mountWreath } from "./assets/js/wreath.js";
   const host = document.querySelector("[data-wreath]");
-  if (host) mountWreath(host, { distance: 6, lift: 0.12, sway: 0.1, follow: 0.22 });
+  if (host) mountWreath(host, { distance: innerWidth < 720 ? 7 : 6, lift: 0.12, sway: 0.1, follow: 0.22 });
 
   // Reveal the tile row and the panel photos once, as they scroll into view.
   const items = document.querySelectorAll(".tile-row, .reveal");

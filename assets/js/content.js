@@ -25,7 +25,8 @@ window.ALAGA_CONTENT = {
     "def.lang": "Filipino",
     "def.meaning": "Alaga is the Filipino word for care.",
 
-    "intro.lead": "We supply regenerative aesthetic products and training to clinics in the Netherlands, and skincare for their patients to use at home.",
+    "intro.lead": "A Dutch distributor and academy for regenerative aesthetic medicine.",
+    "hero.tagline": "The regenerative aesthetics partner for Dutch clinics.",
     "intro.body": "Alaga Aesthetics by Bosselaar is a new Dutch company founded by Dr. Sarah De los Reyes-Bosselaar and Erik Jan Bosselaar. Clinics get the products and the training to use them, and their patients get skincare that carries the treatment on between visits.",
     "intro.status": "We are looking for partner clinics across the Netherlands now.",
 
