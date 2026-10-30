@@ -4,7 +4,8 @@
 */
 (function () {
   const C = window.ALAGA_CONTENT;
-  const LANGS = ["en", "nl"];
+  // Dutch is written but switched off until the English copy is approved. Set to ["en", "nl"] to turn it back on.
+  const LANGS = ["en"];
 
   function store(key, value) {
     try {
@@ -18,7 +19,7 @@
     if (LANGS.includes(q)) return q;
     const saved = store("alaga-lang");
     if (LANGS.includes(saved)) return saved;
-    return (navigator.language || "en").toLowerCase().startsWith("nl") ? "nl" : "en";
+    return "en";
   }
 
   let lang = pickLang();
@@ -34,6 +35,7 @@
     document.querySelectorAll("[data-t-aria]").forEach((el) => { el.setAttribute("aria-label", t(el.dataset.tAria)); });
     document.querySelectorAll("[data-t-placeholder]").forEach((el) => { el.setAttribute("placeholder", t(el.dataset.tPlaceholder)); });
     document.querySelectorAll("[data-lang-toggle]").forEach((el) => {
+      el.hidden = LANGS.length < 2;
       el.textContent = t("lang.other");
       el.setAttribute("aria-label", t("lang.label"));
       el.setAttribute("lang", lang === "en" ? "nl" : "en");

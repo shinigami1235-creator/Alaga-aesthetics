@@ -73,7 +73,7 @@ p { margin: 0 0 1em; text-wrap: pretty; }
 }
 .entry-meta { margin: 14px 0 8px; font: 400 1rem var(--sans); color: rgba(255,255,255,.82); display: flex; gap: 14px; }
 .entry-ipa { font-family: var(--serif); font-size: 1.15rem; }
-.entry-meaning { font-size: clamp(1.35rem, 2.2vw, 1.75rem); line-height: 1.35; max-width: 26ch; margin: 0; }
+.entry-meaning { margin-top: 14px !important; font-size: clamp(1.35rem, 2.2vw, 1.75rem); line-height: 1.35; max-width: 26ch; margin: 0; }
 .cover-lead { font-size: 1.125rem; line-height: 1.55; max-width: 46ch; color: rgba(255,255,255,.9); margin: 0; }
 
 .toc { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 20px 32px; }

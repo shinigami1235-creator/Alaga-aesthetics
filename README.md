@@ -1,6 +1,6 @@
 # Alaga Aesthetics website
 
-The basic website for Alaga Aesthetics by Bosselaar, built in three layouts from the same English and Dutch copy. Open `index.html` to pick a layout, then use the A, B and C switch in the bottom-left corner to compare them.
+The basic website for Alaga Aesthetics by Bosselaar, built in three layouts from the same copy. English only for review: the Dutch text is written in `assets/js/content.js` but switched off (`LANGS` in `assets/js/site.js`) until the English is approved. Open `index.html` to pick a layout, then use the A, B and C switch in the bottom-left corner to compare them.
 
 - `a/` The journal: cobalt cover, contents list, the Delft engraving as figure 1.
 - `b/` The Delft tile wall: tiles cut from the engraving and the logo's DNA ring in 3D (`assets/js/wreath.js`).
