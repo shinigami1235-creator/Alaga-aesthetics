@@ -103,7 +103,9 @@ p { margin: 0 0 1em; text-wrap: pretty; }
   text-align: center; font: 400 clamp(1.05rem, 1.6vw, 1.3rem) var(--display); color: var(--ink);
 }
 
-.hero-row { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 1fr); gap: 14px; }
+.hero-row { display: grid; grid-template-columns: minmax(0, 1.5fr) repeat(3, minmax(0, 1fr)); gap: 14px; }
+.door-store { background: var(--tile); color: var(--ink); box-shadow: var(--shadow-soft); }
+.door-store .door-sub { color: var(--ink-soft); }
 .hero-lead {
   background: var(--tile); border-radius: var(--r-lg); padding: clamp(20px, 2.4vw, 30px);
   box-shadow: var(--shadow-soft); display: flex; flex-direction: column; justify-content: space-between; gap: 18px;
@@ -141,6 +143,7 @@ p { margin: 0 0 1em; text-wrap: pretty; }
   .hero-row > :nth-child(1) { animation-delay: 700ms; }
   .hero-row > :nth-child(2) { animation-delay: 760ms; }
   .hero-row > :nth-child(3) { animation-delay: 820ms; }
+  .hero-row > :nth-child(4) { animation-delay: 880ms; }
 }
 @keyframes settle { from { opacity: 0; filter: blur(6px); } to { opacity: 1; filter: none; } }
 @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
@@ -331,3 +334,9 @@ section:not(.hero) { max-width: 1200px; margin: 0 auto; padding: clamp(72px, 10v
 /* Keep inputs on one line across a row when only some fields have hints. */
 .reg-field { display: flex; flex-direction: column; }
 .reg-field > input, .reg-field > textarea { margin-top: auto; }
+
+/* four doors in the hero row: picture above the words */
+@media (min-width: 1001px) {
+  .hero-row .door { grid-template-columns: 1fr; align-content: center; gap: 12px; padding: 18px; }
+  .hero-row .door img { width: 84px; height: 84px; }
+}

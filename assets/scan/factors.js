@@ -6,7 +6,10 @@ const smooth = (a, b, x) => { const t = Math.max(0, Math.min(1, (x - a) / (b - a
 
 /* low and high ends of each reading: below lo reads as minimal, above hi as marked */
 export const RANGE = {
-  forehead:[.01, .2], glabella:[.01, .18], crows:[.03, .32], underLines:[.05, .38],
+  // fine lines at mid sensitivity: the Apex ranges raised by about a fifth so faint crinkles read as minimal
+  forehead:[.02, .24], glabella:[.02, .22], crows:[.05, .38], underLines:[.07, .44],
+  // wrinkles (the deeper lines, skin.js), set on the 28 Apex test faces so the young faces mostly read minimal and the older ones moderate or marked
+  wrForehead:[.012, .1], wrGlabella:[.03, .16], wrCrows:[.035, .14], wrUnder:[.07, .24], wrCheeks:[.02, .12],
   rough:[.8, 2.7], pores:[.002, .02],
   spots:[3, 55], toneA:[1.4, 5],
   redPatch:[.01, .22], redCheek:[3, 8],
@@ -21,7 +24,7 @@ export const LEVELS = ['minimal', 'mild', 'moderate', 'marked'];
 export const level = v => v < .15 ? 0 : v < .4 ? 1 : v < .65 ? 2 : 3;
 
 /* weights in the skin score */
-const W = {lines:.25, texture:.12, spots:.18, redness:.09, under:.12, sag:.19, shine:.05};
+const W = {lines:.1, wrinkles:.17, texture:.12, spots:.18, redness:.09, under:.12, sag:.19, shine:.05};
 
 export function factors(raw, sides = []){
   const F = {};
@@ -29,6 +32,9 @@ export function factors(raw, sides = []){
   const la = {forehead:c('forehead', raw.lines.forehead.share), glabella:c('glabella', raw.lines.glabella.share),
     crows:c('crows', raw.lines.crows.share), under:c('underLines', raw.lines.under.share)};
   F.lines = mix(la);
+  const w = raw.wrinkles || {forehead:0, glabella:0, crows:0, under:0};
+  F.wrinkles = mix({forehead:c('wrForehead', w.forehead), glabella:c('wrGlabella', w.glabella), crows:c('wrCrows', w.crows), under:c('wrUnder', w.under), cheeks:c('wrCheeks', w.cheeks || 0)});
+  F.wrinkles.n = w.n || 0;
   F.texture = {v:Math.max(c('rough', raw.texture.rough), c('pores', raw.texture.pores) * .95), area:'cheeks'};
   F.spots = {v:Math.max(c('spots', raw.even.spots), c('toneA', raw.even.toneA) * .6), area:'cheeks', n:raw.spots.length};
   F.redness = {v:Math.max(c('redPatch', raw.redness.patch), c('redCheek', raw.redness.cheekVsForehead) * .5), area:'cheeks'};

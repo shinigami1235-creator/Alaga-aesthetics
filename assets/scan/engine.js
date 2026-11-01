@@ -38,7 +38,7 @@ async function readWork(work){
 
 /* ---------- median of several readings ---------- */
 const med = a => { const s = a.slice().sort((x, y) => x - y), n = s.length; return n % 2 ? s[n >> 1] : (s[n / 2 - 1] + s[n / 2]) / 2; };
-const KEEP = new Set(['masks', 'axis', 'face', 'skin', 'grain', 'redMap', 'shineMap', 'lineStr', 'lineAng', 'spots', 'W', 'H']);
+const KEEP = new Set(['masks', 'axis', 'face', 'skin', 'grain', 'redMap', 'shineMap', 'lineStr', 'lineAng', 'spots', 'wrinkleMap', 'W', 'H']);
 const plain = v => v && typeof v === 'object' && !ArrayBuffer.isView(v) && !(v instanceof ImageData);
 /* Every number in the readings becomes the median across the reads. Typed-array maps and masks stay as
    they were in the first read, since they are only used to draw on that photo. */
@@ -124,12 +124,15 @@ function finish(reads, pose, step){
   const issues = quality(work, raw).filter(k => k !== 'turn');
   if (pose ? Math.abs(pose.yaw) > 10 || Math.abs(pose.pitch) > 14 : raw.turn > .22) issues.push('turn');
   if (pose && Math.abs(pose.roll) > 8) issues.push('tilt');
+  // a smile folds the cheeks and the corners of the eyes into lines that go away when the face relaxes
+  const mmNow = measures(work.L);
+  if (mmNow && mmNow.mouthWidth / mmNow.faceWidth > .42) issues.push('smile');
   const res = factors(raw, []);
   // how far the separate reads disagree, as a rough confidence: under 0.06 on the 0..1 scale is steady
   let spread = 0;
   if (reads.length > 1) {
     const each = reads.map(r => factors(r.raw, []).F);
-    const keys = ['lines', 'texture', 'spots', 'redness', 'under', 'sag', 'shine'];
+    const keys = ['lines', 'wrinkles', 'texture', 'spots', 'redness', 'under', 'sag', 'shine'];
     spread = keys.reduce((a, k) => { const v = each.map(F => F[k].v); return a + (Math.max(...v) - Math.min(...v)); }, 0) / keys.length;
   }
   return {work, raw, res, issues, pose, reads: reads.length, spread,
@@ -177,7 +180,16 @@ export function paint(cv, work, raw, key){
     const area = key === 'lines' ? (i => M.forehead[i] || M.glabella[i] || M.crows[i] || M.unders[i]) : (i => M.unders[i]);
     for (let i = 0; i < W * H; i++) {
       if (key === 'under' && M.unders[i]) set(i, 95, 127, 208, 70);
-      if (area(i) && raw.lineStr[i] > T * 1.1) set(i, 233, 199, 124, Math.min(255, 90 + (raw.lineStr[i] - T) * 26));
+      if (key === 'lines' && raw.wrinkleMap && raw.wrinkleMap[i]) continue;
+      if (area(i) && raw.lineStr[i] > T * 1.1) set(i, 200, 212, 240, Math.min(220, 80 + (raw.lineStr[i] - T) * 24));
+    }
+  } else if (key === 'wrinkles') {
+    // the deeper lines in solid ochre, with a dark edge so they stand out on any skin
+    const wm = raw.wrinkleMap;
+    if (wm) for (let y = 1; y < H - 1; y++) for (let x = 1; x < W - 1; x++) {
+      const i = y * W + x;
+      if (wm[i]) set(i, 233, 170, 60, 235);
+      else if (wm[i - 1] || wm[i + 1] || wm[i - W] || wm[i + W]) set(i, 11, 29, 74, 140);
     }
   } else if (key === 'texture') {
     for (let i = 0; i < W * H; i++) if (raw.grain[i]) set(i, 200, 212, 240, 175);

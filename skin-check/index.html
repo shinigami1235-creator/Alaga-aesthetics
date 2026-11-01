@@ -22,6 +22,7 @@
   <nav class="bar-nav" aria-label="Main">
     <a href="../#financing">Clinic financing</a>
     <a href="./" aria-current="page">Skin check</a>
+    <a href="../store/">Store</a>
     <a href="../ask/">Ask Dr. Sarah</a>
     <a href="../#contact">Contact</a>
   </nav>
@@ -46,6 +47,7 @@
           <li>Face a window or a soft lamp, so the light is even</li>
           <li>No makeup, and beauty mode off</li>
           <li>Hair off the forehead, glasses off</li>
+          <li>A relaxed face, no smile</li>
         </ul>
         <div class="sc-btns">
           <button type="button" class="btn btn-cobalt" data-act="camera">Use the camera</button>
@@ -66,6 +68,10 @@
           <li data-check="straight"><i></i>Head straight</li>
           <li data-check="still"><i></i>Hold still</li>
         </ul>
+        <div class="sc-camtop">
+          <label class="sc-zoom-ctl" data-zoom-wrap hidden>Zoom <input type="range" data-zoom-in></label>
+          <span class="sc-camres" data-res></span>
+        </div>
         <div class="sc-cambar">
           <button type="button" class="btn btn-ghost sc-on-dark" data-act="cancel">Cancel</button>
           <button type="button" class="sc-shutter" data-act="shutter" aria-label="Take the photo now"></button>
@@ -124,7 +130,7 @@
           <span class="res-tag">Guide only</span>
         </div>
         <div class="res-chips" role="group" aria-label="Show on the photo" data-chips></div>
-        <p class="res-credit" data-credit hidden>Sample photo: Unsplash</p>
+        <p class="res-credit" data-credit hidden>Sample photo: Vitaly Gariev on Unsplash</p>
         <div class="res-again">
           <button type="button" class="btn btn-ghost" data-act="again">Check again</button>
         </div>

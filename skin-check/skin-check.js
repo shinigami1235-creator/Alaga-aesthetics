@@ -8,14 +8,15 @@ const esc = s => String(s).replace(/[&<>"]/g, c => ({'&': '&amp;', '<': '&lt;', 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-const ORDER = ['lines', 'texture', 'spots', 'redness', 'under', 'sag', 'shine'];
+const ORDER = ['lines', 'wrinkles', 'texture', 'spots', 'redness', 'under', 'sag', 'shine'];
 const FACE = ['lid', 'balance'];
 const LEVELS = ['Minimal', 'Mild', 'Moderate', 'Marked'];
 const LV = ['#3F7A5C', '#9A7414', '#B4561E', '#883451'];
-const NAME = {lines: 'Fine lines and wrinkles', texture: 'Texture and pores', spots: 'Spots and evenness', redness: 'Redness', under: 'Under the eyes',
+const NAME = {lines: 'Fine lines', wrinkles: 'Wrinkles', texture: 'Texture and pores', spots: 'Spots and evenness', redness: 'Redness', under: 'Under the eyes',
   sag: 'Sagging and folds', shine: 'Shine', lid: 'Upper lids', balance: 'Balance'};
-const SHORT = {lines: 'Lines', texture: 'Texture', spots: 'Spots', redness: 'Redness', under: 'Under eyes', sag: 'Sagging', shine: 'Shine', lid: 'Lids', balance: 'Balance'};
-const DESC = {lines: 'Lines on the forehead, between the brows, at the corners of the eyes and under them.', texture: 'Fine grain and pores on the cheeks, nose and forehead.',
+const SHORT = {lines: 'Fine lines', wrinkles: 'Wrinkles', texture: 'Texture', spots: 'Spots', redness: 'Redness', under: 'Under eyes', sag: 'Sagging', shine: 'Shine', lid: 'Lids', balance: 'Balance'};
+const DESC = {lines: 'Faint lines on the forehead, between the brows, at the corners of the eyes and under them. Hard to see in a photo, so only clear ones count.',
+  wrinkles: 'Deeper lines that stay when the face is relaxed, at least 6 mm long: forehead, between the brows, the corners of the eyes, under them and on the cheeks.', texture: 'Fine grain and pores on the cheeks, nose and forehead.',
   spots: 'Dark spots and how evenly colour spreads.', redness: 'Red patches on the cheeks and nose.', under: 'Darkness and hollows under the eyes against the cheek.',
   sag: 'The folds beside the nose, the lines below the mouth corners, the mouth corners and brow height.', shine: 'Highlights on the forehead, nose and chin.',
   lid: 'Whether a fold shows on the upper lid.', balance: 'How closely the left and right sides match.'};
@@ -25,13 +26,15 @@ const LID = {clear: 'Fold shows clearly', faint: 'Fold is faint', none: 'No fold
 const WARN = {small: 'The face is small in this photo. A closer photo reads skin better.', smooth: 'This photo looks smoothed. Turn off beauty mode for a truer reading.',
   soft: 'This photo is soft or blurred. A sharper photo reads skin better.', dark: 'The light is dim. Face a window for a truer reading.',
   uneven: 'One side of the face is in shadow. Face the light for a truer reading.', turn: 'Your head is turned. Face the camera for a truer reading.',
-  tilt: 'Your head is tilted. Keep it level for a truer reading.'};
+  tilt: 'Your head is tilted. Keep it level for a truer reading.',
+  smile: 'You\'re smiling, which folds the skin into extra lines. Take it again with a relaxed face for a truer wrinkle reading.'};
 const ERR = {noFace: 'No face found in this photo. Try a closer photo taken from the front.', front: 'This looks like a side photo. Use a photo taken from the front.',
   camera: 'The camera could not be opened. Upload a photo instead.', read: 'The photo could not be read. Try another one.', model: 'The face model could not be loaded. Check your connection and try again.'};
 
 /* What could help, per finding. Skincare links go to the store; treatments a doctor gives go to Ask Dr. Sarah. */
 const HELP = {
-  lines: {store: ['pep-conc', 'pdrn-serum'], text: 'Signal peptides support collagen between treatments. Deeper lines between the brows or on the forehead are a question for a doctor.'},
+  lines: {store: ['pep-conc', 'pdrn-serum'], text: 'Signal peptides and PDRN support the skin while lines are still fine.'},
+  wrinkles: {store: ['pep-conc'], ask: 'Treating deeper wrinkles', text: 'Deeper lines respond best to treatment in a clinic: muscle relaxers for frown lines and crow\'s feet, skin boosters under the eyes. A peptide concentrate supports the skin in between.'},
   texture: {store: ['exo-amp', 'pdrn-serum'], text: 'A one-week exosome course and a PDRN serum help skin look smoother. Microneedling in a clinic works deeper.'},
   spots: {store: ['spf', 'exo-amp'], text: 'Daily mineral SPF stops spots getting darker. Niacinamide in the ampoules helps the tone even out.'},
   redness: {store: ['pdrn-serum', 'pn-cream'], text: 'PDRN calms redness and PN with ceramides strengthens the barrier. Redness that stays should be seen by a doctor.'},
@@ -76,7 +79,7 @@ file.addEventListener('change', async () => {
   finally { setTimeout(() => URL.revokeObjectURL(url), 4000); }
 });
 async function useSample(){
-  try { const im = await loadImage(new URL('../assets/img/sample-face.jpg', location.href).href); isSample = true; runPhoto(toCanvas(im, 1600)); }
+  try { const im = await loadImage('https://images.unsplash.com/photo-1790574318874-8837efcfc519?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb&w=1400'); isSample = true; runPhoto(toCanvas(im, 1600)); }
   catch (e) { fail('read'); }
 }
 // Load the face model in the background so the first scan starts sooner.
@@ -90,11 +93,13 @@ let okSince = 0, lastNose = [], busy = false;
 
 async function startCam(){
   try {
-    stream = await navigator.mediaDevices.getUserMedia({video: {facingMode: 'user', width: {ideal: 1280}, height: {ideal: 960}}, audio: false});
+    // the camera's full resolution, as the collage maker asks for, since fine lines need every pixel
+    stream = await navigator.mediaDevices.getUserMedia({video: {facingMode: 'user', width: {ideal: 4000}, height: {ideal: 3000}}, audio: false});
   } catch (e) { fail('camera'); return; }
   video.srcObject = stream;
   show('camera');
   await video.play().catch(() => {});
+  setupZoom(stream.getVideoTracks()[0]);
   okSince = 0; lastNose = [];
   const loop = async t => {
     if (!stream) return;
@@ -105,6 +110,17 @@ async function startCam(){
     busy = false;
   };
   camLoop = requestAnimationFrame(loop);
+}
+/* zoom, when the camera offers it, as in the collage maker */
+function setupZoom(track){
+  const wrap = $('[data-zoom-wrap]'), z = $('[data-zoom-in]');
+  const can = (track && track.getCapabilities && track.getCapabilities()) || {}, got = (track && track.getSettings && track.getSettings()) || {};
+  const res = $('[data-res]');
+  if (res) res.textContent = got.width ? `${got.width} × ${got.height}` : '';
+  if (!can.zoom || !(can.zoom.max > can.zoom.min)) { wrap.hidden = true; return; }
+  wrap.hidden = false;
+  z.min = can.zoom.min; z.max = can.zoom.max; z.step = can.zoom.step || .1; z.value = got.zoom || can.zoom.min;
+  z.oninput = () => track.applyConstraints({advanced: [{zoom: Number(z.value)}]}).catch(() => {});
 }
 function stopCam(){
   cancelAnimationFrame(camLoop);
@@ -180,7 +196,9 @@ async function burst(){
   if (!stream) return;
   const frames = [];
   for (let i = 0; i < 5; i++) {
-    const c = document.createElement('canvas'), W = video.videoWidth, H = video.videoHeight;
+    // frames are kept up to 2400 px on the long side: enough for the skin, light enough for five at once
+    const k = Math.min(1, 2400 / Math.max(video.videoWidth, video.videoHeight));
+    const c = document.createElement('canvas'), W = Math.round(video.videoWidth * k), H = Math.round(video.videoHeight * k);
     c.width = W; c.height = H;
     c.getContext('2d').drawImage(video, 0, 0, W, H);
     frames.push(c);
@@ -332,7 +350,7 @@ function showAge(){
   const el = $('[data-age]');
   el.innerHTML = age === null ? '<small>reading…</small>' : `<small>about</small> ${skinAge(age === undefined ? null : age, result.res.concern)}`;
 }
-const worst = () => ORDER.reduce((a, k) => (result.res.F[k].v > result.res.F[a].v ? k : a), ORDER[0]);
+const worst = () => result.res.F.wrinkles.level >= 1 ? 'wrinkles' : ORDER.reduce((a, k) => (result.res.F[k].v > result.res.F[a].v ? k : a), ORDER[0]);
 function select(k){
   sel = k;
   $$('[data-f]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.f === k)));

@@ -17,6 +17,7 @@ window.ALAGA_CONTENT = {
     "nav.plan": "Plan your clinic",
     "nav.skin": "Skin check",
     "nav.ask": "Ask Dr. Sarah",
+    "nav.store": "Store",
 
     "def.meaning": "Alaga is the Filipino word for care.",
     "hero.tagline": "Leading the future of Global, Holistic Regenerative Medicine.",
@@ -27,6 +28,8 @@ window.ALAGA_CONTENT = {
     "door.fin.sub": "For doctors and nurses",
     "door.skin.label": "Skin check",
     "door.skin.sub": "For patients",
+    "door.store.label": "Store",
+    "door.store.sub": "Skincare and clinic products",
 
     "pat.title": "For patients",
     "pat.lead": "A first look at your skin from your own phone, and a doctor who answers your questions.",
@@ -129,7 +132,7 @@ window.ALAGA_CONTENT = {
     "privacy.h3": "How long we keep it",
     "privacy.p3": "Up to two years after our last contact, unless we start working together.",
     "privacy.h4": "Cookies and tracking",
-    "privacy.p4": "This site sets no cookies and uses no tracking. Fonts and images load from this site. The skin check reads your photo on your own device; the photo and the results are never sent to us.",
+    "privacy.p4": "This site sets no cookies and uses no tracking. Fonts and most images load from this site; the sample face loads from Unsplash, which receives your IP address when it sends it. The skin check reads your photo on your own device; the photo and the results are never sent to us.",
     "privacy.h5": "Your rights",
     "privacy.p5": "Email info@alagaaesthetics.nl to see, correct or delete your data. You can complain to the Autoriteit Persoonsgegevens if you disagree with how we handle it.",
     "privacy.updated": "Last updated 1 November 2026.",
