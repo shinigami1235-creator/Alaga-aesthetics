@@ -16,7 +16,7 @@ const NAME = {lines: 'Fine lines', wrinkles: 'Wrinkles', texture: 'Texture and p
   sag: 'Sagging and folds', shine: 'Shine', lid: 'Upper lids', balance: 'Balance'};
 const SHORT = {lines: 'Fine lines', wrinkles: 'Wrinkles', texture: 'Texture', spots: 'Spots', redness: 'Redness', under: 'Under eyes', sag: 'Sagging', shine: 'Shine', lid: 'Lids', balance: 'Balance'};
 const DESC = {lines: 'Faint lines on the forehead, between the brows, at the corners of the eyes and under them. Hard to see in a photo, so only clear ones count.',
-  wrinkles: 'Deeper lines that stay when the face is relaxed, at least 6 mm long: forehead, between the brows, the corners of the eyes, under them and on the cheeks.', texture: 'Fine grain and pores on the cheeks, nose and forehead.',
+  wrinkles: 'Creases on the forehead, between the brows and at the corners of the eyes. Fine crinkles mostly drop out; deeper lines show.', texture: 'Fine grain and pores on the cheeks, nose and forehead.',
   spots: 'Dark spots and how evenly colour spreads.', redness: 'Red patches on the cheeks and nose.', under: 'Darkness and hollows under the eyes against the cheek.',
   sag: 'The folds beside the nose, the lines below the mouth corners, the mouth corners and brow height.', shine: 'Highlights on the forehead, nose and chin.',
   lid: 'Whether a fold shows on the upper lid.', balance: 'How closely the left and right sides match.'};
@@ -27,6 +27,8 @@ const WARN = {small: 'The face is small in this photo. A closer photo reads skin
   soft: 'This photo is soft or blurred. A sharper photo reads skin better.', dark: 'The light is dim. Face a window for a truer reading.',
   uneven: 'One side of the face is in shadow. Face the light for a truer reading.', turn: 'Your head is turned. Face the camera for a truer reading.',
   tilt: 'Your head is tilted. Keep it level for a truer reading.',
+  wrSmall: 'The photo is a little small for wrinkles, so that reading is rough. A closer photo or the camera reads them better.',
+  wrNone: 'The photo is too small to read wrinkles. Take it closer or use the camera.',
   smile: 'You\'re smiling, which folds the skin into extra lines. Take it again with a relaxed face for a truer wrinkle reading.'};
 const ERR = {noFace: 'No face found in this photo. Try a closer photo taken from the front.', front: 'This looks like a side photo. Use a photo taken from the front.',
   camera: 'The camera could not be opened. Upload a photo instead.', read: 'The photo could not be read. Try another one.', model: 'The face model could not be loaded. Check your connection and try again.'};
@@ -34,7 +36,7 @@ const ERR = {noFace: 'No face found in this photo. Try a closer photo taken from
 /* What could help, per finding. Skincare links go to the store; treatments a doctor gives go to Ask Dr. Sarah. */
 const HELP = {
   lines: {store: ['pep-conc', 'pdrn-serum'], text: 'Signal peptides and PDRN support the skin while lines are still fine.'},
-  wrinkles: {store: ['pep-conc'], ask: 'Treating deeper wrinkles', text: 'Deeper lines respond best to treatment in a clinic: muscle relaxers for frown lines and crow\'s feet, skin boosters under the eyes. A peptide concentrate supports the skin in between.'},
+  wrinkles: {store: ['pep-conc'], ask: 'Treating deeper wrinkles', text: 'Deeper lines respond best to treatment in a clinic: muscle relaxers for forehead lines, frown lines and crow\'s feet. A peptide concentrate supports the skin in between.'},
   texture: {store: ['exo-amp', 'pdrn-serum'], text: 'A one-week exosome course and a PDRN serum help skin look smoother. Microneedling in a clinic works deeper.'},
   spots: {store: ['spf', 'exo-amp'], text: 'Daily mineral SPF stops spots getting darker. Niacinamide in the ampoules helps the tone even out.'},
   redness: {store: ['pdrn-serum', 'pn-cream'], text: 'PDRN calms redness and PN with ceramides strengthens the barrier. Redness that stays should be seen by a doctor.'},
@@ -309,6 +311,7 @@ function row(k){
   const F = result.res.F[k], l = level(F, k);
   let lv = k === 'lid' ? LID[F.state] : LEVELS[F.level], w = Math.round(F.v * 100), at = '';
   if (k === 'balance' && result.raw.turn > .12) { lv = '–'; w = 0; at = '<span class="at">Face the camera to read this.</span>'; }
+  if (F.unread) { lv = '–'; w = 0; at = '<span class="at">Photo too small to read this.</span>'; }
   if (F.area && F.level >= 1 && AREA[F.area]) at += `<span class="at">Most at <b>${esc(AREA[F.area])}</b></span>`;
   return `<li><button type="button" class="fac" data-f="${k}" aria-pressed="${sel === k}" style="--c:${LV[l]}">
     <span class="fac-h"><b>${esc(NAME[k])}</b><span class="fac-lv">${esc(lv)}</span></span>
@@ -350,7 +353,7 @@ function showAge(){
   const el = $('[data-age]');
   el.innerHTML = age === null ? '<small>reading…</small>' : `<small>about</small> ${skinAge(age === undefined ? null : age, result.res.concern)}`;
 }
-const worst = () => result.res.F.wrinkles.level >= 1 ? 'wrinkles' : ORDER.reduce((a, k) => (result.res.F[k].v > result.res.F[a].v ? k : a), ORDER[0]);
+const worst = () => result.res.F.wrinkles.level >= 1 && !result.res.F.wrinkles.unread ? 'wrinkles' : ORDER.reduce((a, k) => (result.res.F[k].v > result.res.F[a].v ? k : a), ORDER[0]);
 function select(k){
   sel = k;
   $$('[data-f]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.f === k)));

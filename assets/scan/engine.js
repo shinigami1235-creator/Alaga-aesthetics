@@ -4,8 +4,11 @@
    - the newer Face Landmarker model and its head-turn matrix (face.js)
    - every photo is read several times on slightly different crops, and every camera scan on several frames,
      and each reading is the median of those, so one unlucky landmark fit no longer moves the result
-   - millimetre measures from the iris (face.js) */
-import {find, detect, frameFace, cut, measures} from './face.js';
+   - millimetre measures from the iris (face.js)
+   - wrinkles from the calibrated detector in the facial measurement tool (wrinkles.js), read on the
+     full-size photo rather than the smaller work image, since it needs at least 4.5 pixels per mm */
+import {find, detect, frameFace, cut, measures, irisScale} from './face.js';
+import {readWrinkles} from './wrinkles.js';
 import {workImage, read, quality, LINES_AT} from './skin.js';
 import {factors, skinAge} from './factors.js';
 import {measure, overall} from './geometry.js';
@@ -67,10 +70,37 @@ export function medianRaw(raws){
    up and to each side. The landmark fit moves slightly between them, and so does the reading. */
 const CROPS = [[1, 0, 0], [.93, 0, 0], [.9, -.03, -.02], [.9, .03, -.02], [.95, 0, .03]];
 
+/* Sensitivity, as in the measurement tool: how much darker than the skin beside it a line must be, in per
+   cent. 4 is the tool's study default. Its calibration (CALIBRATION-relfydess) found 4 already passes over
+   young frown folds and fine crinkles and picks up the deeper creases, which is the mid setting asked for;
+   7 read almost the same on the test faces, so there is one pass. */
+export const WR_SENS = 4;
 async function readOne(canvas, lm){
   const f = frameFace(canvas, lm, 2.1, 900, 2000);
   const work = workImage(f.base, f.L);
   const raw = await readWork(work);
+  const src = lm.map(p => ({x: p.x * canvas.width, y: p.y * canvas.height}));
+  const mmPx = irisScale(src);
+  const wr = readWrinkles(canvas, lm, mmPx ? 1 / mmPx : 0, [WR_SENS]);
+  // source pixels to work-image pixels: the chain of crops is a scale and a shift, so two far points fix it
+  const ax = (work.L[454].x - work.L[234].x) / ((src[454].x - src[234].x) || 1), bx = work.L[234].x - ax * src[234].x;
+  const ay = (work.L[152].y - work.L[10].y) / ((src[152].y - src[10].y) || 1), by = work.L[10].y - ay * src[10].y;
+  const {W, H} = raw, map = new Uint8Array(W * H), at = {};
+  for (const id in wr.regions) {
+    const r = wr.regions[id], hi = r.at[WR_SENS];
+    at[id] = {density: hi.density, count: hi.count, lenMm: hi.lenMm};
+    const pts = hi.pts;
+    for (let i = 0; i < pts.length; i += 2) {
+      const x = Math.round(ax * pts[i] + bx), y = Math.round(ay * pts[i + 1] + by);
+      // drawn two pixels wide, about half a millimetre on the work image, so the line reads on screen
+      for (const [dx, dy] of [[0, 0], [1, 0], [0, 1], [1, 1]]) if (x + dx >= 0 && y + dy >= 0 && x + dx < W && y + dy < H) map[(y + dy) * W + x + dx] = 1;
+    }
+  }
+  const z = {density: 0, count: 0, lenMm: 0}, R = id => at[id] || z;
+  const crows = ['density', 'count', 'lenMm'].reduce((o, k) => (o[k] = (R('cfR')[k] + R('cfL')[k]) / 2, o), {});
+  raw.wrinkles = {forehead: R('forehead'), glabella: R('glabella'), crows, pxmm: wr.pxmm || 0, lowRes: wr.lowRes ? 1 : 0, none: wr.none ? 1 : 0,
+    n: Object.values(at).reduce((a, r) => a + r.count, 0)};
+  raw.wrinkleMap = map;
   return {work, raw};
 }
 
@@ -127,6 +157,8 @@ function finish(reads, pose, step){
   // a smile folds the cheeks and the corners of the eyes into lines that go away when the face relaxes
   const mmNow = measures(work.L);
   if (mmNow && mmNow.mouthWidth / mmNow.faceWidth > .42) issues.push('smile');
+  // the wrinkle detector wants 4.5 pixels per mm of skin; under that it reads roughly, under 3 not at all
+  if (raw.wrinkles.none > .5) issues.push('wrNone'); else if (raw.wrinkles.lowRes > .5) issues.push('wrSmall');
   const res = factors(raw, []);
   // how far the separate reads disagree, as a rough confidence: under 0.06 on the 0..1 scale is steady
   let spread = 0;

@@ -234,39 +234,6 @@ export function read(work){
     crows:lineShare(R.crows, null), under:lineShare(R.unders, null),
   };
 
-  /* ---- wrinkles: the deeper lines ----
-     Read at a coarser scale with a higher threshold (mid sensitivity), then kept only where they join up into a
-     line at least 6 mm long and thin, so pores, spots and fine crinkles drop out. Fine lines are what is left over. */
-  const coarse = valleys(Lc, W, H, 4.2 * PX_MM / 3.8);
-  // hysteresis, as in edge finding: a line needs at least one strong stretch, then follows weaker pixels along it,
-  // so a long wrinkle that fades in the middle stays one line instead of breaking into specks
-  const DEEP_T = 3.0 / soft, LOW_T = DEEP_T * .55;
-  const wz = new Uint8Array(n);
-  for (let i = 0; i < n; i++) wz[i] = R.forehead[i] | R.glabella[i] | R.crows[i] | R.unders[i] | R.cheeks[i];
-  const dstr = new Float32Array(n);
-  for (let i = 0; i < n; i++) if (wz[i]) dstr[i] = Math.max(mid.str[i], coarse.str[i]);
-  const wrinkleMap = new Uint8Array(n), seen = new Uint8Array(n), stack = new Int32Array(n), comp = [];
-  const minLen = 6 * PX_MM;
-  let wN = 0, longest = 0;
-  for (let i0 = 0; i0 < n; i0++) {
-    if (dstr[i0] <= DEEP_T || seen[i0]) continue;
-    let sp = 0, cnt = 0, x0 = 1e9, y0 = 1e9, x1 = -1, y1 = -1;
-    stack[sp++] = i0; seen[i0] = 1; comp.length = 0;
-    while (sp) {
-      const o = stack[--sp], x = o % W, y = (o - x) / W;
-      comp.push(o); cnt++;
-      if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y;
-      for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) {
-        const xx = x + dx, yy = y + dy; if (xx < 0 || yy < 0 || xx >= W || yy >= H) continue;
-        const q = yy * W + xx; if (!seen[q] && dstr[q] > LOW_T) { seen[q] = 1; stack[sp++] = q; }
-      }
-    }
-    const len = Math.hypot(x1 - x0 + 1, y1 - y0 + 1);
-    if (len >= minLen && cnt / len < 9) { for (const o of comp) wrinkleMap[o] = 1; wN++; if (len > longest) longest = len; }
-  }
-  const wShare = m => { let hit = 0, tot = 0; for (let i = 0; i < n; i++) if (m[i]) { tot++; if (wrinkleMap[i]) hit++; } return tot ? hit / tot : 0; };
-  const wrinkles = {forehead: wShare(R.forehead), glabella: wShare(R.glabella), crows: wShare(R.crows), under: wShare(R.unders), cheeks: wShare(R.cheeks), n: wN, longest: longest / PX_MM};
-
   /* ---- texture: pores and fine grain on the cheeks, nose and forehead ---- */
   // pores are a pixel or two across at this scale, so they get their own fine pass, only where texture is read
   const gp = gauss(Lc, W, H, .9);
@@ -413,7 +380,7 @@ export function read(work){
   const light = chL[0].n && chL[1].n ? Math.abs(chL[0].med - chL[1].med) / Math.max(20, (chL[0].med + chL[1].med) / 2) : 0;
   const ta = Math.abs(V.dot(V.sub(P(1), P(234)), side)), tb = Math.abs(V.dot(V.sub(P(1), P(454)), side)), turn = Math.abs(ta - tb) / (ta + tb);
   return {sharp, soft, light, turn, near:ta >= tb ? 0 : 1, grain, axis:{c:mc, d:ax}, W, H, iod, skinShare:count(skin) / Math.max(1, count(face)), lines, texture, even, spots, redness, redMap, under, shine:{share:shN ? shine / shN : 0}, shineMap,
-    sag, lid, asym, lineStr, lineAng, wrinkles, wrinkleMap, masks:R, face, skin, refL:sL.med, flatSd:stats(flat, R.cheeks).mad};
+    sag, lid, asym, lineStr, lineAng, masks:R, face, skin, refL:sL.med, flatSd:stats(flat, R.cheeks).mad};
 }
 
 /* ---------- photo quality ---------- */
