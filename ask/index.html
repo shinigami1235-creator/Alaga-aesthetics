@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ask Dr. Sarah | Alaga Aesthetics</title>
+<meta name="description" content="Dr. Sarah De los Reyes-Bosselaar answers patients' questions about skincare, the skin check and the weeks after a treatment.">
+<meta name="theme-color" content="#F4F7FC">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/fonts.css">
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="stylesheet" href="ask.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="bar">
+  <a class="brand" href="../" aria-label="Alaga Aesthetics home">
+    <img src="../assets/img/mark-cobalt.svg" alt="" class="brand-mark">
+    <span class="brand-name">Alaga Aesthetics</span>
+  </a>
+  <nav class="bar-nav" aria-label="Main">
+    <a href="../#financing">Clinic financing</a>
+    <a href="../skin-check/">Skin check</a>
+    <a href="./" aria-current="page">Ask Dr. Sarah</a>
+    <a href="../#contact">Contact</a>
+  </nav>
+</header>
+
+<main id="main" class="ask">
+  <aside class="desk" aria-labelledby="ask-h">
+    <div class="plate" aria-hidden="true"><span>S</span></div>
+    <h1 id="ask-h">Ask Dr. Sarah</h1>
+    <p class="desk-who">Dr. Sarah De los Reyes-Bosselaar, co-founder and clinical lead</p>
+    <p>Send her a question about skincare, your skin check or the weeks after a treatment. The ones many people ask end up on this board, without your name. The rest she answers by email, in the order they come in.</p>
+
+    <form class="ask-form" data-ask novalidate>
+      <label for="q">Your question</label>
+      <textarea id="q" name="q" rows="4" required placeholder="Example: Can I use the PDRN serum with vitamin C?"></textarea>
+      <label for="about">It's about</label>
+      <select id="about" name="about" data-about>
+        <option value="">Something else</option>
+      </select>
+      <label for="email">Email for the answer</label>
+      <input id="email" name="email" type="email" autocomplete="email" required placeholder="name@example.nl">
+      <label class="ask-ok"><input type="checkbox" name="publish" checked> Dr. Sarah may put my question on the board, without my name</label>
+      <button type="submit" class="btn btn-cobalt">Send to Dr. Sarah</button>
+      <p class="ask-msg" data-ask-msg role="status"></p>
+      <p class="ask-fine">Preview: questions aren't sent yet. For anything urgent about a treatment, call the clinic that treated you.</p>
+    </form>
+
+    <div class="mine" data-mine hidden>
+      <h2>Your questions</h2>
+      <ul data-mine-list></ul>
+    </div>
+  </aside>
+
+  <section class="board" aria-labelledby="board-h">
+    <h2 id="board-h" class="visually-hidden">Answered questions</h2>
+    <div class="board-tools">
+      <label class="search"><span class="visually-hidden">Search the answers</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input type="search" placeholder="Search the answers" data-search>
+      </label>
+      <div class="chips" role="group" aria-label="Topics" data-topics></div>
+    </div>
+    <div class="tiles" data-tiles></div>
+    <p class="board-empty" data-empty hidden>No answer matches that yet. Ask it on the left and it may end up here.</p>
+    <p class="board-fine">Sample answers for the preview. Dr. Sarah writes or approves every answer before the board goes live. Answers here are general advice and don't replace a consult.</p>
+  </section>
+</main>
+
+<footer class="foot">
+  <img src="../assets/img/mark-white.svg" alt="" class="foot-mark">
+  <p>© 2026 Alaga Aesthetics, the Netherlands.</p>
+  <a href="../privacy/">Privacy statement</a>
+</footer>
+
+<script src="../assets/js/qa.js"></script>
+<script src="../store/products.js"></script>
+<script src="ask.js"></script>
+</body>
+</html>

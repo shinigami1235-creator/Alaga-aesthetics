@@ -206,6 +206,38 @@ section:not(.hero) { max-width: 1200px; margin: 0 auto; padding: clamp(72px, 10v
   mix-blend-mode: multiply; margin-bottom: 6px;
 }
 
+/* ---------- For patients ---------- */
+.pat-head { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 12px 40px; align-items: end; margin-bottom: 24px; }
+.pat-head .sec-title { margin: 0; }
+.pat-head p { margin: 0; color: var(--ink-soft); font-size: 1.1rem; }
+.pat-grid { display: grid; grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); gap: 16px; }
+.scan-card, .ask-card { text-decoration: none; color: inherit; border-radius: var(--r-xl); transition: transform 260ms var(--ease-out), box-shadow 260ms var(--ease-out); }
+.scan-card { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); overflow: hidden; background: linear-gradient(180deg, #13296a, #0b1d4a); color: #dfe6f7; box-shadow: var(--shadow-lift); }
+.scan-pic { position: relative; overflow: hidden; min-height: 340px; }
+.scan-pic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 32%; filter: saturate(.75) brightness(.85); }
+.scan-pic::after { content: ""; position: absolute; inset: 14px; border: 1px solid rgba(233,199,124,.5); border-radius: 18px; pointer-events: none; }
+.scan-beam { position: absolute; left: 0; right: 0; height: 30%; top: -30%; background: linear-gradient(180deg, transparent, rgba(233,199,124,.18) 80%, rgba(233,199,124,.95) 98%, transparent); }
+@media (prefers-reduced-motion: no-preference) { .scan-beam { animation: home-sweep 2.4s var(--ease-in-out) infinite; } .scan-tags span { animation: tag-in 3.6s var(--ease-out) infinite both; animation-delay: var(--d); } }
+@keyframes home-sweep { to { top: 100%; } }
+@keyframes tag-in { 0%, 8% { opacity: 0; transform: translateY(6px); } 18%, 80% { opacity: 1; transform: none; } 100% { opacity: 0; } }
+.scan-tags { position: absolute; left: 22px; bottom: 22px; display: grid; gap: 6px; justify-items: start; }
+.scan-tags span { font: 700 .8rem var(--sans); color: #fff; background: rgba(11,29,74,.72); padding: 5px 10px; border-radius: 999px; box-shadow: inset 0 0 0 1px rgba(233,199,124,.5); }
+.scan-text { display: grid; align-content: center; gap: 12px; padding: clamp(22px, 3vw, 36px); }
+.scan-k { font: 700 .78rem var(--sans); letter-spacing: .12em; text-transform: uppercase; color: #e9c77c; }
+.scan-h { font: 400 clamp(1.5rem, 2.4vw, 2rem)/1.15 var(--display); color: #fff; }
+.scan-p { font-size: 1rem; }
+.scan-text .btn { justify-self: start; background: #fff; color: var(--cobalt); margin-top: 6px; }
+.ask-card { display: grid; align-content: start; gap: 12px; padding: clamp(22px, 2.6vw, 30px); background: var(--blush); color: var(--ink); box-shadow: var(--shadow-soft); }
+.ask-card .scan-h { color: var(--blush-ink); }
+.ask-plate { width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; font: 400 1.6rem var(--display); color: var(--cobalt);
+  background: radial-gradient(circle, #fff 0 52%, transparent 53%), repeating-conic-gradient(var(--cobalt) 0 10deg, #fff 10deg 20deg); box-shadow: 0 0 0 2px var(--cobalt); }
+.ask-q { font: 400 1.15rem/1.35 var(--display); padding: 14px 16px; border-radius: var(--r-md); background: #fff; box-shadow: var(--shadow-soft); }
+.ask-go { font-weight: 700; color: var(--blush-ink); }
+.ask-go::after { content: " →"; }
+@media (hover: hover) and (pointer: fine) {
+  .scan-card:hover, .ask-card:hover { transform: translateY(-3px); }
+}
+
 /* ---------- Founders ---------- */
 .founders-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 4vw, 48px); }
 .founder { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 22px; align-items: start; }
@@ -277,6 +309,7 @@ section:not(.hero) { max-width: 1200px; margin: 0 auto; padding: clamp(72px, 10v
   .hero-row, .hero-row.is-one { grid-template-columns: 1fr 1fr; }
   .hero-lead { grid-column: 1 / -1; }
   .how-steps { grid-template-columns: 1fr 1fr; }
+  .pat-grid { grid-template-columns: 1fr; }
   .how-steps::before { display: none; }
   .do-list { grid-template-columns: 1fr 1fr; }
 }
@@ -289,7 +322,8 @@ section:not(.hero) { max-width: 1200px; margin: 0 auto; padding: clamp(72px, 10v
   .hero-row, .hero-row.is-one { grid-template-columns: 1fr; }
   .door { grid-template-columns: 76px minmax(0, 1fr); }
   .door img { width: 76px; height: 76px; }
-  .fin-head, .who, .do-list, .how-steps, .founders-grid, .register { grid-template-columns: 1fr; }
+  .fin-head, .who, .do-list, .how-steps, .founders-grid, .register, .pat-head, .pat-grid, .scan-card { grid-template-columns: 1fr; }
+  .scan-pic { min-height: 260px; }
   .reg-grid { grid-template-columns: 1fr; }
   .founder { grid-template-columns: 72px minmax(0, 1fr); }
 }

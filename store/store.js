@@ -85,6 +85,11 @@
     was.hidden = locked || price(p) === p.price;
     was.textContent = eur(p.price);
     $("[data-add]").textContent = locked ? "Log in with BIG number" : "Add to bag";
+    // Dr. Sarah's answers about this product sit under the buy button, so they never get in the way of it
+    const qa = (window.ALAGA_QA || []).filter((x) => (x.product || []).includes(p.id)).slice(0, 2);
+    $("[data-spec-qa]").innerHTML = p.shelf === "pro" ? "" : `<p class="qa-h">Dr. Sarah answered</p>` +
+      qa.map((x) => `<details><summary>${x.q}</summary><p>${x.a}</p></details>`).join("") +
+      `<a class="qa-ask" href="../ask/?p=${p.id}">${qa.length ? "Ask her something else" : "Ask her about this product"}</a>`;
   }
 
   function load(id, level = 0) {
@@ -239,5 +244,10 @@
 
   renderPro();
   renderPlan();
-  document.fonts.ready.then(() => load("pdrn-serum", 0));
+  // a link like store/?p=pn-cream opens on that product
+  const start = new URLSearchParams(location.search).get("p");
+  document.fonts.ready.then(() => {
+    const id = byId(start) ? start : "pdrn-serum";
+    load(id, 0);
+  });
 })();

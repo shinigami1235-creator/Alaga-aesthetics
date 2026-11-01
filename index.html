@@ -22,7 +22,8 @@
   <!-- New services get a link here when they open: online store, Clinical Alliance. -->
   <nav class="bar-nav" aria-label="Main">
     <a href="#financing" data-t="nav.financing"></a>
-    <a href="#how" data-t="nav.how"></a>
+    <a href="skin-check/" data-t="nav.skin"></a>
+    <a href="ask/" data-t="nav.ask"></a>
     <a href="#founders" data-t="nav.founders"></a>
     <a href="#contact" data-t="nav.contact"></a>
   </nav>
@@ -43,8 +44,8 @@
       <p class="stage-meaning" data-t="hero.tagline">Leading the future of Global, Holistic Regenerative Medicine.</p>
     </div>
 
-    <!-- One door per live service. Add the store and the Clinical Alliance as doors here when they open, and drop "is-one". -->
-    <div class="hero-row is-one">
+    <!-- One door per live service. Add the store and the Clinical Alliance as doors here when they open. -->
+    <div class="hero-row">
       <div class="hero-lead">
         <p data-t="hero.lead"></p>
         <div class="hero-ctas">
@@ -57,6 +58,13 @@
         <span class="door-text">
           <span class="door-label" data-t="door.fin.label"></span>
           <span class="door-sub" data-t="door.fin.sub"></span>
+        </span>
+      </a>
+      <a class="door door-patient" href="skin-check/">
+        <img src="assets/img/tile-cells-tr.webp" alt="" width="480" height="480">
+        <span class="door-text">
+          <span class="door-label" data-t="door.skin.label"></span>
+          <span class="door-sub" data-t="door.skin.sub"></span>
         </span>
       </a>
     </div>
@@ -101,6 +109,35 @@
       <p data-t="form.intro"></p>
     </div>
     <div data-register-form data-privacy="privacy/"></div>
+  </section>
+
+  <section class="patients" id="patients" aria-labelledby="pat-h">
+    <div class="pat-head">
+      <h2 id="pat-h" class="sec-title" data-t="pat.title"></h2>
+      <p data-t="pat.lead"></p>
+    </div>
+    <div class="pat-grid">
+      <a class="scan-card" href="skin-check/">
+        <span class="scan-pic" aria-hidden="true">
+          <img src="assets/img/sample-face.jpg" alt="" width="1067" height="1600" loading="lazy">
+          <span class="scan-beam"></span>
+          <span class="scan-tags"><span style="--d:0s">Lines · mild</span><span style="--d:.6s">Texture · moderate</span><span style="--d:1.2s">Redness · mild</span></span>
+        </span>
+        <span class="scan-text">
+          <span class="scan-k" data-t="sc.kicker"></span>
+          <span class="scan-h" data-t="sc.title"></span>
+          <span class="scan-p" data-t="sc.body"></span>
+          <span class="btn btn-cobalt" data-t="sc.cta"></span>
+        </span>
+      </a>
+      <a class="ask-card" href="ask/">
+        <span class="ask-plate" aria-hidden="true">S</span>
+        <span class="scan-h" data-t="ask.title"></span>
+        <span class="scan-p" data-t="ask.body"></span>
+        <span class="ask-q" data-t="ask.sample"></span>
+        <span class="ask-go" data-t="ask.cta"></span>
+      </a>
+    </div>
   </section>
 
   <section class="founders" id="founders" aria-labelledby="founders-h">
