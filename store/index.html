@@ -22,8 +22,8 @@
     <span class="brand-name">Alaga Aesthetics</span>
   </a>
   <nav class="bar-nav" aria-label="Store">
-    <a href="#skincare">Skincare</a>
-    <a href="#codes">Doctor codes</a>
+    <a href="#scope">Microscope</a>
+    <a href="#routine">After your treatment</a>
     <a href="#pro">For professionals</a>
   </nav>
   <button type="button" class="bag" data-bag aria-label="Bag, 0 items">
@@ -33,41 +33,110 @@
 </header>
 
 <main id="main">
-  <section class="counter" aria-labelledby="shop-h">
-    <div class="counter-text">
+  <section class="scope" id="scope" aria-labelledby="shop-h">
+    <div class="scope-head">
       <h1 id="shop-h">The Alaga store</h1>
-      <p>Skincare for the weeks after your treatment, built around the same regenerative ingredients your clinic uses. Ask your doctor for their code before you check out.</p>
+      <p>Every product, down to the molecule. Pick a slide from the tray, then turn the focus knob.</p>
     </div>
-    <div class="counter-shelf" data-featured></div>
+
+    <div class="bench">
+      <div class="eyepiece">
+        <div class="lens-ring">
+          <canvas class="lens" data-lens role="img" aria-label="Microscope view"></canvas>
+          <span class="lens-tag" data-lens-tag></span>
+        </div>
+        <div class="focus" role="radiogroup" aria-label="Focus" data-focus>
+          <span class="focus-rail" aria-hidden="true"><span class="focus-knob" data-knob></span></span>
+          <button type="button" role="radio" data-level="0"><b>Product</b><span>1×</span></button>
+          <button type="button" role="radio" data-level="1"><b>Texture</b><span>40×</span></button>
+          <button type="button" role="radio" data-level="2"><b>Skin</b><span>400×</span></button>
+          <button type="button" role="radio" data-level="3"><b>Molecule</b><span>10 nm</span></button>
+        </div>
+        <p class="fig" data-fig aria-live="polite"></p>
+      </div>
+
+      <article class="specimen" aria-labelledby="spec-h">
+        <p class="spec-kind" data-spec-kind></p>
+        <h2 id="spec-h" data-spec-name></h2>
+        <p class="spec-size" data-spec-size></p>
+        <p data-spec-desc></p>
+        <ul class="spec-ings" data-spec-ings></ul>
+        <details class="spec-use">
+          <summary>How to use</summary>
+          <p data-spec-use></p>
+        </details>
+        <p class="spec-note" data-spec-note hidden></p>
+        <div class="buy">
+          <div class="price-row">
+            <span class="price" data-price></span>
+            <span class="price-was" data-was hidden></span>
+          </div>
+          <form class="code-form" data-code-form>
+            <label for="code">Doctor code</label>
+            <div class="code-row">
+              <input id="code" name="code" autocomplete="off" placeholder="DR-SARAH" spellcheck="false">
+              <button type="submit">Apply</button>
+            </div>
+            <p class="code-msg" data-code-msg role="status"></p>
+          </form>
+          <button type="button" class="btn btn-cobalt add" data-add>Add to bag</button>
+        </div>
+      </article>
+    </div>
+
+    <div class="tray-wrap">
+      <div class="chips" role="group" aria-label="Filter by ingredient" data-chips></div>
+      <ul class="tray" data-tray aria-label="Skincare slides"></ul>
+    </div>
+    <p class="drawn-note">Drawings, not micrographs. Sizes are approximate.</p>
   </section>
 
-  <section class="shelf" id="skincare" aria-labelledby="skin-h">
-    <div class="shelf-head">
-      <h2 id="skin-h" class="sec-title">Skincare</h2>
-      <div class="chips" role="group" aria-label="Filter by ingredient" data-chips></div>
+  <section class="routine" id="routine" aria-labelledby="routine-h">
+    <div class="routine-head">
+      <h2 id="routine-h" class="sec-title">The four weeks after your treatment</h2>
+      <p>Pick the treatment you had. Drag along the days to see what goes on your skin each morning and evening. Your doctor's own advice comes first.</p>
     </div>
-    <ul class="grid" data-grid="skin"></ul>
+    <div class="chips" role="group" aria-label="Treatment" data-treatments></div>
+    <div class="plan" data-plan>
+      <div class="plan-days" aria-hidden="true" data-plan-days></div>
+      <ul class="plan-lanes" data-plan-lanes></ul>
+      <input type="range" class="plan-scrub" min="1" max="28" value="1" step="1" data-scrub aria-label="Day after treatment">
+      <span class="plan-line" data-plan-line aria-hidden="true"></span>
+    </div>
+    <div class="today">
+      <p class="today-day" data-today-day></p>
+      <div class="today-cols">
+        <div><h3>Morning</h3><ul data-am></ul></div>
+        <div><h3>Evening</h3><ul data-pm></ul></div>
+      </div>
+      <div class="today-buy">
+        <p data-routine-total></p>
+        <button type="button" class="btn btn-cobalt" data-add-routine>Add the routine to bag</button>
+      </div>
+    </div>
   </section>
 
   <section class="codes" id="codes" aria-labelledby="codes-h">
     <h2 id="codes-h" class="sec-title">Doctor codes</h2>
     <ol class="code-steps">
       <li><span class="code-chip">DR-SARAH</span><strong>Your doctor gives you a code</strong><span>At the end of your treatment, on the aftercare card or by message.</span></li>
-      <li><span class="code-chip is-off">−10%</span><strong>Use it at checkout</strong><span>The code takes 10% off everything in your bag.</span></li>
+      <li><span class="code-chip is-off">−10%</span><strong>Use it at checkout</strong><span>The code takes 10% off every skincare product in your bag.</span></li>
       <li><span class="code-chip is-link">Linked</span><strong>Your doctor sees the routine</strong><span>The order is linked to your clinic, so your doctor can check how the routine is going at your next visit.</span></li>
     </ol>
   </section>
 
   <section class="pro" id="pro" aria-labelledby="pro-h">
-    <div class="pro-inner">
-      <div class="shelf-head">
-        <div>
-          <h2 id="pro-h" class="sec-title">For professionals</h2>
-          <p class="pro-lead">Injectables and clinic-only products. Prices and ordering open after we check your BIG registration.</p>
-        </div>
-        <button type="button" class="btn btn-pro" data-big-login>Log in with BIG number</button>
+    <div class="pro-head">
+      <div>
+        <h2 id="pro-h" class="sec-title">For professionals</h2>
+        <p>Injectables and clinic-only products, kept behind glass. The cabinet opens after we check your BIG registration.</p>
       </div>
-      <ul class="grid" data-grid="pro"></ul>
+      <button type="button" class="btn btn-pro" data-big-login>Log in with BIG number</button>
+    </div>
+    <div class="cabinet" data-cabinet>
+      <ul class="cab-shelves" data-pro></ul>
+      <div class="cab-door cab-door-l" aria-hidden="true"><span class="cab-handle"></span></div>
+      <div class="cab-door cab-door-r" aria-hidden="true"><span class="cab-handle"></span><span class="cab-lock">BIG</span></div>
     </div>
   </section>
 </main>
@@ -78,39 +147,10 @@
   <a href="../privacy/">Privacy statement</a>
 </footer>
 
-<dialog class="sheet" data-sheet aria-labelledby="sheet-h">
-  <button type="button" class="sheet-close" data-close aria-label="Close">×</button>
-  <div class="sheet-stage" data-sheet-box></div>
-  <div class="sheet-body">
-    <p class="sheet-kind" data-sheet-kind></p>
-    <h2 id="sheet-h" data-sheet-name></h2>
-    <p class="sheet-size" data-sheet-size></p>
-    <p data-sheet-desc></p>
-    <h3>Key ingredients</h3>
-    <ul class="sheet-ings" data-sheet-ings></ul>
-    <h3>How to use</h3>
-    <p data-sheet-use></p>
-    <p class="sheet-note" data-sheet-note></p>
-    <div class="buy" data-buy>
-      <div class="price-row">
-        <span class="price" data-sheet-price></span>
-        <span class="price-was" data-sheet-was hidden></span>
-      </div>
-      <form class="code-form" data-code-form>
-        <label for="code">Doctor code</label>
-        <div class="code-row">
-          <input id="code" name="code" autocomplete="off" placeholder="DR-SARAH" spellcheck="false">
-          <button type="submit">Apply</button>
-        </div>
-        <p class="code-msg" data-code-msg role="status"></p>
-      </form>
-      <button type="button" class="btn btn-cobalt add" data-add>Add to bag</button>
-    </div>
-  </div>
-</dialog>
-
 <div class="toast" data-toast role="status" hidden></div>
 
+<script src="products.js"></script>
+<script src="scope.js"></script>
 <script src="store.js"></script>
 </body>
 </html>
