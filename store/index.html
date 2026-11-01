@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Store preview | Alaga Aesthetics</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#F4F7FC">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/fonts.css">
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="stylesheet" href="store.css">
+</head>
+<body class="shop">
+<a class="skip" href="#main">Skip to content</a>
+
+<p class="preview-note"><strong>Store preview.</strong> Products, prices, codes and checkout are placeholders. Nothing here is for sale yet.</p>
+
+<header class="bar">
+  <a class="brand" href="../" aria-label="Alaga Aesthetics home">
+    <img src="../assets/img/mark-cobalt.svg" alt="" class="brand-mark">
+    <span class="brand-name">Alaga Aesthetics</span>
+  </a>
+  <nav class="bar-nav" aria-label="Store">
+    <a href="#skincare">Skincare</a>
+    <a href="#codes">Doctor codes</a>
+    <a href="#pro">For professionals</a>
+  </nav>
+  <button type="button" class="bag" data-bag aria-label="Bag, 0 items">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l-1 12H7L6 8Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+    <span data-bag-count>0</span>
+  </button>
+</header>
+
+<main id="main">
+  <section class="counter" aria-labelledby="shop-h">
+    <div class="counter-text">
+      <h1 id="shop-h">The Alaga store</h1>
+      <p>Skincare for the weeks after your treatment, built around the same regenerative ingredients your clinic uses. Ask your doctor for their code before you check out.</p>
+    </div>
+    <div class="counter-shelf" data-featured></div>
+  </section>
+
+  <section class="shelf" id="skincare" aria-labelledby="skin-h">
+    <div class="shelf-head">
+      <h2 id="skin-h" class="sec-title">Skincare</h2>
+      <div class="chips" role="group" aria-label="Filter by ingredient" data-chips></div>
+    </div>
+    <ul class="grid" data-grid="skin"></ul>
+  </section>
+
+  <section class="codes" id="codes" aria-labelledby="codes-h">
+    <h2 id="codes-h" class="sec-title">Doctor codes</h2>
+    <ol class="code-steps">
+      <li><span class="code-chip">DR-SARAH</span><strong>Your doctor gives you a code</strong><span>At the end of your treatment, on the aftercare card or by message.</span></li>
+      <li><span class="code-chip is-off">−10%</span><strong>Use it at checkout</strong><span>The code takes 10% off everything in your bag.</span></li>
+      <li><span class="code-chip is-link">Linked</span><strong>Your doctor sees the routine</strong><span>The order is linked to your clinic, so your doctor can check how the routine is going at your next visit.</span></li>
+    </ol>
+  </section>
+
+  <section class="pro" id="pro" aria-labelledby="pro-h">
+    <div class="pro-inner">
+      <div class="shelf-head">
+        <div>
+          <h2 id="pro-h" class="sec-title">For professionals</h2>
+          <p class="pro-lead">Injectables and clinic-only products. Prices and ordering open after we check your BIG registration.</p>
+        </div>
+        <button type="button" class="btn btn-pro" data-big-login>Log in with BIG number</button>
+      </div>
+      <ul class="grid" data-grid="pro"></ul>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <img src="../assets/img/mark-white.svg" alt="" class="foot-mark">
+  <p>© 2026 Alaga Aesthetics, the Netherlands.</p>
+  <a href="../privacy/">Privacy statement</a>
+</footer>
+
+<dialog class="sheet" data-sheet aria-labelledby="sheet-h">
+  <button type="button" class="sheet-close" data-close aria-label="Close">×</button>
+  <div class="sheet-stage" data-sheet-box></div>
+  <div class="sheet-body">
+    <p class="sheet-kind" data-sheet-kind></p>
+    <h2 id="sheet-h" data-sheet-name></h2>
+    <p class="sheet-size" data-sheet-size></p>
+    <p data-sheet-desc></p>
+    <h3>Key ingredients</h3>
+    <ul class="sheet-ings" data-sheet-ings></ul>
+    <h3>How to use</h3>
+    <p data-sheet-use></p>
+    <p class="sheet-note" data-sheet-note></p>
+    <div class="buy" data-buy>
+      <div class="price-row">
+        <span class="price" data-sheet-price></span>
+        <span class="price-was" data-sheet-was hidden></span>
+      </div>
+      <form class="code-form" data-code-form>
+        <label for="code">Doctor code</label>
+        <div class="code-row">
+          <input id="code" name="code" autocomplete="off" placeholder="DR-SARAH" spellcheck="false">
+          <button type="submit">Apply</button>
+        </div>
+        <p class="code-msg" data-code-msg role="status"></p>
+      </form>
+      <button type="button" class="btn btn-cobalt add" data-add>Add to bag</button>
+    </div>
+  </div>
+</dialog>
+
+<div class="toast" data-toast role="status" hidden></div>
+
+<script src="store.js"></script>
+</body>
+</html>

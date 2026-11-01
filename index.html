@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Alaga Aesthetics by Bosselaar</title>
-<meta name="description" content="Regenerative aesthetic products, training and home skincare for clinics and patients in the Netherlands.">
+<title>Alaga Aesthetics</title>
+<meta name="description" content="Alaga Aesthetics helps doctors and nurses in the Netherlands plan, fund and set up their own aesthetic clinic.">
 <meta name="theme-color" content="#F4F7FC">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/css/fonts.css">
@@ -15,13 +15,14 @@
 <a class="skip" href="#main" data-t="skip">Skip to content</a>
 
 <header class="bar">
-  <a class="brand" href="#top" aria-label="Alaga Aesthetics by Bosselaar">
+  <a class="brand" href="#top" aria-label="Alaga Aesthetics">
     <img src="assets/img/mark-cobalt.svg" alt="" class="brand-mark">
     <span class="brand-name">Alaga Aesthetics</span>
   </a>
+  <!-- New services get a link here when they open: online store, Clinical Alliance. -->
   <nav class="bar-nav" aria-label="Main">
-    <a href="#practitioners" data-t="nav.practitioners"></a>
-    <a href="#patients" data-t="nav.patients"></a>
+    <a href="#financing" data-t="nav.financing"></a>
+    <a href="#how" data-t="nav.how"></a>
     <a href="#founders" data-t="nav.founders"></a>
     <a href="#contact" data-t="nav.contact"></a>
   </nav>
@@ -36,101 +37,74 @@
       </div>
       <h1 class="seal" id="hero-h">
         <span class="seal-name">Alaga</span>
+        <span class="seal-rule" aria-hidden="true"><svg viewBox="0 0 18 14"><path fill="currentColor" d="M9 1c2 2.2 2 5.2 0 7.4C7 6.2 7 3.2 9 1Zm-1 8.6C5.6 9.9 3.3 8.6 2 6.4c2.5-.4 4.8.8 6 3.2Zm2 0c1.2-2.4 3.5-3.6 6-3.2-1.3 2.2-3.6 3.5-6 3.2ZM8.4 9.8h1.2V13H8.4z"/></svg></span>
         <span class="seal-sub">Aesthetics</span>
-        <span class="seal-by" data-t="brand.by">by Bosselaar</span>
       </h1>
-      <p class="stage-meaning" data-t="hero.tagline">The regenerative aesthetics partner for Dutch clinics.</p>
+      <p class="stage-meaning" data-t="hero.tagline">Leading the future of Global, Holistic Regenerative Medicine.</p>
     </div>
 
-    <div class="hero-row">
+    <!-- One door per live service. Add the store and the Clinical Alliance as doors here when they open, and drop "is-one". -->
+    <div class="hero-row is-one">
       <div class="hero-lead">
-        <p data-t="intro.lead"></p>
-        <a class="btn btn-cobalt" href="#register" data-t="nav.register"></a>
+        <p data-t="hero.lead"></p>
+        <div class="hero-ctas">
+          <a class="btn btn-cobalt" href="#plan" data-t="hero.cta"></a>
+          <a class="btn btn-ghost" href="#how" data-t="hero.cta2"></a>
+        </div>
       </div>
-      <a class="door door-clinic" href="#practitioners">
+      <a class="door door-clinic" href="#financing">
         <img src="assets/img/tile-microscope-r.webp" alt="" width="480" height="480">
         <span class="door-text">
-          <span class="door-label" data-t="prac.title">The Clinical Alliance</span>
-          <span class="door-sub" data-t="prac.name">For practitioners</span>
-        </span>
-      </a>
-      <a class="door door-patient" href="#patients">
-        <img src="assets/img/tile-cells-tr.webp" alt="" width="480" height="480">
-        <span class="door-text">
-          <span class="door-label" data-t="pat.title">The Skin Concierge</span>
-          <span class="door-sub" data-t="pat.name">For patients</span>
+          <span class="door-label" data-t="door.fin.label"></span>
+          <span class="door-sub" data-t="door.fin.sub"></span>
         </span>
       </a>
     </div>
   </section>
 
-  <section class="about" id="about" aria-labelledby="about-h">
-    <img src="assets/img/rosette.svg" alt="" class="rosette">
-    <h2 id="about-h" class="visually-hidden" data-t="nav.about">About</h2>
-    <p class="about-text" data-t="intro.body"></p>
-    <p class="about-status" data-t="intro.status"></p>
-  </section>
-
-  <section class="paths" aria-labelledby="paths-h">
-    <h2 id="paths-h" class="sec-title" data-t="paths.title">Choose your path</h2>
-    <div class="paths-grid">
-      <article class="panel panel-prac" id="practitioners" aria-labelledby="prac-h">
-        <div class="panel-photo reveal">
-          <img src="https://images.unsplash.com/photo-1639772823907-a716be4bdecc?auto=format&fit=crop&w=1000&h=640&q=72" width="1000" height="640" loading="lazy" alt="" data-t-alt="photo.microscope.alt">
-        </div>
-        <div class="panel-body">
-          <p class="panel-for" data-t="prac.name">For practitioners</p>
-          <h3 id="prac-h" data-t="prac.title">The Clinical Alliance</h3>
-          <p class="panel-lead" data-t="prac.lead"></p>
-          <ul class="offer">
-            <li><strong data-t="prac.i1.t"></strong><span data-t="prac.i1.d"></span></li>
-            <li><strong data-t="prac.i2.t"></strong><span data-t="prac.i2.d"></span></li>
-            <li><strong data-t="prac.i3.t"></strong><span data-t="prac.i3.d"></span></li>
-            <li><strong data-t="prac.i4.t"></strong><span data-t="prac.i4.d"></span></li>
-            <li><strong data-t="prac.i5.t"></strong><span data-t="prac.i5.d"></span></li>
-          </ul>
-          <a class="btn btn-cobalt" href="#register" data-t="prac.cta"></a>
-        </div>
-      </article>
-      <article class="panel panel-pat" id="patients" aria-labelledby="pat-h">
-        <div class="panel-photo reveal">
-          <img src="https://images.unsplash.com/photo-1619451427882-6aaaded0cc61?auto=format&fit=crop&w=1000&h=640&q=72" width="1000" height="640" loading="lazy" alt="" data-t-alt="photo.lotion.alt">
-        </div>
-        <div class="panel-body">
-          <p class="panel-for" data-t="pat.name">For patients</p>
-          <h3 id="pat-h" data-t="pat.title">The Skin Concierge</h3>
-          <p class="panel-lead" data-t="pat.lead"></p>
-          <ul class="offer">
-            <li><strong data-t="pat.i1.t"></strong><span data-t="pat.i1.d"></span></li>
-            <li><strong data-t="pat.i2.t"></strong><span data-t="pat.i2.d"></span></li>
-            <li><strong data-t="pat.i3.t"></strong><span data-t="pat.i3.d"></span></li>
-          </ul>
-          <a class="btn btn-blush" href="#contact" data-t="pat.cta"></a>
-        </div>
-      </article>
+  <section class="fin" id="financing" aria-labelledby="fin-h">
+    <div class="fin-head">
+      <h2 id="fin-h" class="sec-title" data-t="fin.title"></h2>
+      <p class="fin-lead" data-t="fin.lead"></p>
     </div>
-    <p class="stage-note" data-t="stage.note"></p>
-  </section>
-
-
-  <section class="why" id="why" aria-labelledby="why-h">
-    <div class="why-text">
-      <h2 id="why-h" class="sec-title" data-t="why.title">Why Alaga</h2>
-      <p class="why-p1" data-t="why.p1"></p>
-      <p data-t="why.p2"></p>
-    </div>
-    <figure class="loop">
-      <ol class="loop-steps">
-        <li class="loop-step ls-1"><img class="step-tile" src="assets/img/tile-microscope-l.webp" alt="" width="480" height="480"><span class="ls-name" data-t="loop.n1"></span><span data-t="loop.s1"></span></li>
-        <li class="loop-step ls-2"><img class="step-tile" src="assets/img/tile-tissue-bl.webp" alt="" width="480" height="480"><span class="ls-name" data-t="loop.n2"></span><span data-t="loop.s2"></span></li>
-        <li class="loop-step ls-3"><img class="step-tile" src="assets/img/tile-cell-tl.webp" alt="" width="480" height="480"><span class="ls-name" data-t="loop.n3"></span><span data-t="loop.s3"></span></li>
+    <ul class="who">
+      <li><strong data-t="who.1.t"></strong><span data-t="who.1.d"></span></li>
+      <li><strong data-t="who.2.t"></strong><span data-t="who.2.d"></span></li>
+      <li><strong data-t="who.3.t"></strong><span data-t="who.3.d"></span></li>
+    </ul>
+    <div class="do">
+      <h3 data-t="do.title"></h3>
+      <ol class="do-list">
+        <li><strong data-t="do.1.t"></strong><span data-t="do.1.d"></span></li>
+        <li><strong data-t="do.2.t"></strong><span data-t="do.2.d"></span></li>
+        <li><strong data-t="do.3.t"></strong><span data-t="do.3.d"></span></li>
+        <li><strong data-t="do.4.t"></strong><span data-t="do.4.d"></span></li>
+        <li><strong data-t="do.5.t"></strong><span data-t="do.5.d"></span></li>
+        <li><strong data-t="do.6.t"></strong><span data-t="do.6.d"></span></li>
       </ol>
-      <figcaption data-t="loop.title"></figcaption>
-    </figure>
+    </div>
+  </section>
+
+  <section class="how" id="how" aria-labelledby="how-h">
+    <h2 id="how-h" class="sec-title" data-t="how.title"></h2>
+    <ol class="how-steps">
+      <li><img class="step-tile" src="assets/img/tile-microscope-l.webp" alt="" width="480" height="480"><span class="how-n">Step 1</span><strong data-t="how.1.t"></strong><span data-t="how.1.d"></span></li>
+      <li><img class="step-tile" src="assets/img/tile-dna-top.webp" alt="" width="480" height="480"><span class="how-n">Step 2</span><strong data-t="how.2.t"></strong><span data-t="how.2.d"></span></li>
+      <li><img class="step-tile" src="assets/img/tile-pods.webp" alt="" width="480" height="480"><span class="how-n">Step 3</span><strong data-t="how.3.t"></strong><span data-t="how.3.d"></span></li>
+      <li><img class="step-tile" src="assets/img/tile-cell-tl.webp" alt="" width="480" height="480"><span class="how-n">Step 4</span><strong data-t="how.4.t"></strong><span data-t="how.4.d"></span></li>
+    </ol>
+  </section>
+
+  <section class="register" id="plan" aria-labelledby="plan-h">
+    <div class="register-head">
+      <h2 id="plan-h" data-t="form.title"></h2>
+      <p data-t="form.intro"></p>
+    </div>
+    <div data-register-form data-privacy="privacy/"></div>
   </section>
 
   <section class="founders" id="founders" aria-labelledby="founders-h">
-    <h2 id="founders-h" class="sec-title" data-t="founders.title">Founders</h2>
+    <h2 id="founders-h" class="sec-title" data-t="founders.title"></h2>
     <div class="founders-grid">
       <div class="founder">
         <div class="monogram" aria-hidden="true">S</div>
@@ -151,26 +125,9 @@
     </div>
   </section>
 
-  <section class="roadmap" id="roadmap" aria-labelledby="roadmap-h">
-    <h2 id="roadmap-h" class="sec-title" data-t="roadmap.title">Roadmap</h2>
-    <ol class="road">
-      <li><img class="step-tile" src="assets/img/tile-dna-top.webp" alt="" width="480" height="480"><span class="road-when" data-t="r1.when"></span><span data-t="r1.what"></span></li>
-      <li><img class="step-tile" src="assets/img/tile-pods.webp" alt="" width="480" height="480"><span class="road-when" data-t="r2.when"></span><span data-t="r2.what"></span></li>
-      <li><img class="step-tile" src="assets/img/tile-dots-r.webp" alt="" width="480" height="480"><span class="road-when" data-t="r3.when"></span><span data-t="r3.what"></span></li>
-    </ol>
-  </section>
-
-  <section class="register" id="register" aria-labelledby="register-h">
-    <div class="register-head">
-      <h2 id="register-h" data-t="form.title">Register your clinic</h2>
-      <p data-t="form.intro"></p>
-    </div>
-    <div data-register-form data-privacy="privacy/"></div>
-  </section>
-
   <section class="contact" id="contact" aria-labelledby="contact-h">
     <img src="assets/img/rosette.svg" alt="" class="rosette">
-    <h2 id="contact-h" class="sec-title" data-t="contact.title">Contact</h2>
+    <h2 id="contact-h" class="sec-title" data-t="contact.title"></h2>
     <p data-t="contact.body"></p>
     <a class="mail" href="mailto:info@alagaaesthetics.nl" data-t="contact.email"></a>
   </section>
@@ -189,17 +146,6 @@
   import { mountWreath } from "./assets/js/wreath.js";
   const host = document.querySelector("[data-wreath]");
   if (host) mountWreath(host, { distance: innerWidth < 720 ? 7 : 6, lift: 0.12, sway: 0.1, follow: 0.22 });
-
-  // Reveal the panel photos once, as they scroll into view.
-  const items = document.querySelectorAll(".reveal");
-  if ("IntersectionObserver" in window) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); } });
-    }, { rootMargin: "0px 0px -80px 0px" });
-    items.forEach((el) => io.observe(el));
-  } else {
-    items.forEach((el) => el.classList.add("is-in"));
-  }
 </script>
 </body>
 </html>

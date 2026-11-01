@@ -1,22 +1,20 @@
 /*
-  Builds the clinic registration form inside any element with
-  data-register-form, so all three layouts share one set of fields.
+  Builds the clinic financing intake form inside any element with
+  data-register-form.
   Load after content.js and before site.js.
 */
 (function () {
   const fields = [
-    { name: "clinic", type: "text", required: true, auto: "organization", hint: true },
-    { name: "kvk", type: "text", inputmode: "numeric", hint: true },
-    { name: "address", type: "text", auto: "street-address", wide: true },
-    { name: "website", type: "text", inputmode: "url", hint: true },
     { name: "name", type: "text", required: true, auto: "name" },
-    { name: "big", type: "text", required: true, inputmode: "numeric", hint: true },
-    { name: "years", type: "number", min: 0, max: 60 },
-    { name: "areas", type: "text", hint: true, wide: true },
-    { group: "interest", kind: "checkbox", options: 3, wide: true },
-    { group: "contact", kind: "radio", options: 3, wide: true },
     { name: "email", type: "email", required: true, auto: "email" },
-    { name: "phone", type: "tel", auto: "tel" }
+    { name: "phone", type: "tel", auto: "tel" },
+    { name: "big", type: "text", inputmode: "numeric", hint: true },
+    { group: "role", kind: "radio", options: 3, wide: true },
+    { group: "plan", kind: "checkbox", options: 4, wide: true },
+    { name: "city", type: "text", hint: true, auto: "address-level2" },
+    { name: "when", type: "text", hint: true },
+    { name: "budget", type: "text", hint: true, wide: true },
+    { name: "notes", type: "textarea", wide: true }
   ];
 
   function field(f) {
@@ -34,7 +32,7 @@
     return `<div class="reg-field${f.wide ? " reg-wide" : ""}" data-field>
       <label for="${id}"><span data-t="form.${f.name}"></span>${f.required ? '<span class="reg-req" aria-hidden="true">*</span>' : ""}</label>
       ${f.hint ? `<p class="reg-hint" id="${hintId}" data-t="form.${f.name}.hint"></p>` : ""}
-      <input ${attrs}>
+      ${f.type === "textarea" ? `<textarea ${attrs.replace(/type="textarea" /, "")} rows="4"></textarea>` : `<input ${attrs}>`}
     </div>`;
   }
 

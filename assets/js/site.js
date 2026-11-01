@@ -95,7 +95,7 @@
   }
   window.addEventListener("hashchange", updateSwitch);
 
-  /* Registration form: checks the fields, then opens an email with the details. */
+  /* Intake form: checks the fields, then opens an email with the details. */
   function initForm() {
     const form = document.querySelector("form[data-register]");
     if (!form) return;
@@ -159,12 +159,12 @@
         if (f.type === "radio") return;
         if (f.value.trim()) lines.push(`${t(f.dataset.label)}: ${f.value.trim()}`);
       });
-      const interests = [...form.querySelectorAll('input[name="interest"]:checked')].map((i) => t(i.dataset.option));
-      if (interests.length) lines.push(`${t("form.interest")}: ${interests.join(", ")}`);
-      const contact = form.querySelector('input[name="contact"]:checked');
-      if (contact) lines.push(`${t("form.contact")}: ${t(contact.dataset.option)}`);
+      form.querySelectorAll("fieldset").forEach((fs) => {
+        const picked = [...fs.querySelectorAll("input:checked")].map((i) => t(i.dataset.option));
+        if (picked.length) lines.push(`${fs.querySelector("legend").textContent}: ${picked.join(", ")}`);
+      });
       const to = t("contact.email");
-      const href = `mailto:${to}?subject=${encodeURIComponent(t("form.mail.subject") + ": " + form.clinic.value.trim())}&body=${encodeURIComponent(lines.join("\n"))}`;
+      const href = `mailto:${to}?subject=${encodeURIComponent(t("form.mail.subject") + ": " + form.elements.name.value.trim())}&body=${encodeURIComponent(lines.join("\n"))}`;
       if (status) { status.textContent = t("form.sent"); status.hidden = false; }
       location.href = href;
     });
