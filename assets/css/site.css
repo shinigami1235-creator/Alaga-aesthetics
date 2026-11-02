@@ -83,13 +83,8 @@ p { margin: 0 0 1em; text-wrap: pretty; }
     url("../img/rosette.svg") var(--o) calc(100% - var(--o)) / var(--d) var(--d) no-repeat,
     url("../img/rosette.svg") calc(100% - var(--o)) calc(100% - var(--o)) / var(--d) var(--d) no-repeat;
 }
-.stage-wreath { position: absolute; inset: 0; }
-.stage-wreath canvas { width: 100%; height: 100%; display: block; }
-.wreath-fallback { position: absolute; left: 50%; top: 46%; height: 76%; width: auto; transform: translate(-50%, -50%); }
-/* The canvas fades in once the 3D logo is built, so the flat logo underneath never jumps. */
-.stage-wreath canvas { opacity: 0; transition: opacity 600ms ease; }
-.stage-wreath.is-live canvas { opacity: 1; }
-.stage-wreath.is-live .wreath-fallback { display: none; }
+/* The logo as it is, Logo.jpeg with its white background taken out. */
+.stage-logo { position: absolute; left: 50%; top: 46%; height: 76%; width: auto; max-width: 92%; object-fit: contain; transform: translate(-50%, -50%); }
 
 /* The wordmark is part of the logo, drawn in the 3D scene and in the flat logo, so the heading is for screen readers and search. */
 .seal { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; margin: 0; }
@@ -130,7 +125,7 @@ p { margin: 0 0 1em; text-wrap: pretty; }
   .door:hover:active { transform: translateY(-1px) scale(.98); }
 }
 
-/* One orchestrated entrance: the ring scales in (in wreath.js), then the wordmark settles, then the row below. */
+/* One entrance: the tagline settles, then the row below. */
 @media (prefers-reduced-motion: no-preference) {
   .stage-meaning { animation: settle 700ms var(--ease-out) 450ms both; }
   .stage-meaning { animation-delay: 650ms; }
@@ -313,6 +308,7 @@ section:not(.hero) { max-width: 1200px; margin: 0 auto; padding: clamp(72px, 10v
 }
 @media (max-width: 720px) {
   .stage { height: min(92vw, 440px); border-radius: var(--r-lg); }
+  .stage-logo { top: 43%; height: 70%; }
   .stage::before { --d: 80px; --o: -40px; }
   .stage-meaning { font-size: 1rem; padding: 0 28px; }
   .hero-row, .hero-row.is-one { grid-template-columns: 1fr; }

@@ -10,7 +10,6 @@
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="stylesheet" href="assets/css/fonts.css">
 <link rel="stylesheet" href="assets/css/site.css">
-<script type="importmap">{ "imports": { "three": "./assets/js/three.module.min.js" } }</script>
 </head>
 <body>
 <a class="skip" href="#main" data-t="skip">Skip to content</a>
@@ -35,9 +34,7 @@
 <main id="main">
   <section class="hero" id="top" aria-labelledby="hero-h">
     <div class="stage">
-      <div class="stage-wreath" data-wreath aria-hidden="true">
-        <img class="wreath-fallback" src="assets/img/logo.webp" alt="" width="560" height="572">
-      </div>
+      <img class="stage-logo" src="assets/img/logo.webp" alt="" width="1000" height="1021" fetchpriority="high">
       <h1 class="seal" id="hero-h">Alaga Aesthetics</h1>
       <p class="stage-meaning" data-t="hero.tagline">Leading the future of Global, Holistic Regenerative Medicine.</p>
     </div>
@@ -184,10 +181,5 @@
 <script src="assets/js/content.js"></script>
 <script src="assets/js/form.js"></script>
 <script src="assets/js/site.js"></script>
-<script type="module">
-  import { mountWreath } from "./assets/js/wreath.js";
-  const host = document.querySelector("[data-wreath]");
-  if (host) mountWreath(host, { distance: innerWidth < 720 ? 6.2 : 5.6, lift: 0.1, sway: 0, follow: 0.14 });
-</script>
 </body>
 </html>
