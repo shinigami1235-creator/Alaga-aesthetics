@@ -48,7 +48,7 @@ p { margin: 0 0 1em; text-wrap: pretty; }
 /* ---------- Bar ---------- */
 .bar { display: flex; align-items: center; gap: 24px; padding: 16px var(--gutter); }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); margin-right: auto; }
-.brand-mark { width: 32px; height: 32px; }
+.brand-mark { width: 38px; height: auto; }
 .brand-name { font: 400 1.1rem var(--display); letter-spacing: .04em; }
 .bar-nav { display: flex; gap: 6px; }
 .bar-nav a {
@@ -85,19 +85,14 @@ p { margin: 0 0 1em; text-wrap: pretty; }
 }
 .stage-wreath { position: absolute; inset: 0; }
 .stage-wreath canvas { width: 100%; height: 100%; display: block; }
-.wreath-fallback { position: absolute; left: 50%; top: 50%; width: min(56%, 340px); transform: translate(-50%, -50%); }
+.wreath-fallback { position: absolute; left: 50%; top: 46%; height: 76%; width: auto; transform: translate(-50%, -50%); }
+/* The canvas fades in once the 3D logo is built, so the flat logo underneath never jumps. */
+.stage-wreath canvas { opacity: 0; transition: opacity 600ms ease; }
+.stage-wreath.is-live canvas { opacity: 1; }
 .stage-wreath.is-live .wreath-fallback { display: none; }
 
-.seal {
-  position: absolute; left: 50%; top: 50%; z-index: 3;
-  transform: translate(-50%, -57%);
-  display: grid; justify-items: center; gap: 2px; text-align: center; pointer-events: none;
-}
-.seal-name { font-size: clamp(2.6rem, 6.4vh, 4.2rem); line-height: 1; letter-spacing: .14em; margin-right: -.14em; color: var(--cobalt); text-transform: uppercase; }
-.seal-sub { font-size: clamp(.95rem, 2.1vh, 1.3rem); letter-spacing: .32em; margin-right: -.32em; color: var(--ink); text-transform: uppercase; }
-.seal-rule { display: flex; align-items: center; gap: 8px; width: 112%; color: var(--cobalt); margin: 4px 0 2px; }
-.seal-rule::before, .seal-rule::after { content: ""; flex: 1; height: 1.5px; background: currentColor; border-radius: 2px; }
-.seal-rule svg { width: 18px; height: 14px; flex: none; }
+/* The wordmark is part of the logo, drawn in the 3D scene and in the flat logo, so the heading is for screen readers and search. */
+.seal { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; margin: 0; }
 .stage-meaning {
   position: absolute; left: 0; right: 0; bottom: clamp(16px, 3vh, 28px); z-index: 3; margin: 0;
   text-align: center; font: 400 clamp(1.05rem, 1.6vw, 1.3rem) var(--display); color: var(--ink);
@@ -137,7 +132,7 @@ p { margin: 0 0 1em; text-wrap: pretty; }
 
 /* One orchestrated entrance: the ring scales in (in wreath.js), then the wordmark settles, then the row below. */
 @media (prefers-reduced-motion: no-preference) {
-  .seal, .stage-meaning { animation: settle 700ms var(--ease-out) 450ms both; }
+  .stage-meaning { animation: settle 700ms var(--ease-out) 450ms both; }
   .stage-meaning { animation-delay: 650ms; }
   .hero-row > * { animation: rise 600ms var(--ease-out) both; }
   .hero-row > :nth-child(1) { animation-delay: 700ms; }
@@ -304,7 +299,7 @@ section:not(.hero) { max-width: 1200px; margin: 0 auto; padding: clamp(72px, 10v
 .foot p { margin: 0; flex: 1; }
 .foot a { color: #fff; }
 .foot :focus-visible { outline-color: #fff; }
-.foot-mark { width: 30px; height: 30px; }
+.foot-mark { width: 40px; height: auto; background: #fff; border-radius: 50%; padding: 3px; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 1000px) {
@@ -319,8 +314,6 @@ section:not(.hero) { max-width: 1200px; margin: 0 auto; padding: clamp(72px, 10v
 @media (max-width: 720px) {
   .stage { height: min(92vw, 440px); border-radius: var(--r-lg); }
   .stage::before { --d: 80px; --o: -40px; }
-  .seal-name { font-size: 1.8rem; }
-  .seal-sub { font-size: .72rem; }
   .stage-meaning { font-size: 1rem; padding: 0 28px; }
   .hero-row, .hero-row.is-one { grid-template-columns: 1fr; }
   .door { grid-template-columns: 76px minmax(0, 1fr); }

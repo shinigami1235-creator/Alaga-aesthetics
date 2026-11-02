@@ -6,7 +6,8 @@
 <title>Alaga Aesthetics</title>
 <meta name="description" content="Alaga Aesthetics helps doctors and nurses in the Netherlands plan, fund and set up their own aesthetic clinic.">
 <meta name="theme-color" content="#F4F7FC">
-<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="stylesheet" href="assets/css/fonts.css">
 <link rel="stylesheet" href="assets/css/site.css">
 <script type="importmap">{ "imports": { "three": "./assets/js/three.module.min.js" } }</script>
@@ -16,7 +17,7 @@
 
 <header class="bar">
   <a class="brand" href="#top" aria-label="Alaga Aesthetics">
-    <img src="assets/img/mark-cobalt.svg" alt="" class="brand-mark">
+    <img src="assets/img/logo-160.webp" alt="" class="brand-mark">
     <span class="brand-name">Alaga Aesthetics</span>
   </a>
   <!-- New services get a link here when they open: online store, Clinical Alliance. -->
@@ -35,13 +36,9 @@
   <section class="hero" id="top" aria-labelledby="hero-h">
     <div class="stage">
       <div class="stage-wreath" data-wreath aria-hidden="true">
-        <img class="wreath-fallback" src="assets/img/mark-cobalt.svg" alt="">
+        <img class="wreath-fallback" src="assets/img/logo.webp" alt="" width="560" height="572">
       </div>
-      <h1 class="seal" id="hero-h">
-        <span class="seal-name">Alaga</span>
-        <span class="seal-rule" aria-hidden="true"><svg viewBox="0 0 18 14"><path fill="currentColor" d="M9 1c2 2.2 2 5.2 0 7.4C7 6.2 7 3.2 9 1Zm-1 8.6C5.6 9.9 3.3 8.6 2 6.4c2.5-.4 4.8.8 6 3.2Zm2 0c1.2-2.4 3.5-3.6 6-3.2-1.3 2.2-3.6 3.5-6 3.2ZM8.4 9.8h1.2V13H8.4z"/></svg></span>
-        <span class="seal-sub">Aesthetics</span>
-      </h1>
+      <h1 class="seal" id="hero-h">Alaga Aesthetics</h1>
       <p class="stage-meaning" data-t="hero.tagline">Leading the future of Global, Holistic Regenerative Medicine.</p>
     </div>
 
@@ -179,7 +176,7 @@
 </main>
 
 <footer class="foot">
-  <img src="assets/img/mark-white.svg" alt="" class="foot-mark">
+  <img src="assets/img/logo-160.webp" alt="" class="foot-mark">
   <p data-t="footer.copy"></p>
   <a href="privacy/" data-keep-lang data-t="footer.privacy"></a>
 </footer>
@@ -190,7 +187,7 @@
 <script type="module">
   import { mountWreath } from "./assets/js/wreath.js";
   const host = document.querySelector("[data-wreath]");
-  if (host) mountWreath(host, { distance: innerWidth < 720 ? 7 : 6, lift: 0.12, sway: 0.1, follow: 0.22 });
+  if (host) mountWreath(host, { distance: innerWidth < 720 ? 6.2 : 5.6, lift: 0.1, sway: 0, follow: 0.14 });
 </script>
 </body>
 </html>
