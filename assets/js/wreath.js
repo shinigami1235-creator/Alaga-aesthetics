@@ -23,7 +23,8 @@ export function mountWreath(host, opts = {}) {
   }
   renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
-  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  // Neutral keeps the cobalt cobalt; filmic tone mapping pushes it toward violet
+  renderer.toneMapping = THREE.NeutralToneMapping;
   renderer.toneMappingExposure = 1.0;
   renderer.domElement.setAttribute("aria-hidden", "true");
   host.appendChild(renderer.domElement);
@@ -31,28 +32,31 @@ export function mountWreath(host, opts = {}) {
   const scene = new THREE.Scene();
   const pmrem = new THREE.PMREMGenerator(renderer);
   scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
-  scene.environmentIntensity = 0.9;
+  scene.environmentIntensity = 0.7;
 
   const camera = new THREE.PerspectiveCamera(30, 1, 0.1, 50);
   camera.position.set(0, 0, opts.distance ?? 5.5);
 
-  const key = new THREE.DirectionalLight(0xffffff, 1.5);
+  const key = new THREE.DirectionalLight(0xffffff, 1.2);
   key.position.set(-2, 3, 4);
   scene.add(key);
   const fill = new THREE.DirectionalLight(0xdfe6ff, 0.6);
   fill.position.set(3, -1, 3);
   scene.add(fill);
-  scene.add(new THREE.HemisphereLight(0xf4f7fc, 0x0b1d4a, 0.35));
+  scene.add(new THREE.HemisphereLight(0xf7f9fe, 0x1a3678, 0.45));
 
-  // The logo is one deep royal blue throughout, glossy, with darker rungs and a gunmetal microscope.
-  const BLUE = 0x0b2266;
-  const glaze = new THREE.MeshPhysicalMaterial({ color: BLUE, roughness: 0.2, metalness: 0.45, clearcoat: 1, clearcoatRoughness: 0.05 });
-  const rungGlaze = new THREE.MeshPhysicalMaterial({ color: 0x06123a, roughness: 0.3, metalness: 0.1, clearcoat: 0.7 });
-  const leafGlaze = new THREE.MeshPhysicalMaterial({ color: BLUE, roughness: 0.24, metalness: 0.45, clearcoat: 1, clearcoatRoughness: 0.08, side: THREE.DoubleSide });
-  const vein = new THREE.MeshPhysicalMaterial({ color: 0x2b4699, roughness: 0.3, clearcoat: 0.6 });
-  const letterGlaze = new THREE.MeshPhysicalMaterial({ color: 0x0e2366, roughness: 0.25, metalness: 0.45, clearcoat: 1, clearcoatRoughness: 0.08 });
-  const steel = new THREE.MeshPhysicalMaterial({ color: 0x8c909c, metalness: 0.95, roughness: 0.16, clearcoat: 0.4 });
-  const darkSteel = new THREE.MeshPhysicalMaterial({ color: 0x32363f, metalness: 0.85, roughness: 0.32 });
+  // Delft blue: cobalt on white glaze, like Delftware. Every piece is glazed porcelain, no metal, in
+  // three cobalt tones from the site palette: deep for the lettering, cobalt for the ring and leaves,
+  // a pale wash for the rungs and the painted veins.
+  const DELFT = 0x1a3f94, DEEP = 0x12307a, MID = 0x2f58b0, WASH = 0x7d98d8;
+  const porcelain = (color, extra = {}) => new THREE.MeshPhysicalMaterial({ color, roughness: 0.22, metalness: 0, clearcoat: 1, clearcoatRoughness: 0.04, ...extra });
+  const glaze = porcelain(DELFT);
+  const rungGlaze = porcelain(WASH, { roughness: 0.3 });  // a pale wash, still dark enough to read on the white
+  const leafGlaze = porcelain(DELFT, { side: THREE.DoubleSide });
+  const vein = porcelain(0xdfe7f8, { roughness: 0.3 });
+  const letterGlaze = porcelain(DEEP);
+  const steel = porcelain(MID);
+  const darkSteel = porcelain(DEEP);
 
   const logo = new THREE.Group();
   scene.add(logo);
@@ -179,7 +183,7 @@ export function mountWreath(host, opts = {}) {
   leaf(0.46, 0.05, [0.874, -0.35, 0.06], toward(0.136, 0.44), { pairs: 6, cup: 1.4, bend: 0.1 });
   leaf(0.33, 0.048, [0.843, -0.36, 0.1], toward(-0.272, -0.19), { pairs: 4, cup: 1.4 });
 
-  /* ---- microscope on the left, standing just inside the ring, gunmetal ---- */
+  /* ---- microscope on the left, standing just inside the ring, in a lighter cobalt with deep cobalt parts ---- */
   // Built straight in ring units from the logo: eyepiece top at y 425 px, body tube centred on x 288 px,
   // stage at y 680 to 710 px, base plate at y 800 to 830 px.
   const scope = new THREE.Group();
