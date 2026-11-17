@@ -147,7 +147,7 @@ section { position: relative; padding: clamp(64px, 9vw, 120px) 0; }
   animation: turn 120s linear infinite;
 }
 .plate-disc img { position: relative; width: 74%; height: auto; }
-.plate figcaption { font: 400 1.05rem/1.4 var(--display); color: var(--navy); text-align: center; max-width: 30ch; letter-spacing: .01em; }
+.plate figcaption { font: 400 1.05rem/1.4 var(--display); color: var(--navy); text-align: center; max-width: 34ch; letter-spacing: .01em; padding: 8px 18px; border-radius: 999px; background: rgba(245, 247, 252, .9); }
 @keyframes turn { to { transform: rotate(1turn); } }
 
 .ticker {
@@ -174,33 +174,32 @@ section { position: relative; padding: clamp(64px, 9vw, 120px) 0; }
 
 /* ---------- Delft tile wall ---------- */
 .tiles-sec { padding-top: clamp(40px, 5vw, 64px); }
-.tile-wall { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: minmax(200px, auto); gap: 14px; }
+.tile-wall { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
 .dtile {
-  position: relative; overflow: hidden; isolation: isolate;
-  display: flex; flex-direction: column; justify-content: flex-end;
-  padding: 18px; border-radius: 6px; text-decoration: none; color: var(--ink);
-  background: var(--tile); border: 1px solid var(--line);
-  box-shadow: inset 0 0 0 6px #fff, inset 0 0 0 7px var(--line), var(--shadow);
+  display: flex; flex-direction: column; overflow: hidden;
+  border-radius: 10px; text-decoration: none; color: var(--ink);
+  background: #fff; border: 1px solid var(--line-2); box-shadow: var(--shadow);
   transition: transform 260ms var(--ease), box-shadow 260ms;
 }
-.dtile::before { content: ""; position: absolute; inset: 7px; background: url(../img/tile-frame.svg) center / 100% 100%; opacity: .5; z-index: -1; pointer-events: none; }
-.dtile img { position: absolute; z-index: -2; right: -8%; top: -6%; width: 78%; opacity: .9; mix-blend-mode: multiply; transition: transform 600ms var(--ease); }
-.dtile .sym { font: 400 3rem/1 var(--display); color: var(--cobalt); position: absolute; top: 18px; left: 20px; }
-.dtile .no { position: absolute; top: 20px; right: 20px; font: 700 .78rem var(--sans); color: var(--ink-2); background: rgba(255,255,255,.85); padding: 3px 7px; border-radius: 6px; }
-.dtile .tname { font-weight: 800; font-size: 1.08rem; background: linear-gradient(90deg, rgba(253,253,255,.95), rgba(253,253,255,.7)); padding: 2px 6px 0; margin: 0 -6px; border-radius: 4px 4px 0 0; width: fit-content; }
-.dtile .tsub { font-size: .9rem; color: var(--ink-2); background: rgba(253,253,255,.85); padding: 0 6px 2px; margin: 0 -6px; border-radius: 0 4px 4px 4px; width: fit-content; }
+.dtile-art { position: relative; flex: 1; display: block; min-height: 190px; margin: 8px 8px 0; border-radius: 4px; overflow: hidden; background: #fff; box-shadow: inset 0 0 0 1px var(--line); }
+.dtile-art::after { content: ""; position: absolute; inset: 0; background: url(../img/tile-frame.svg) center / 100% 100%; opacity: .45; pointer-events: none; }
+.dtile-art img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 600ms var(--ease); }
+.dtile-label { display: grid; gap: 2px; padding: 14px 16px 16px; border-top: 3px solid var(--gold); margin-top: 8px; background: #fff; }
+.tname { font-weight: 800; font-size: 1.08rem; color: var(--ink); }
+.tsub { font-size: .92rem; color: var(--ink-2); }
 @media (hover: hover) {
-  a.dtile:hover { transform: translateY(-4px) rotate(-.4deg); box-shadow: inset 0 0 0 6px #fff, inset 0 0 0 7px var(--line-2), var(--shadow-up); }
-  a.dtile:hover img { transform: scale(1.06) rotate(2deg); }
+  a.dtile:hover { transform: translateY(-4px); box-shadow: var(--shadow-up); }
+  a.dtile:hover .dtile-art img { transform: scale(1.05); }
 }
-.dtile-big { grid-column: span 2; grid-row: span 2; background: linear-gradient(160deg, #fff, #eef2fb); }
-.dtile-big .sym { font-size: 5.6rem; color: var(--rose); }
-.dtile-big img { width: 70%; right: -4%; top: 4%; }
-.dtile-big .tname { font: 400 2rem/1.1 var(--display); }
-.dtile-big .tsub { font-size: 1rem; }
-.dtile-soon { opacity: .75; }
-.dtile-soon .sym { color: var(--gold); }
-.dtile:nth-child(3) .sym { color: var(--rose); }
+.dtile-big { grid-column: span 2; grid-row: span 2; }
+.dtile-big .dtile-art { min-height: 320px; }
+.dtile-big .dtile-art img { object-fit: contain; padding: 18px; }
+.dtile-big .dtile-label { background: var(--cobalt); border-top-color: var(--gold); padding: 18px 22px 20px; }
+.dtile-big .tname { font: 400 1.9rem/1.1 var(--display); color: #fff; }
+.dtile-big .tsub { color: rgba(255,255,255,.85); font-size: 1rem; }
+.dtile-soon .dtile-art img { filter: grayscale(.6); opacity: .6; }
+.dtile-soon .dtile-label { border-top-color: var(--line-2); }
+.dtile-soon .tsub { color: var(--rose); font-weight: 700; }
 
 /* ---------- Clinic map ---------- */
 .map-sec { background: linear-gradient(180deg, var(--glaze), #eef2fa 40%, var(--glaze)); }
@@ -225,10 +224,10 @@ section { position: relative; padding: clamp(64px, 9vw, 120px) 0; }
   background: var(--tile); border: 1px solid var(--line); box-shadow: var(--shadow-up);
 }
 .map-card.is-in > * { animation: rise-in 420ms var(--ease) both; }
-.map-card.is-in > *:nth-child(3) { animation-delay: 40ms; } .map-card.is-in > *:nth-child(4) { animation-delay: 80ms; } .map-card.is-in > *:nth-child(5) { animation-delay: 120ms; }
+.map-card.is-in > *:nth-child(3) { animation-delay: 40ms; } .map-card.is-in > *:nth-child(5) { animation-delay: 80ms; }
 @keyframes rise-in { from { opacity: 0; transform: translateY(8px); } }
-.map-tile { position: absolute !important; z-index: -1; right: -40px; top: -40px; width: 220px; opacity: .22; mix-blend-mode: multiply; animation: none !important; }
-.map-k { font: 700 .76rem var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--rose); margin-bottom: 10px; }
+.map-tile { position: absolute !important; z-index: -1; right: -40px; top: -40px; width: 200px; opacity: .12; mix-blend-mode: multiply; animation: none !important; }
+.map-k { font: 700 .76rem var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--rose); margin: 18px 0 -6px; }
 .map-card h3 { font: 400 clamp(1.6rem, 2.4vw, 2.1rem)/1.12 var(--display); margin-bottom: 12px; outline: none; }
 .map-card > p { color: var(--ink-2); }
 .map-weigh { list-style: none; padding: 0; margin: 18px 0; display: grid; gap: 10px; }
@@ -431,9 +430,9 @@ input[type="range"]::-moz-range-thumb { width: 14px; height: 14px; border-radius
 @media (max-width: 1060px) {
   .bar-nav { display: none; }
   .menu { display: flex; }
-  .tile-wall { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .dtile-big { grid-column: span 3; grid-row: span 1; min-height: 280px; }
-  .dtile-big img { width: 42%; top: -10%; }
+  .tile-wall { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .dtile-big { grid-column: span 2; grid-row: span 1; }
+  .dtile-big .dtile-art { min-height: 260px; }
   .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 40px; }
   .steps::before { display: none; }
   .scan-card { grid-template-columns: 1fr; }
@@ -444,18 +443,20 @@ input[type="range"]::-moz-range-thumb { width: 14px; height: 14px; border-radius
   .plate-disc { width: min(78vw, 400px); }
   .ticker { max-width: none; }
   .map, .machine-grid, .ledger, .consult-grid { grid-template-columns: 1fr; }
-  .map-card, .form { position: static; }
+  .map-card { position: relative; top: auto; }
+  .form { position: static; }
   .worries, .people, .notes { grid-template-columns: 1fr; }
   .pat-grid { grid-template-columns: 1fr; }
   .scan-card { grid-row: auto; }
 }
 @media (max-width: 560px) {
   .bar-cta { display: none; }
-  .tile-wall { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: minmax(170px, auto); gap: 10px; }
-  .dtile-big { grid-column: span 2; min-height: 240px; }
-  .dtile .sym { font-size: 2.3rem; }
-  .dtile:not(.dtile-big) img { width: 74%; right: -16%; top: 26%; opacity: .5; }
-  .dtile-big .sym { font-size: 4rem; }
+  .tile-wall { gap: 10px; }
+  .dtile-art { min-height: 130px; }
+  .dtile-label { padding: 10px 12px 12px; }
+  .tname { font-size: .98rem; }
+  .tsub { font-size: .84rem; }
+  .dtile-big .dtile-art { min-height: 220px; }
   .dtile-big .tname { font-size: 1.5rem; }
   .steps { grid-template-columns: 1fr; }
   .step-tile { width: 120px; }
