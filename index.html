@@ -5,152 +5,262 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Alaga Aesthetics</title>
 <meta name="description" content="Alaga Aesthetics: financing guidance for medical and aesthetic clinic owners in the Netherlands, a skin check for patients and doctor-chosen skincare.">
-<meta name="theme-color" content="#F4F7FC">
+<meta name="theme-color" content="#F5F7FC">
 <link rel="icon" href="assets/img/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="stylesheet" href="assets/css/fonts.css">
-<link rel="stylesheet" href="assets/css/site.css">
+<link rel="stylesheet" href="assets/css/home.css">
 </head>
 <body>
-<a class="skip" href="#main" data-t="skip">Skip to content</a>
+<a class="skip" href="#main">Skip to content</a>
 
 <header class="bar">
-  <a class="brand" href="#top" aria-label="Alaga Aesthetics">
-    <img src="assets/img/logo-160.webp" alt="" class="brand-mark">
-    <span class="brand-name">Alaga Aesthetics</span>
+  <a class="brand" href="#top" aria-label="Alaga Aesthetics, home">
+    <img src="assets/img/logo-160.webp" alt="" width="38" height="39">
+    <span>Alaga Aesthetics</span>
   </a>
-  <!-- New services get a link here when they open: online store, Clinical Alliance. -->
   <nav class="bar-nav" aria-label="Main">
-    <a href="#financing" data-t="nav.financing"></a>
-    <a href="skin-check/" data-t="nav.skin"></a>
-    <a href="store/" data-t="nav.store"></a>
-    <a href="ask/" data-t="nav.ask"></a>
-    <a href="#founders" data-t="nav.founders"></a>
-    <a href="#contact" data-t="nav.contact"></a>
+    <a href="#finance">Clinic finance</a>
+    <a href="#how">How it works</a>
+    <a href="#fees">Fees</a>
+    <a href="#why">Why Alaga</a>
+    <a href="#patients">For patients</a>
   </nav>
-  <button type="button" class="lang" data-lang-toggle hidden>Nederlands</button>
+  <a class="pill pill-solid bar-cta" href="#consult"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 5h12v8H9l-4 3v-3H4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Free consultation</a>
+  <button class="menu" type="button" aria-expanded="false" aria-controls="drawer" aria-label="Menu"><span></span><span></span></button>
 </header>
+<div class="drawer" id="drawer" hidden>
+  <a href="#finance">Clinic finance</a>
+  <a href="#how">How it works</a>
+  <a href="#fees">Fees</a>
+  <a href="#why">Why Alaga</a>
+  <a href="#patients">For patients</a>
+  <a class="pill pill-solid" href="#consult">Free consultation</a>
+</div>
 
 <main id="main">
-  <section class="hero" id="top" aria-labelledby="hero-h">
-    <div class="stage">
-      <img class="stage-logo" src="assets/img/logo.webp" alt="" width="1000" height="1021" fetchpriority="high">
-      <h1 class="seal" id="hero-h">Alaga Aesthetics</h1>
-      <p class="stage-meaning" data-t="hero.tagline">Leading the future of Global, Holistic Regenerative Medicine.</p>
+
+<!-- HERO. The logo sits as it is, on a porcelain plate inside the engraved Delft frame. -->
+<section class="hero" id="top" aria-labelledby="hero-h">
+  <div class="hero-frame" aria-hidden="true"></div>
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Alaga Clinic Finance</p>
+      <h1 id="hero-h">Know what your clinic's next investment means, before you sign.</h1>
+      <p class="hero-sub">Financing guidance for medical and aesthetic clinic owners in the Netherlands. The first consultation is free.</p>
+      <div class="hero-ctas">
+        <a class="pill pill-solid" href="#consult">Free consultation</a>
+        <a class="pill pill-line" href="#map">Plan an investment</a>
+      </div>
     </div>
 
-    <!-- One door per service. The Clinical Alliance gets a door here when it opens. -->
-    <div class="hero-row">
-      <div class="hero-lead">
-        <p data-t="hero.lead"></p>
-        <div class="hero-ctas">
-          <a class="btn btn-cobalt" href="#plan" data-t="hero.cta"></a>
-          <a class="btn btn-ghost" href="#how" data-t="hero.cta2"></a>
+    <figure class="plate">
+      <div class="plate-disc">
+        <img src="assets/img/logo.webp" alt="Alaga Aesthetics" width="1000" height="1021" fetchpriority="high">
+      </div>
+      <figcaption>Leading the future of Global, Holistic Regenerative Medicine.</figcaption>
+    </figure>
+
+    <a class="ticker" href="#calc" aria-label="Open the repayment calculator">
+      <span class="ticker-k">Example</span>
+      <span class="ticker-line">A €50,000 laser over 5 years</span>
+      <span class="ticker-big">€990<small>/month</small></span>
+      <span class="ticker-treat"><span class="dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>7 treatments a month cover it</span>
+      <span class="ticker-go">Try your own numbers</span>
+    </a>
+  </div>
+</section>
+
+<!-- SERVICES as Delft tiles, laid out like a periodic table: one finance tile, then the rest of Alaga. -->
+<section class="tiles-sec" aria-labelledby="tiles-h">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <h2 id="tiles-h">Alaga Aesthetics, tile by tile</h2>
+      <p>Clinic finance opens first. The skin check, the store and Dr. Sarah's answers are already here for patients, and the Clinical Alliance follows.</p>
+    </div>
+    <div class="tile-wall">
+      <a class="dtile dtile-big" href="#finance">
+        <span class="sym">Fn</span><span class="no">01</span>
+        <img src="assets/img/tile-microscope-r.webp" alt="" width="480" height="480">
+        <span class="tname">Clinic finance</span><span class="tsub">Equipment, expansion, a new clinic, premises</span>
+      </a>
+      <a class="dtile" href="skin-check/">
+        <span class="sym">Sk</span><span class="no">02</span>
+        <img src="assets/img/tile-cells-tr.webp" alt="" width="480" height="480">
+        <span class="tname">Skin check</span><span class="tsub">For patients</span>
+      </a>
+      <a class="dtile" href="store/">
+        <span class="sym">St</span><span class="no">03</span>
+        <img src="assets/img/tile-pods.webp" alt="" width="480" height="480">
+        <span class="tname">Store</span><span class="tsub">Doctor-chosen skincare</span>
+      </a>
+      <a class="dtile" href="ask/">
+        <span class="sym">Dr</span><span class="no">04</span>
+        <img src="assets/img/tile-cell-tl.webp" alt="" width="480" height="480">
+        <span class="tname">Ask Dr. Sarah</span><span class="tsub">Answers on an open board</span>
+      </a>
+      <div class="dtile dtile-soon">
+        <span class="sym">Ca</span><span class="no">05</span>
+        <img src="assets/img/tile-dna-top.webp" alt="" width="480" height="480">
+        <span class="tname">Clinical Alliance</span><span class="tsub">Coming</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLINIC MAP: tap part of the clinic, see how it's financed. Like the face and body maps on the Apex sites. -->
+<section class="map-sec" id="finance" aria-labelledby="map-h">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <p class="eyebrow">Alaga Clinic Finance</p>
+      <h2 id="map-h">Tap the part of your clinic you're investing in</h2>
+      <p>Each kind of investment has its own questions. Pick one to see what to weigh, then run the numbers.</p>
+    </div>
+    <div class="map" id="map">
+      <div class="plan-wrap">
+        <svg class="plan" viewBox="0 0 640 440" role="img" aria-labelledby="plan-t">
+          <title id="plan-t">Floor plan of a clinic with five points to tap</title>
+          <defs>
+            <pattern id="floor" width="22" height="22" patternUnits="userSpaceOnUse"><path d="M22 0H0V22" fill="none" stroke="#dfe5f1" stroke-width="1"/></pattern>
+          </defs>
+          <rect x="20" y="20" width="600" height="400" rx="6" fill="url(#floor)"/>
+          <g fill="none" stroke="#204ca0" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round">
+            <rect x="20" y="20" width="600" height="400" rx="6" stroke-width="5"/>
+            <path d="M220 20v170M430 20v170M20 190h180M240 190h170M450 190h170M20 250h250M310 250h120M470 250h150M270 250v170M470 250v170"/>
+            <rect class="new-room" x="430" y="20" width="190" height="170" stroke-dasharray="7 6" fill="rgba(168,56,95,.06)"/>
+            <!-- reception desk -->
+            <path d="M60 120h100v30H60z"/><circle cx="110" cy="100" r="9"/>
+            <!-- treatment bed + device in room 1 -->
+            <rect x="260" y="60" width="110" height="40" rx="10"/><rect x="380" y="110" width="28" height="56" rx="4"/><path d="M394 110c0-20-10-30-30-34"/>
+            <!-- new room bed -->
+            <rect x="470" y="60" width="110" height="40" rx="10" stroke-dasharray="6 5"/>
+            <!-- waiting chairs -->
+            <path d="M300 300h30v30h-30zM345 300h30v30h-30zM390 300h30v30h-30z"/>
+            <!-- consult room desk -->
+            <path d="M70 300h120v40H70z"/><circle cx="130" cy="370" r="10"/>
+            <!-- door -->
+            <path d="M300 420a40 40 0 0 1 40-40" stroke-dasharray="4 4"/>
+          </g>
+          <g class="labels" fill="#46527a" font-size="13" font-family="Hanken Grotesk, sans-serif">
+            <text x="40" y="44">Reception</text><text x="240" y="44">Treatment room</text><text x="450" y="44" fill="#a8385f">New room</text>
+            <text x="40" y="274">Consult room</text><text x="290" y="274">Waiting area</text><text x="490" y="274">Storage</text>
+          </g>
+          <g class="spots">
+            <g class="spot" data-key="equipment" tabindex="0" role="button" aria-label="Equipment" transform="translate(394 138)"><circle r="16"/><circle class="core" r="6"/></g>
+            <g class="spot" data-key="expand" tabindex="0" role="button" aria-label="A new treatment room" transform="translate(525 140)"><circle r="16"/><circle class="core" r="6"/></g>
+            <g class="spot" data-key="fitout" tabindex="0" role="button" aria-label="Fit-out and working capital" transform="translate(360 350)"><circle r="16"/><circle class="core" r="6"/></g>
+            <g class="spot" data-key="start" tabindex="0" role="button" aria-label="Starting a clinic" transform="translate(320 404)"><circle r="16"/><circle class="core" r="6"/></g>
+            <g class="spot" data-key="premises" tabindex="0" role="button" aria-label="The building" transform="translate(606 34)"><circle r="16"/><circle class="core" r="6"/></g>
+          </g>
+        </svg>
+        <div class="map-chips" role="tablist" aria-label="Investments">
+          <button type="button" class="chip is-on" data-key="equipment">Equipment</button>
+          <button type="button" class="chip" data-key="expand">New room</button>
+          <button type="button" class="chip" data-key="fitout">Fit-out</button>
+          <button type="button" class="chip" data-key="start">New clinic</button>
+          <button type="button" class="chip" data-key="premises">Premises</button>
         </div>
       </div>
-      <a class="door door-clinic" href="#financing">
-        <img src="assets/img/tile-microscope-r.webp" alt="" width="480" height="480">
-        <span class="door-text">
-          <span class="door-label" data-t="door.fin.label"></span>
-          <span class="door-sub" data-t="door.fin.sub"></span>
-        </span>
-      </a>
-      <a class="door door-patient" href="skin-check/">
-        <img src="assets/img/tile-cells-tr.webp" alt="" width="480" height="480">
-        <span class="door-text">
-          <span class="door-label" data-t="door.skin.label"></span>
-          <span class="door-sub" data-t="door.skin.sub"></span>
-        </span>
-      </a>
-      <a class="door door-store" href="store/">
-        <img src="assets/img/tile-microscope-l.webp" alt="" width="480" height="480">
-        <span class="door-text">
-          <span class="door-label" data-t="door.store.label"></span>
-          <span class="door-sub" data-t="door.store.sub"></span>
-        </span>
-      </a>
+      <article class="map-card" aria-live="polite">
+        <img class="map-tile" id="m-tile" src="assets/img/tile-microscope-r.webp" alt="" width="480" height="480">
+        <p class="map-k" id="m-k">Equipment</p>
+        <h3 id="m-h">Invest in new treatment technology</h3>
+        <p id="m-p">Lasers, HIFU, RF and IPL. Buy or lease, how long to repay, and how many treatments a month the device has to carry.</p>
+        <ul class="map-weigh" id="m-l"><li>Buying against leasing</li><li>Repayment period against the device's working life</li><li>Treatments a month to cover it</li></ul>
+        <p class="map-amt">Example amount <strong id="m-amt">€50,000</strong></p>
+        <a class="pill pill-solid" href="#calc" id="m-go">Run these numbers</a>
+      </article>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="fin" id="financing" aria-labelledby="fin-h">
-    <div class="fin-head">
-      <h2 id="fin-h" class="sec-title" data-t="fin.title"></h2>
-      <p class="fin-lead" data-t="fin.lead"></p>
+<!-- CALCULATOR in a dark Delft band: the number, and the treatments that cover it. -->
+<section class="machine" id="calc" aria-labelledby="calc-h">
+  <div class="machine-bg" aria-hidden="true"></div>
+  <div class="wrap machine-grid">
+    <div class="machine-in">
+      <p class="eyebrow eyebrow-light">Repayment calculator</p>
+      <h2 id="calc-h">What would it cost you a month?</h2>
+      <label class="slide">
+        <span class="slide-row"><span>Investment</span><output id="o-amount">€50,000</output></span>
+        <input type="range" id="amount" min="10000" max="600000" step="5000" value="50000">
+      </label>
+      <fieldset class="slide">
+        <legend>Repayment period</legend>
+        <div class="seg">
+          <label><input type="radio" name="years" value="3"><span>3 years</span></label>
+          <label><input type="radio" name="years" value="5" checked><span>5 years</span></label>
+          <label><input type="radio" name="years" value="7"><span>7 years</span></label>
+          <label><input type="radio" name="years" value="10"><span>10 years</span></label>
+        </div>
+      </fieldset>
+      <label class="slide">
+        <span class="slide-row"><span>Interest rate, for illustration</span><output id="o-rate">7.0%</output></span>
+        <input type="range" id="rate" min="3" max="12" step="0.5" value="7">
+      </label>
+      <label class="slide">
+        <span class="slide-row"><span>What one treatment leaves you, after costs</span><output id="o-margin">€150</output></span>
+        <input type="range" id="margin" min="50" max="600" step="10" value="150">
+      </label>
     </div>
-    <ul class="who">
-      <li><strong data-t="who.1.t"></strong><span data-t="who.1.d"></span></li>
-      <li><strong data-t="who.2.t"></strong><span data-t="who.2.d"></span></li>
-      <li><strong data-t="who.3.t"></strong><span data-t="who.3.d"></span></li>
-      <li><strong data-t="who.4.t"></strong><span data-t="who.4.d"></span></li>
-    </ul>
-
-    <!-- The repayment calculator: what an investment costs a month, and how many treatments cover it. -->
-    <div class="calc" id="calc" aria-labelledby="calc-h">
-      <div class="calc-in">
-        <h3 class="calc-title" id="calc-h">What would it cost you a month?</h3>
-        <label class="calc-field">
-          <span class="calc-row"><span>Investment</span><output id="o-amount">€50,000</output></span>
-          <input type="range" id="amount" min="10000" max="500000" step="5000" value="50000">
-        </label>
-        <fieldset class="calc-field">
-          <legend>Repayment period</legend>
-          <div class="chips">
-            <label><input type="radio" name="years" value="3"><span>3 years</span></label>
-            <label><input type="radio" name="years" value="5" checked><span>5 years</span></label>
-            <label><input type="radio" name="years" value="7"><span>7 years</span></label>
-          </div>
-        </fieldset>
-        <label class="calc-field">
-          <span class="calc-row"><span>Interest rate, for illustration</span><output id="o-rate">7.0%</output></span>
-          <input type="range" id="rate" min="3" max="12" step="0.5" value="7">
-        </label>
-        <label class="calc-field">
-          <span class="calc-row"><span>What one treatment leaves you, after costs</span><output id="o-margin">€150</output></span>
-          <input type="range" id="margin" min="50" max="600" step="10" value="150">
-        </label>
-      </div>
-      <div class="calc-out" aria-live="polite">
-        <p class="out-label">Monthly repayment</p>
-        <p class="out-big" id="r-month">€990</p>
-        <dl class="out-list">
-          <div><dt>Total repaid</dt><dd id="r-total">€59,404</dd></div>
-          <div><dt>Of which interest</dt><dd id="r-interest">€9,404</dd></div>
-        </dl>
-        <p class="out-treat"><strong id="r-treat">7</strong> extra treatments a month cover it.</p>
-        <a class="btn btn-cobalt" href="#plan">Talk it through, free</a>
-        <p class="calc-fine">An illustration of an ordinary loan, not an offer. Advisory fees, lender charges and VAT are left out.</p>
-      </div>
+    <div class="machine-out" aria-live="polite">
+      <p class="out-k">Monthly repayment</p>
+      <p class="out-big" id="r-month">€990</p>
+      <dl class="out-dl">
+        <div><dt>Total repaid</dt><dd id="r-total">€59,404</dd></div>
+        <div><dt>Of which interest</dt><dd id="r-interest">€9,404</dd></div>
+      </dl>
+      <p class="out-k">Treatments a month that cover it</p>
+      <div class="tray" id="tray" aria-hidden="true"></div>
+      <p class="out-treat"><strong id="r-treat">7</strong> extra treatments a month</p>
+      <a class="pill pill-rose" href="#consult">Talk it through, free</a>
+      <p class="fine">An illustration of an ordinary loan, not an offer. Advisory fees, lender charges and VAT are left out.</p>
     </div>
+  </div>
+</section>
 
-    <div class="do">
-      <h3 data-t="do.title"></h3>
-      <ol class="do-list">
-        <li><strong data-t="do.1.t"></strong><span data-t="do.1.d"></span></li>
-        <li><strong data-t="do.2.t"></strong><span data-t="do.2.d"></span></li>
-        <li><strong data-t="do.3.t"></strong><span data-t="do.3.d"></span></li>
-      </ol>
+<!-- WORRIES -->
+<section class="worry-sec" aria-labelledby="worry-h">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <h2 id="worry-h">A growth decision shouldn't put a clinic you built under strain</h2>
     </div>
-  </section>
+    <div class="worries">
+      <article class="worry rise"><span class="wn">01</span><h3>Can the clinic carry it?</h3><p>We work out the repayments against your cash flow and the treatments the investment has to bring in.</p></article>
+      <article class="worry rise"><span class="wn">02</span><h3>Which kind of financing?</h3><p>A loan, a lease or supplier credit cost different amounts and tie you in for different lengths of time. You see them side by side.</p></article>
+      <article class="worry rise"><span class="wn">03</span><h3>What does the advice cost?</h3><p>The first talk is free. Before any paid work you get the fee in writing, and you decide.</p></article>
+    </div>
+  </div>
+</section>
 
-  <section class="how" id="how" aria-labelledby="how-h">
-    <h2 id="how-h" class="sec-title" data-t="how.title"></h2>
-    <ol class="how-steps">
-      <li><img class="step-tile" src="assets/img/tile-microscope-l.webp" alt="" width="480" height="480"><span class="how-n">Step 1</span><strong data-t="how.1.t"></strong><span data-t="how.1.d"></span></li>
-      <li><img class="step-tile" src="assets/img/tile-dna-top.webp" alt="" width="480" height="480"><span class="how-n">Step 2</span><strong data-t="how.2.t"></strong><span data-t="how.2.d"></span></li>
-      <li><img class="step-tile" src="assets/img/tile-pods.webp" alt="" width="480" height="480"><span class="how-n">Step 3</span><strong data-t="how.3.t"></strong><span data-t="how.3.d"></span></li>
-      <li><img class="step-tile" src="assets/img/tile-cell-tl.webp" alt="" width="480" height="480"><span class="how-n">Step 4</span><strong data-t="how.4.t"></strong><span data-t="how.4.d"></span></li>
+<!-- HOW IT WORKS as four Delft tiles on a gold line -->
+<section class="how-sec" id="how" aria-labelledby="how-h">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <p class="eyebrow">How it works</p>
+      <h2 id="how-h">Four steps, and nothing is paid before step three</h2>
+    </div>
+    <ol class="steps">
+      <li><span class="step-tile"><img src="assets/img/tile-microscope-l.webp" alt="" width="480" height="480"><b>1</b></span><h3>Tell us about the investment</h3><p>Your clinic, what you're planning and roughly what it costs.</p></li>
+      <li><span class="step-tile"><img src="assets/img/tile-dna-top.webp" alt="" width="480" height="480"><b>2</b></span><h3>Free first consultation</h3><p>Your goals, your worries and the questions you need answered.</p></li>
+      <li><span class="step-tile"><img src="assets/img/tile-pods.webp" alt="" width="480" height="480"><b>3</b></span><h3>Your options and the fee</h3><p>Which routes fit, what we'd still need from you, and what the advice costs.</p></li>
+      <li><span class="step-tile"><img src="assets/img/tile-cell-br.webp" alt="" width="480" height="480"><b>4</b></span><h3>You decide</h3><p>If you go ahead, the specialist takes you through the advice and the application.</p></li>
     </ol>
-  </section>
+  </div>
+</section>
 
-  <section class="fees-sec" id="fees" aria-labelledby="fees-h">
-    <div class="fees-card">
-      <div class="fees-head">
-        <h2 id="fees-h" class="sec-title">You know the advisory fee before you agree to anything</h2>
+<!-- FEES as a ledger -->
+<section class="fees-sec" id="fees" aria-labelledby="fees-h">
+  <div class="wrap">
+    <div class="ledger rise">
+      <div class="ledger-head">
+        <p class="eyebrow eyebrow-light">Fees</p>
+        <h2 id="fees-h">You know the advisory fee before you agree to anything</h2>
         <p>These are advisory fees only. Interest and the lender's own charges are separate and depend on the financing you choose.</p>
-        <p class="draft-note">Draft figures from the working presentation, excluding VAT. Not for publishing until approved.</p>
+        <p class="draft">Draft figures from the working presentation, excluding VAT. Not for publishing until approved.</p>
       </div>
       <table class="fees">
-        <caption class="sr-only">Indicative advisory fees, excluding VAT</caption>
+        <caption class="sr">Indicative advisory fees, excluding VAT</caption>
         <thead><tr><th scope="col">Service</th><th scope="col">Advisory fee</th></tr></thead>
         <tbody>
           <tr><th scope="row">First consultation</th><td class="free">Free</td></tr>
@@ -163,107 +273,143 @@
         </tbody>
       </table>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="faq-sec" aria-labelledby="faq-h">
-    <h2 id="faq-h" class="sec-title">Questions owners ask first</h2>
-    <div class="faq">
-      <details><summary>Is Alaga the lender?</summary><p>No. Alaga and our financing partner advise you and take your case to lenders and lessors. The loan or lease is with them.</p></details>
-      <details><summary>What do I need for the first consultation?</summary><p>An idea of the investment and its rough cost. Figures and statements come later, through a secure route, once you decide to go ahead.</p></details>
-      <details><summary>What happens after the consultation?</summary><p>You get your options and the advisory fee in writing. Nothing happens until you say yes.</p></details>
-      <details><summary>Can you help if my clinic is young?</summary><p>Yes. A newer clinic needs more of the story on paper, and the consultation tells you what that means for you.</p></details>
-      <details><summary>Do you only work with aesthetic clinics?</summary><p>Medical and aesthetic clinics. The questions are much the same: equipment, rooms, premises and cash flow.</p></details>
+<!-- WHY ALAGA -->
+<section class="why-sec" id="why" aria-labelledby="why-h">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <p class="eyebrow">Why Alaga</p>
+      <h2 id="why-h">Aesthetic medicine and clinic finance in one conversation</h2>
+      <p>A doctor who knows what a clinic earns per room and per device, a financial advisor, and a financing partner for the application.</p>
     </div>
-  </section>
-
-  <section class="register" id="plan" aria-labelledby="plan-h">
-    <div class="register-head">
-      <h2 id="plan-h" data-t="form.title"></h2>
-      <p data-t="form.intro"></p>
+    <div class="people">
+      <article class="rise person">
+        <span class="plate-sm">S</span>
+        <h3>Dr. Sarah De los Reyes-Bosselaar</h3>
+        <p class="role">Co-founder, clinical lead</p>
+        <p>Sarah is a doctor and looks at a plan the way a practitioner would: which treatments, which equipment and what the patients will ask for.</p>
+      </article>
+      <article class="rise person">
+        <span class="plate-sm">EJ</span>
+        <h3>Erik Jan Bosselaar</h3>
+        <p class="role">Co-founder, business lead</p>
+        <p>Erik Jan is an independent financial advisor in the Netherlands. He writes the financial plans and handles the talks with banks and leasing companies.</p>
+      </article>
+      <article class="rise person person-partner">
+        <span class="plate-sm plate-rose">HD</span>
+        <h3>Hypotheekadvies Drechtsteden</h3>
+        <p class="role">Financing partner</p>
+        <p>They give the financing advice and handle the application with lenders.</p>
+        <p class="draft dark">Adviser names, photos and registration numbers go here once the partner confirms them.</p>
+      </article>
     </div>
-    <div data-register-form data-privacy="privacy/"></div>
-  </section>
+  </div>
+</section>
 
-  <section class="patients" id="patients" aria-labelledby="pat-h">
-    <div class="pat-head">
-      <h2 id="pat-h" class="sec-title" data-t="pat.title"></h2>
-      <p data-t="pat.lead"></p>
+<!-- FINANCE NOTES, like the Lab Notes on Apex Slim -->
+<section class="notes-sec" aria-labelledby="notes-h">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <p class="eyebrow">Finance notes</p>
+      <h2 id="notes-h">Short answers before the long conversation</h2>
+    </div>
+    <div class="notes">
+      <article class="note rise"><span class="note-tag"><b>Eq</b>2 min read</span><h3>Can your clinic afford that new laser?</h3><p>Divide the monthly repayment by what one treatment leaves you after costs. If the answer is more treatments than the device can realistically fill in a month, the term or the price needs another look.</p></article>
+      <article class="note rise"><span class="note-tag"><b>Ls</b>2 min read</span><h3>Leasing or a business loan?</h3><p>A lease keeps cash in the clinic and often ends with a buy-out. A loan usually costs less in total and the device is yours from day one. Which fits depends on how long you'll use it.</p></article>
+      <article class="note rise"><span class="note-tag"><b>Ex</b>2 min read</span><h3>Five questions before you expand</h3><p>Is the current agenda full? What does a new room earn in its first year? Who staffs it? How long is the fit-out? And how much cash do you keep aside while it ramps up?</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- FOR PATIENTS -->
+<section class="pat-sec" id="patients" aria-labelledby="pat-h">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <p class="eyebrow">For patients</p>
+      <h2 id="pat-h">Also from Alaga Aesthetics</h2>
     </div>
     <div class="pat-grid">
       <a class="scan-card" href="skin-check/">
         <span class="scan-pic" aria-hidden="true">
           <img src="https://images.unsplash.com/photo-1790574318874-8837efcfc519?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=srgb&w=900" alt="" width="900" height="1600" loading="lazy">
-          <span class="scan-beam"></span>
-          <span class="scan-tags"><span style="--d:0s">Lines · mild</span><span style="--d:.6s">Texture · moderate</span><span style="--d:1.2s">Redness · mild</span></span>
+          <span class="scan-mesh"></span><span class="scan-beam"></span>
+          <span class="scan-tags"><span>Lines · mild</span><span>Texture · moderate</span><span>Redness · mild</span></span>
         </span>
         <span class="scan-text">
-          <span class="scan-k" data-t="sc.kicker"></span>
-          <span class="scan-h" data-t="sc.title"></span>
-          <span class="scan-p" data-t="sc.body"></span>
-          <span class="btn btn-cobalt" data-t="sc.cta"></span>
+          <span class="pk">Skin check</span>
+          <span class="ph">Scan your skin in under a minute</span>
+          <span class="pp">The camera guides you to good light and a straight face, then reads lines, wrinkles, texture, spots, redness and sagging. No photo leaves your phone.</span>
+          <span class="pill pill-white">Start the skin check</span>
         </span>
       </a>
-      <a class="ask-card" href="ask/">
-        <span class="ask-plate" aria-hidden="true">S</span>
-        <span class="scan-h" data-t="ask.title"></span>
-        <span class="scan-p" data-t="ask.body"></span>
-        <span class="ask-q" data-t="ask.sample"></span>
-        <span class="ask-go" data-t="ask.cta"></span>
+      <a class="pat-card pat-ask" href="ask/">
+        <span class="plate-sm plate-rose">S</span>
+        <span class="ph">Ask Dr. Sarah</span>
+        <span class="pp">Questions about skincare or the weeks after a treatment, answered on an open board.</span>
+        <span class="quote">“Can I put the PDRN serum on straight after microneedling?”</span>
+        <span class="go">Read her answers</span>
+      </a>
+      <a class="pat-card pat-store" href="store/">
+        <img src="assets/img/tile-microscope-l.webp" alt="" width="480" height="480">
+        <span class="ph">Store</span>
+        <span class="pp">Doctor-chosen skincare under the microscope, with partner codes for clinics.</span>
+        <span class="go">Open the store</span>
       </a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="founders" id="founders" aria-labelledby="founders-h">
-    <div class="fin-head">
-      <h2 id="founders-h" class="sec-title" data-t="founders.title"></h2>
-      <p class="fin-lead">Aesthetic medicine and clinic finance in one conversation: a doctor who knows what a clinic earns per room and per device, a financial advisor, and a financing partner for the application.</p>
-    </div>
-    <div class="founders-grid">
-      <div class="founder">
-        <div class="monogram" aria-hidden="true">S</div>
-        <div>
-          <h3 data-t="f1.name"></h3>
-          <p class="founder-role" data-t="f1.role"></p>
-          <p data-t="f1.bio"></p>
-        </div>
-      </div>
-      <div class="founder">
-        <div class="monogram" aria-hidden="true">EJ</div>
-        <div>
-          <h3 data-t="f2.name"></h3>
-          <p class="founder-role" data-t="f2.role"></p>
-          <p data-t="f2.bio"></p>
-        </div>
-      </div>
-      <div class="founder partner">
-        <div class="monogram" aria-hidden="true">HD</div>
-        <div>
-          <h3>Hypotheekadvies Drechtsteden</h3>
-          <p class="founder-role">Financing partner</p>
-          <p>They give the financing advice and handle the application with lenders.</p>
-          <p class="draft-note dark">Adviser names, photos and registration numbers go here once the partner confirms them.</p>
-        </div>
+<!-- FAQ + CONSULTATION -->
+<section class="consult-sec" id="consult" aria-labelledby="consult-h">
+  <div class="wrap consult-grid">
+    <div>
+      <p class="eyebrow">Free consultation</p>
+      <h2 id="consult-h">Let's talk about your clinic's next investment</h2>
+      <p class="lead">Tell us what you're planning. The first consultation is free, and you'll know the next steps before you decide anything.</p>
+      <div class="faq">
+        <details><summary>Is Alaga the lender?</summary><p>No. Alaga and our financing partner advise you and take your case to lenders and lessors. The loan or lease is with them.</p></details>
+        <details><summary>What do I need for the first consultation?</summary><p>An idea of the investment and its rough cost. Figures and statements come later, through a secure route, once you decide to go ahead.</p></details>
+        <details><summary>What happens after the consultation?</summary><p>You get your options and the advisory fee in writing. Nothing happens until you say yes.</p></details>
+        <details><summary>Can you help if my clinic is young?</summary><p>Yes. A newer clinic needs more of the story on paper, and the consultation tells you what that means for you.</p></details>
+        <details><summary>Do you only work with aesthetic clinics?</summary><p>Medical and aesthetic clinics. The questions are much the same: equipment, rooms, premises and cash flow.</p></details>
       </div>
     </div>
-  </section>
+    <form class="form" id="consult-form" novalidate>
+      <div class="form-head"><img src="assets/img/logo-160.webp" alt="" width="40" height="41"><span>Free consultation request</span></div>
+      <label>Full name<input name="name" autocomplete="name" required></label>
+      <label>Clinic name<input name="clinic" autocomplete="organization"></label>
+      <label class="wide">Email<input name="email" type="email" autocomplete="email" required></label>
+      <fieldset class="wide"><legend>What are you planning?</legend>
+        <div class="seg seg-light">
+          <label><input type="radio" name="need" value="New equipment" checked><span>New equipment</span></label>
+          <label><input type="radio" name="need" value="Expanding my clinic"><span>Expanding</span></label>
+          <label><input type="radio" name="need" value="Starting a clinic"><span>New clinic</span></label>
+          <label><input type="radio" name="need" value="Financing my premises"><span>Premises</span></label>
+          <label><input type="radio" name="need" value="Something else"><span>Something else</span></label>
+        </div>
+      </fieldset>
+      <label class="wide">A few lines about it, if you like<textarea name="notes" rows="4"></textarea></label>
+      <label class="check wide"><input type="checkbox" name="consent" required><span>Alaga Aesthetics may store these details to contact me about the consultation. <a href="privacy/">Privacy statement</a></span></label>
+      <button class="pill pill-solid wide" type="submit">Request my free consultation</button>
+      <p class="form-status wide" id="form-status" role="status" hidden></p>
+    </form>
+  </div>
+</section>
 
-  <section class="contact" id="contact" aria-labelledby="contact-h">
-    <img src="assets/img/rosette.svg" alt="" class="rosette">
-    <h2 id="contact-h" class="sec-title" data-t="contact.title"></h2>
-    <p data-t="contact.body"></p>
-    <a class="mail" href="mailto:info@alagaaesthetics.nl" data-t="contact.email"></a>
-  </section>
 </main>
 
 <footer class="foot">
-  <img src="assets/img/logo-160.webp" alt="" class="foot-mark">
-  <p data-t="footer.copy"></p>
-  <a href="privacy/" data-keep-lang data-t="footer.privacy"></a>
+  <div class="foot-frame" aria-hidden="true"></div>
+  <div class="wrap foot-in">
+    <a class="brand brand-light" href="#top"><img src="assets/img/logo-160.webp" alt="" width="40" height="41"><span>Alaga Aesthetics</span></a>
+    <p>Leading the future of Global, Holistic Regenerative Medicine.</p>
+    <p><a href="mailto:info@alagaaesthetics.nl">info@alagaaesthetics.nl</a> · <a href="privacy/">Privacy statement</a></p>
+    <p class="fine">© 2026 Alaga Aesthetics, the Netherlands.</p>
+  </div>
 </footer>
 
-<script src="assets/js/content.js"></script>
-<script src="assets/js/form.js"></script>
-<script src="assets/js/site.js"></script>
-<script src="assets/js/calc.js"></script>
+<script src="assets/js/home.js" defer></script>
 </body>
 </html>
