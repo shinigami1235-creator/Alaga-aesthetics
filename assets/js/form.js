@@ -1,22 +1,17 @@
 /*
-  Builds the clinic financing intake form inside any element with
+  Builds the free consultation form inside any element with
   data-register-form.
   Load after content.js and before site.js.
 */
 (function () {
+  // Short on purpose: no figures or statements at first contact (marketing plan, 17 November 2026).
   const fields = [
     { name: "name", type: "text", required: true, auto: "name" },
-    { name: "email", type: "email", required: true, auto: "email" },
-    { name: "phone", type: "tel", auto: "tel" },
-    { name: "big", type: "text", inputmode: "numeric", hint: true },
-    { group: "role", kind: "radio", options: 3, wide: true },
-    { group: "plan", kind: "checkbox", options: 4, wide: true },
-    { name: "city", type: "text", hint: true, auto: "address-level2" },
-    { name: "when", type: "text", hint: true },
-    { name: "budget", type: "text", hint: true, wide: true },
+    { name: "clinic", type: "text", auto: "organization" },
+    { name: "email", type: "email", required: true, auto: "email", wide: true },
+    { group: "plan", kind: "radio", options: 5, wide: true },
     { name: "notes", type: "textarea", wide: true }
   ];
-
   function field(f) {
     const id = "reg-" + f.name;
     const hintId = id + "-hint";

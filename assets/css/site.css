@@ -233,7 +233,7 @@ section:not(.hero) { max-width: 1200px; margin: 0 auto; padding: clamp(72px, 10v
 
 /* ---------- Founders ---------- */
 .founders-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 4vw, 48px); }
-.founder { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 22px; align-items: start; }
+.founder { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 22px; align-items: start; }
 .monogram {
   aspect-ratio: 1; border-radius: var(--r-lg); display: grid; place-items: center;
   background: var(--tile); box-shadow: var(--shadow-soft); font: 400 2rem var(--display); color: var(--cobalt);
@@ -328,4 +328,73 @@ section:not(.hero) { max-width: 1200px; margin: 0 auto; padding: clamp(72px, 10v
 @media (min-width: 1001px) {
   .hero-row .door { grid-template-columns: 1fr; align-content: center; gap: 12px; padding: 18px; }
   .hero-row .door img { width: 84px; height: 84px; }
+}
+
+/* ---- Clinic finance additions (17 Nov 2026): four needs, calculator, fees, FAQ, partner ---- */
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.who { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.who li:nth-child(2) { background: var(--blush); }
+.who li:nth-child(2) strong { color: var(--blush-ink); }
+.who li:last-child { background: var(--tile); }
+.who li:last-child strong { color: var(--cobalt); }
+
+.calc { margin: clamp(28px, 4vw, 44px) 0 clamp(36px, 5vw, 56px); display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); border-radius: var(--r-xl); overflow: hidden; background: var(--tile); box-shadow: var(--shadow-lift); }
+.calc-in { padding: clamp(22px, 3vw, 38px); display: grid; gap: 20px; align-content: start; }
+.calc-title { font: 400 clamp(1.4rem, 2.2vw, 1.8rem)/1.2 var(--display); color: var(--cobalt); margin: 0; }
+.calc-field { border: 0; margin: 0; padding: 0; display: grid; gap: 10px; min-width: 0; }
+.calc-field legend { font-size: .95rem; color: var(--ink-soft); margin-bottom: 10px; padding: 0; }
+.calc-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-size: .95rem; color: var(--ink-soft); }
+.calc-row output { font-weight: 700; font-size: 1.1rem; color: var(--ink); font-variant-numeric: tabular-nums; }
+.calc input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; height: 6px; border-radius: 6px; cursor: pointer; background: linear-gradient(to right, var(--cobalt) var(--p, 50%), var(--line) var(--p, 50%)); }
+.calc input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 24px; height: 24px; border-radius: 50%; background: #fff; border: 2px solid var(--cobalt); box-shadow: 0 2px 8px rgba(11, 29, 74, .25); }
+.calc input[type=range]::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: #fff; border: 2px solid var(--cobalt); }
+.calc input[type=range]:focus-visible { outline: 3px solid var(--ochre); outline-offset: 6px; }
+.chips { display: flex; gap: 8px; flex-wrap: wrap; }
+.chips label { position: relative; }
+.chips input { position: absolute; opacity: 0; }
+.chips span { display: block; padding: 9px 16px; border-radius: 999px; border: 1px solid #ccd4e7; background: #fff; font-size: .95rem; cursor: pointer; transition: background .15s, color .15s, border-color .15s; }
+.chips input:checked + span { background: var(--cobalt); border-color: var(--cobalt); color: #fff; }
+.chips input:focus-visible + span { outline: 3px solid var(--ochre); outline-offset: 2px; }
+.calc-out { position: relative; overflow: hidden; background: var(--cobalt); color: #dfe6f7; padding: clamp(22px, 3vw, 38px); display: grid; align-content: start; gap: 12px; }
+.out-label { margin: 0; font-size: .95rem; position: relative; }
+.out-big { margin: 0; font: 400 clamp(3rem, 5.4vw, 4.2rem)/1 var(--display); color: #fff; font-variant-numeric: lining-nums tabular-nums; position: relative; }
+.out-list { margin: 4px 0 0; display: grid; gap: 6px; position: relative; }
+.out-list div { display: flex; justify-content: space-between; border-top: 1px solid rgba(255, 255, 255, .18); padding-top: 8px; font-size: .95rem; }
+.out-list dd { margin: 0; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
+.out-treat { margin: 6px 0 4px; padding: 12px 14px; background: var(--blush); color: var(--blush-ink); border-radius: var(--r-sm); font-size: .97rem; position: relative; }
+.out-treat strong { font-size: 1.15rem; }
+.calc-out .btn { justify-self: start; background: #fff; color: var(--cobalt); position: relative; }
+.calc-fine { margin: 0; font-size: .8rem; line-height: 1.5; color: #b9c6e8; position: relative; }
+
+.fees-card { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(24px, 5vw, 64px); padding: clamp(26px, 4vw, 52px); border-radius: var(--r-xl); background: var(--ink); color: #dfe6f7; box-shadow: var(--shadow-lift); }
+.fees-card .sec-title { color: #fff; margin: 0 0 16px; }
+.fees-head p { margin: 0 0 12px; }
+.fees { width: 100%; border-collapse: collapse; font-size: 1rem; }
+.fees th, .fees td { text-align: left; padding: 14px 0; border-bottom: 1px solid rgba(255, 255, 255, .14); font-weight: 400; }
+.fees thead th { font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: #9fb2e0; border-bottom-color: var(--ochre); }
+.fees thead th:last-child, .fees td { text-align: right; }
+.fees td { font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.fees .free { color: var(--blush-deep); }
+.draft-note { font-size: .85rem; color: #f3d9a6; border-left: 2px solid var(--ochre); padding-left: 10px; }
+.draft-note.dark { color: #7a5a1c; margin-top: 10px; }
+
+.faq-sec { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: clamp(24px, 5vw, 64px); }
+.faq details { border-bottom: 1px solid var(--line); }
+.faq summary { list-style: none; cursor: pointer; padding: 20px 40px 20px 0; font: 400 1.2rem/1.3 var(--display); color: var(--ink); position: relative; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: ""; position: absolute; right: 8px; top: 50%; width: 11px; height: 11px; border-right: 2px solid var(--cobalt); border-bottom: 2px solid var(--cobalt); transform: translateY(-70%) rotate(45deg); transition: transform .25s var(--ease-out); }
+.faq details[open] summary::after { transform: translateY(-30%) rotate(225deg); }
+.faq p { margin: 0 0 20px; color: var(--ink-soft); max-width: 62ch; }
+
+.founders .fin-head { margin-bottom: clamp(24px, 3vw, 36px); }
+.founders-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.partner .monogram { background: var(--blush); color: var(--blush-ink); }
+
+@media (max-width: 1000px) {
+  .who { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .calc, .fees-card, .faq-sec { grid-template-columns: 1fr; }
+  .founders-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .who { grid-template-columns: 1fr; }
 }

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Alaga Aesthetics</title>
-<meta name="description" content="Alaga Aesthetics helps doctors and nurses in the Netherlands plan, fund and set up their own aesthetic clinic.">
+<meta name="description" content="Alaga Aesthetics: financing guidance for medical and aesthetic clinic owners in the Netherlands, a skin check for patients and doctor-chosen skincare.">
 <meta name="theme-color" content="#F4F7FC">
 <link rel="icon" href="assets/img/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
@@ -81,16 +81,53 @@
       <li><strong data-t="who.1.t"></strong><span data-t="who.1.d"></span></li>
       <li><strong data-t="who.2.t"></strong><span data-t="who.2.d"></span></li>
       <li><strong data-t="who.3.t"></strong><span data-t="who.3.d"></span></li>
+      <li><strong data-t="who.4.t"></strong><span data-t="who.4.d"></span></li>
     </ul>
+
+    <!-- The repayment calculator: what an investment costs a month, and how many treatments cover it. -->
+    <div class="calc" id="calc" aria-labelledby="calc-h">
+      <div class="calc-in">
+        <h3 class="calc-title" id="calc-h">What would it cost you a month?</h3>
+        <label class="calc-field">
+          <span class="calc-row"><span>Investment</span><output id="o-amount">€50,000</output></span>
+          <input type="range" id="amount" min="10000" max="500000" step="5000" value="50000">
+        </label>
+        <fieldset class="calc-field">
+          <legend>Repayment period</legend>
+          <div class="chips">
+            <label><input type="radio" name="years" value="3"><span>3 years</span></label>
+            <label><input type="radio" name="years" value="5" checked><span>5 years</span></label>
+            <label><input type="radio" name="years" value="7"><span>7 years</span></label>
+          </div>
+        </fieldset>
+        <label class="calc-field">
+          <span class="calc-row"><span>Interest rate, for illustration</span><output id="o-rate">7.0%</output></span>
+          <input type="range" id="rate" min="3" max="12" step="0.5" value="7">
+        </label>
+        <label class="calc-field">
+          <span class="calc-row"><span>What one treatment leaves you, after costs</span><output id="o-margin">€150</output></span>
+          <input type="range" id="margin" min="50" max="600" step="10" value="150">
+        </label>
+      </div>
+      <div class="calc-out" aria-live="polite">
+        <p class="out-label">Monthly repayment</p>
+        <p class="out-big" id="r-month">€990</p>
+        <dl class="out-list">
+          <div><dt>Total repaid</dt><dd id="r-total">€59,404</dd></div>
+          <div><dt>Of which interest</dt><dd id="r-interest">€9,404</dd></div>
+        </dl>
+        <p class="out-treat"><strong id="r-treat">7</strong> extra treatments a month cover it.</p>
+        <a class="btn btn-cobalt" href="#plan">Talk it through, free</a>
+        <p class="calc-fine">An illustration of an ordinary loan, not an offer. Advisory fees, lender charges and VAT are left out.</p>
+      </div>
+    </div>
+
     <div class="do">
       <h3 data-t="do.title"></h3>
       <ol class="do-list">
         <li><strong data-t="do.1.t"></strong><span data-t="do.1.d"></span></li>
         <li><strong data-t="do.2.t"></strong><span data-t="do.2.d"></span></li>
         <li><strong data-t="do.3.t"></strong><span data-t="do.3.d"></span></li>
-        <li><strong data-t="do.4.t"></strong><span data-t="do.4.d"></span></li>
-        <li><strong data-t="do.5.t"></strong><span data-t="do.5.d"></span></li>
-        <li><strong data-t="do.6.t"></strong><span data-t="do.6.d"></span></li>
       </ol>
     </div>
   </section>
@@ -103,6 +140,40 @@
       <li><img class="step-tile" src="assets/img/tile-pods.webp" alt="" width="480" height="480"><span class="how-n">Step 3</span><strong data-t="how.3.t"></strong><span data-t="how.3.d"></span></li>
       <li><img class="step-tile" src="assets/img/tile-cell-tl.webp" alt="" width="480" height="480"><span class="how-n">Step 4</span><strong data-t="how.4.t"></strong><span data-t="how.4.d"></span></li>
     </ol>
+  </section>
+
+  <section class="fees-sec" id="fees" aria-labelledby="fees-h">
+    <div class="fees-card">
+      <div class="fees-head">
+        <h2 id="fees-h" class="sec-title">You know the advisory fee before you agree to anything</h2>
+        <p>These are advisory fees only. Interest and the lender's own charges are separate and depend on the financing you choose.</p>
+        <p class="draft-note">Draft figures from the working presentation, excluding VAT. Not for publishing until approved.</p>
+      </div>
+      <table class="fees">
+        <caption class="sr-only">Indicative advisory fees, excluding VAT</caption>
+        <thead><tr><th scope="col">Service</th><th scope="col">Advisory fee</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">First consultation</th><td class="free">Free</td></tr>
+          <tr><th scope="row">Equipment finance or lease</th><td>€750 – €1,250</td></tr>
+          <tr><th scope="row">Fit-out or working capital</th><td>€1,000 – €2,000</td></tr>
+          <tr><th scope="row">Starting a clinic</th><td>€1,500 – €2,500</td></tr>
+          <tr><th scope="row">Clinic expansion</th><td>€1,500 – €3,000</td></tr>
+          <tr><th scope="row">Clinic premises</th><td>From €2,500</td></tr>
+          <tr><th scope="row">Acquisition or complex cases</th><td>Quoted</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="faq-sec" aria-labelledby="faq-h">
+    <h2 id="faq-h" class="sec-title">Questions owners ask first</h2>
+    <div class="faq">
+      <details><summary>Is Alaga the lender?</summary><p>No. Alaga and our financing partner advise you and take your case to lenders and lessors. The loan or lease is with them.</p></details>
+      <details><summary>What do I need for the first consultation?</summary><p>An idea of the investment and its rough cost. Figures and statements come later, through a secure route, once you decide to go ahead.</p></details>
+      <details><summary>What happens after the consultation?</summary><p>You get your options and the advisory fee in writing. Nothing happens until you say yes.</p></details>
+      <details><summary>Can you help if my clinic is young?</summary><p>Yes. A newer clinic needs more of the story on paper, and the consultation tells you what that means for you.</p></details>
+      <details><summary>Do you only work with aesthetic clinics?</summary><p>Medical and aesthetic clinics. The questions are much the same: equipment, rooms, premises and cash flow.</p></details>
+    </div>
   </section>
 
   <section class="register" id="plan" aria-labelledby="plan-h">
@@ -143,7 +214,10 @@
   </section>
 
   <section class="founders" id="founders" aria-labelledby="founders-h">
-    <h2 id="founders-h" class="sec-title" data-t="founders.title"></h2>
+    <div class="fin-head">
+      <h2 id="founders-h" class="sec-title" data-t="founders.title"></h2>
+      <p class="fin-lead">Aesthetic medicine and clinic finance in one conversation: a doctor who knows what a clinic earns per room and per device, a financial advisor, and a financing partner for the application.</p>
+    </div>
     <div class="founders-grid">
       <div class="founder">
         <div class="monogram" aria-hidden="true">S</div>
@@ -159,6 +233,15 @@
           <h3 data-t="f2.name"></h3>
           <p class="founder-role" data-t="f2.role"></p>
           <p data-t="f2.bio"></p>
+        </div>
+      </div>
+      <div class="founder partner">
+        <div class="monogram" aria-hidden="true">HD</div>
+        <div>
+          <h3>Hypotheekadvies Drechtsteden</h3>
+          <p class="founder-role">Financing partner</p>
+          <p>They give the financing advice and handle the application with lenders.</p>
+          <p class="draft-note dark">Adviser names, photos and registration numbers go here once the partner confirms them.</p>
         </div>
       </div>
     </div>
@@ -181,5 +264,6 @@
 <script src="assets/js/content.js"></script>
 <script src="assets/js/form.js"></script>
 <script src="assets/js/site.js"></script>
+<script src="assets/js/calc.js"></script>
 </body>
 </html>
