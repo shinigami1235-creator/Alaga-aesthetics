@@ -9,19 +9,33 @@
   const onScroll = () => bar.classList.toggle("is-stuck", scrollY > 8);
   addEventListener("scroll", onScroll, { passive: true });
   onScroll();
+  /* The drawer is a native popover, which closes on Esc and on a tap outside it.
+     Older browsers without popover get a plain show and hide. */
   const menu = $(".menu"), drawer = $("#drawer");
-  menu.addEventListener("click", () => {
-    const open = menu.getAttribute("aria-expanded") !== "true";
-    menu.setAttribute("aria-expanded", open);
-    drawer.hidden = !open;
-  });
+  const hasPopover = HTMLElement.prototype.hasOwnProperty("popover");
+  if (hasPopover) {
+    drawer.addEventListener("toggle", (e) => menu.classList.toggle("is-open", e.newState === "open"));
+  } else {
+    drawer.removeAttribute("popover");
+    drawer.hidden = true;
+    menu.setAttribute("aria-expanded", "false");
+    menu.addEventListener("click", () => {
+      drawer.hidden = !drawer.hidden;
+      menu.setAttribute("aria-expanded", String(!drawer.hidden));
+      menu.classList.toggle("is-open", !drawer.hidden);
+    });
+  }
   drawer.addEventListener("click", (e) => {
-    if (e.target.closest("a")) { menu.setAttribute("aria-expanded", "false"); drawer.hidden = true; }
+    if (!e.target.closest("a")) return;
+    if (hasPopover) drawer.hidePopover();
+    else { drawer.hidden = true; menu.setAttribute("aria-expanded", "false"); menu.classList.remove("is-open"); }
   });
 
   /* Calculator. */
   const amount = $("#amount"), rate = $("#rate"), margin = $("#margin"), tray = $("#tray");
   const fill = (el) => el.style.setProperty("--p", ((el.value - el.min) / (el.max - el.min)) * 100 + "%");
+  const live = $("#calc-live");
+  let liveTimer;
   function calc() {
     const P = +amount.value, r = +rate.value / 1200, n = +$('input[name="years"]:checked').value * 12;
     const m = r ? (P * r) / (1 - Math.pow(1 + r, -n)) : P / n;
@@ -37,7 +51,12 @@
     if (tray.childElementCount !== shown) {
       tray.innerHTML = "<i></i>".repeat(shown) + (treat > 60 ? `<span>+${treat - 60}</span>` : "");
     }
+    amount.setAttribute("aria-valuetext", eur(P));
+    rate.setAttribute("aria-valuetext", (+rate.value).toFixed(1) + " percent");
+    margin.setAttribute("aria-valuetext", eur(+margin.value));
     [amount, rate, margin].forEach(fill);
+    clearTimeout(liveTimer);
+    liveTimer = setTimeout(() => { live.textContent = `Monthly repayment ${eur(m)}. ${treat} treatments a month cover it.`; }, 700);
   }
   $$("#calc input").forEach((el) => el.addEventListener("input", calc));
   calc();
@@ -71,11 +90,10 @@
     const d = MAP[key];
     if (!d) return;
     current = key;
-    $$(".spot").forEach((s) => s.classList.toggle("is-on", s.dataset.key === key));
-    $$(".map-chips .chip").forEach((c) => {
-      const on = c.dataset.key === key;
-      c.classList.toggle("is-on", on);
-      c.setAttribute("aria-selected", on);
+    $$(".spot, .map-chips .chip").forEach((el) => {
+      const on = el.dataset.key === key;
+      el.classList.toggle("is-on", on);
+      el.setAttribute("aria-pressed", String(on));
     });
     const card = $(".map-card");
     card.classList.remove("is-in");
@@ -113,18 +131,33 @@
     document.documentElement.classList.add("has-rise");
   }
 
-  /* Consultation form: checks the required fields, then opens an email with the details. */
+  /* Consultation form. A field shows its error once the visitor has left it or tried
+     to send, and aria-invalid changes at the same moment so a screen reader hears the
+     error only after the visitor has done something. */
   const form = $("#consult-form"), status = $("#form-status");
+  const checked = $$("[data-error]", form);
+  const sync = (el) => {
+    if (!el.dataset.touched) return;
+    const bad = !el.validity.valid;
+    el.setAttribute("aria-invalid", String(bad));
+    el.closest(".field").classList.toggle("is-bad", bad);
+    const ids = (el.getAttribute("aria-describedby") || "").split(/\s+/).filter((id) => id && id !== el.dataset.error);
+    if (bad) ids.push(el.dataset.error);
+    if (ids.length) el.setAttribute("aria-describedby", ids.join(" "));
+    else el.removeAttribute("aria-describedby");
+  };
+  checked.forEach((el) => {
+    el.setAttribute("aria-invalid", "false");
+    el.addEventListener("blur", () => { if (el.value && el.type !== "checkbox") { el.dataset.touched = "1"; sync(el); } });
+    el.addEventListener("input", () => sync(el));
+    el.addEventListener("change", () => { el.dataset.touched = "1"; sync(el); });
+  });
   form.addEventListener("submit", (e) => {
     e.preventDefault();
+    checked.forEach((el) => { el.dataset.touched = "1"; sync(el); });
+    const first = checked.find((el) => !el.validity.valid);
+    if (first) { status.hidden = true; first.focus(); return; }
     const f = form.elements;
-    let msg = "";
-    if (!f.name.value.trim()) msg = "Enter your name.";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email.value.trim())) msg = "Enter an email address like name@clinic.nl.";
-    else if (!f.consent.checked) msg = "Tick the box to agree to the privacy statement.";
-    status.hidden = false;
-    if (msg) { status.textContent = msg; status.classList.add("is-err"); return; }
-    status.classList.remove("is-err");
     const body = [
       "Name: " + f.name.value.trim(),
       "Clinic: " + (f.clinic.value.trim() || "-"),
@@ -133,6 +166,7 @@
       "",
       f.notes.value.trim(),
     ].join("\n");
+    status.hidden = false;
     status.textContent = "Press send in your email app.";
     location.href = `mailto:info@alagaaesthetics.nl?subject=${encodeURIComponent("Free consultation: " + f.name.value.trim())}&body=${encodeURIComponent(body)}`;
   });

@@ -8,6 +8,8 @@
 <meta name="theme-color" content="#F5F7FC">
 <link rel="icon" href="assets/img/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="preload" href="assets/fonts/marcellus-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/hanken-grotesk-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/fonts.css">
 <link rel="stylesheet" href="assets/css/home.css">
 </head>
@@ -27,16 +29,16 @@
     <a href="#patients">For patients</a>
   </nav>
   <a class="pill pill-solid bar-cta" href="#consult"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 5h12v8H9l-4 3v-3H4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Free consultation</a>
-  <button class="menu" type="button" aria-expanded="false" aria-controls="drawer" aria-label="Menu"><span></span><span></span></button>
+  <button class="menu" type="button" popovertarget="drawer" aria-label="Menu"><span></span><span></span></button>
 </header>
-<div class="drawer" id="drawer" hidden>
+<nav class="drawer" id="drawer" popover aria-label="Menu">
   <a href="#finance">Clinic finance</a>
   <a href="#how">How it works</a>
   <a href="#fees">Fees</a>
   <a href="#why">Why Alaga</a>
   <a href="#patients">For patients</a>
   <a class="pill pill-solid" href="#consult">Free consultation</a>
-</div>
+</nav>
 
 <main id="main">
 
@@ -61,7 +63,7 @@
       <figcaption>Leading the future of Global, Holistic Regenerative Medicine.</figcaption>
     </figure>
 
-    <a class="ticker" href="#calc" aria-label="Open the repayment calculator">
+    <a class="ticker" href="#calc">
       <span class="ticker-k">Example</span>
       <span class="ticker-line">€50,000 laser over 5 years</span>
       <span class="ticker-big">€990<small>/month</small></span>
@@ -80,23 +82,23 @@
     </div>
     <div class="tile-wall">
       <a class="dtile dtile-big" href="#finance">
-        <span class="dtile-art"><img src="assets/img/tile-microscope-r.webp" alt="" width="480" height="480"></span>
+        <span class="dtile-art"><img src="assets/img/tile-microscope-r.webp" alt="" width="480" height="480" loading="lazy" decoding="async"></span>
         <span class="dtile-label"><span class="tname">Clinic finance</span><span class="tsub">Equipment, expansion, a new clinic and premises</span></span>
       </a>
       <a class="dtile" href="skin-check/">
-        <span class="dtile-art"><img src="assets/img/tile-cells-tr.webp" alt="" width="480" height="480"></span>
+        <span class="dtile-art"><img src="assets/img/tile-cells-tr.webp" alt="" width="480" height="480" loading="lazy" decoding="async"></span>
         <span class="dtile-label"><span class="tname">Skin check</span><span class="tsub">Scan your skin with your phone</span></span>
       </a>
       <a class="dtile" href="store/">
-        <span class="dtile-art"><img src="assets/img/tile-pods.webp" alt="" width="480" height="480"></span>
+        <span class="dtile-art"><img src="assets/img/tile-pods.webp" alt="" width="480" height="480" loading="lazy" decoding="async"></span>
         <span class="dtile-label"><span class="tname">Store</span><span class="tsub">Skincare chosen by Dr. Sarah</span></span>
       </a>
       <a class="dtile" href="ask/">
-        <span class="dtile-art"><img src="assets/img/tile-cell-tl.webp" alt="" width="480" height="480"></span>
+        <span class="dtile-art"><img src="assets/img/tile-cell-tl.webp" alt="" width="480" height="480" loading="lazy" decoding="async"></span>
         <span class="dtile-label"><span class="tname">Ask Dr. Sarah</span><span class="tsub">Skincare and aftercare questions</span></span>
       </a>
       <div class="dtile dtile-soon">
-        <span class="dtile-art"><img src="assets/img/tile-dna-top.webp" alt="" width="480" height="480"></span>
+        <span class="dtile-art"><img src="assets/img/tile-dna-top.webp" alt="" width="480" height="480" loading="lazy" decoding="async"></span>
         <span class="dtile-label"><span class="tname">Clinical Alliance</span><span class="tsub">Coming soon</span></span>
       </div>
     </div>
@@ -112,19 +114,19 @@
     </div>
     <div class="worries">
       <article class="worry rise">
-        <img class="wimg" src="assets/img/tile-cells-tr.webp" alt="" width="480" height="480">
+        <img class="wimg" src="assets/img/tile-cells-tr.webp" alt="" width="480" height="480" loading="lazy" decoding="async">
         <h3>Established clinic owners</h3>
         <p>You want to expand, modernise, buy new equipment or buy your clinic building.</p>
         <a class="wgo" href="#finance" data-pick="expand">Expansion financing</a>
       </article>
       <article class="worry rise">
-        <img class="wimg" src="assets/img/tile-microscope-l.webp" alt="" width="480" height="480">
+        <img class="wimg" src="assets/img/tile-microscope-l.webp" alt="" width="480" height="480" loading="lazy" decoding="async">
         <h3>Equipment investors</h3>
         <p>You want to finance or lease a medical or aesthetic device and keep cash in the clinic.</p>
         <a class="wgo" href="#finance" data-pick="equipment">Equipment financing</a>
       </article>
       <article class="worry rise">
-        <img class="wimg" src="assets/img/tile-dna-top.webp" alt="" width="480" height="480">
+        <img class="wimg" src="assets/img/tile-dna-top.webp" alt="" width="480" height="480" loading="lazy" decoding="async">
         <h3>Start-up clinic owners</h3>
         <p>You're opening a clinic and need financing for equipment, the fit-out, stock and working capital.</p>
         <a class="wgo" href="#finance" data-pick="start">New clinic financing</a>
@@ -142,7 +144,7 @@
     </div>
     <div class="map" id="map">
       <div class="plan-wrap">
-        <svg class="plan" viewBox="0 0 640 440" role="img" aria-labelledby="plan-t">
+        <svg class="plan" viewBox="0 0 640 440" role="group" aria-labelledby="plan-t">
           <title id="plan-t">Floor plan of a clinic with five points to tap</title>
           <defs>
             <pattern id="floor" width="22" height="22" patternUnits="userSpaceOnUse"><path d="M22 0H0V22" fill="none" stroke="#dfe5f1" stroke-width="1"/></pattern>
@@ -170,14 +172,14 @@
             <text x="40" y="274">Consult room</text><text x="290" y="274">Waiting area</text><text x="490" y="274">Storage</text>
           </g>
           <g class="spots">
-            <g class="spot" data-key="equipment" tabindex="0" role="button" aria-label="Equipment" transform="translate(394 138)"><circle r="16"/><circle class="core" r="6"/></g>
-            <g class="spot" data-key="expand" tabindex="0" role="button" aria-label="A new treatment room" transform="translate(525 140)"><circle r="16"/><circle class="core" r="6"/></g>
-            <g class="spot" data-key="fitout" tabindex="0" role="button" aria-label="Fit-out and working capital" transform="translate(360 350)"><circle r="16"/><circle class="core" r="6"/></g>
-            <g class="spot" data-key="start" tabindex="0" role="button" aria-label="Starting a clinic" transform="translate(320 404)"><circle r="16"/><circle class="core" r="6"/></g>
-            <g class="spot" data-key="premises" tabindex="0" role="button" aria-label="The building" transform="translate(606 34)"><circle r="16"/><circle class="core" r="6"/></g>
+            <g class="spot" data-key="equipment" tabindex="0" role="button" aria-pressed="false" aria-label="Equipment" transform="translate(394 138)"><circle class="hit" r="34"/><circle class="ring" r="16"/><circle class="core" r="6"/></g>
+            <g class="spot" data-key="expand" tabindex="0" role="button" aria-pressed="false" aria-label="A new treatment room" transform="translate(525 140)"><circle class="hit" r="34"/><circle class="ring" r="16"/><circle class="core" r="6"/></g>
+            <g class="spot" data-key="fitout" tabindex="0" role="button" aria-pressed="false" aria-label="Fit-out and working capital" transform="translate(360 350)"><circle class="hit" r="34"/><circle class="ring" r="16"/><circle class="core" r="6"/></g>
+            <g class="spot" data-key="start" tabindex="0" role="button" aria-pressed="false" aria-label="Starting a clinic" transform="translate(320 404)"><circle class="hit" r="34"/><circle class="ring" r="16"/><circle class="core" r="6"/></g>
+            <g class="spot" data-key="premises" tabindex="0" role="button" aria-pressed="false" aria-label="The building" transform="translate(606 34)"><circle class="hit" r="34"/><circle class="ring" r="16"/><circle class="core" r="6"/></g>
           </g>
         </svg>
-        <div class="map-chips" role="tablist" aria-label="Investments">
+        <div class="map-chips" role="group" aria-label="Investments">
           <button type="button" class="chip is-on" data-key="equipment">Equipment</button>
           <button type="button" class="chip" data-key="expand">New room</button>
           <button type="button" class="chip" data-key="fitout">Fit-out</button>
@@ -185,7 +187,7 @@
           <button type="button" class="chip" data-key="premises">Premises</button>
         </div>
       </div>
-      <article class="map-card" aria-live="polite">
+      <article class="map-card" aria-live="polite" aria-atomic="false">
         <img class="map-tile" id="m-tile" src="assets/img/tile-microscope-r.webp" alt="" width="480" height="480">
         <h3 id="m-h" tabindex="-1">Equipment</h3>
         <p id="m-p">Lasers, HIFU, RF and IPL devices, bought or leased.</p>
@@ -226,7 +228,7 @@
         <input type="range" id="margin" min="50" max="600" step="10" value="150">
       </label>
     </div>
-    <div class="machine-out" aria-live="polite">
+    <div class="machine-out">
       <p class="out-k">Monthly repayment</p>
       <p class="out-big" id="r-month">€990</p>
       <dl class="out-dl">
@@ -237,6 +239,7 @@
       <div class="tray" id="tray" aria-hidden="true"></div>
       <p class="out-treat"><strong id="r-treat">7</strong> treatments</p>
       <a class="pill pill-rose" href="#consult">Free consultation</a>
+      <p class="sr" id="calc-live" aria-live="polite"></p>
       <p class="fine">Example of an ordinary loan. Advisory fees, lender charges and VAT are not included.</p>
     </div>
   </div>
@@ -249,10 +252,10 @@
       <h2 id="how-h">How it works</h2>
     </div>
     <ol class="steps">
-      <li><span class="step-tile"><img src="assets/img/tile-microscope-l.webp" alt="" width="480" height="480"><b>1</b></span><h3>Tell us about the investment</h3><p>Your clinic, what you're planning and roughly what it costs.</p></li>
-      <li><span class="step-tile"><img src="assets/img/tile-dna-top.webp" alt="" width="480" height="480"><b>2</b></span><h3>Free consultation</h3><p>We go through your plans and the questions you need answered.</p></li>
-      <li><span class="step-tile"><img src="assets/img/tile-pods.webp" alt="" width="480" height="480"><b>3</b></span><h3>Your options and the fee</h3><p>You get the financing routes that fit and the advisory fee in writing.</p></li>
-      <li><span class="step-tile"><img src="assets/img/tile-cell-br.webp" alt="" width="480" height="480"><b>4</b></span><h3>You decide</h3><p>If you go ahead, our financing partner handles the application with the lender.</p></li>
+      <li><span class="step-tile"><img src="assets/img/tile-microscope-l.webp" alt="" width="480" height="480" loading="lazy" decoding="async"><b>1</b></span><h3>Tell us about the investment</h3><p>Your clinic, what you're planning and roughly what it costs.</p></li>
+      <li><span class="step-tile"><img src="assets/img/tile-dna-top.webp" alt="" width="480" height="480" loading="lazy" decoding="async"><b>2</b></span><h3>Free consultation</h3><p>We go through your plans and the questions you need answered.</p></li>
+      <li><span class="step-tile"><img src="assets/img/tile-pods.webp" alt="" width="480" height="480" loading="lazy" decoding="async"><b>3</b></span><h3>Your options and the fee</h3><p>You get the financing routes that fit and the advisory fee in writing.</p></li>
+      <li><span class="step-tile"><img src="assets/img/tile-cell-br.webp" alt="" width="480" height="480" loading="lazy" decoding="async"><b>4</b></span><h3>You decide</h3><p>If you go ahead, our financing partner handles the application with the lender.</p></li>
     </ol>
   </div>
 </section>
@@ -362,7 +365,7 @@
         <span class="go">Read her answers</span>
       </a>
       <a class="pat-card pat-store" href="store/">
-        <img src="assets/img/tile-microscope-l.webp" alt="" width="480" height="480">
+        <img src="assets/img/tile-microscope-l.webp" alt="" width="480" height="480" loading="lazy" decoding="async">
         <span class="ph">Store</span>
         <span class="pp">Skincare chosen by Dr. Sarah, with partner codes for clinics.</span>
         <span class="go">Open the store</span>
@@ -388,10 +391,10 @@
       </div>
     </div>
     <form class="form" id="consult-form" novalidate>
-      <div class="form-head"><img src="assets/img/logo-160.webp" alt="" width="40" height="41"><span>Free consultation request</span></div>
-      <label>Full name<input name="name" autocomplete="name" required></label>
-      <label>Clinic name<input name="clinic" autocomplete="organization"></label>
-      <label class="wide">Email<input name="email" type="email" autocomplete="email" required></label>
+      <div class="form-head"><img src="assets/img/logo-160.webp" alt="" width="40" height="41" loading="lazy"><span>Free consultation request</span></div>
+      <div class="field"><label for="f-name">Full name</label><input id="f-name" name="name" autocomplete="name" required data-error="e-name"><span class="err" id="e-name">Enter your name.</span></div>
+      <div class="field"><label for="f-clinic">Clinic name</label><input id="f-clinic" name="clinic" autocomplete="organization"></div>
+      <div class="field wide"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required data-error="e-email"><span class="err" id="e-email">Enter an email address like name@clinic.nl.</span></div>
       <fieldset class="wide"><legend>What are you planning?</legend>
         <div class="seg seg-light">
           <label><input type="radio" name="need" value="New equipment" checked><span>New equipment</span></label>
@@ -401,8 +404,8 @@
           <label><input type="radio" name="need" value="Something else"><span>Something else</span></label>
         </div>
       </fieldset>
-      <label class="wide">Notes (optional)<textarea name="notes" rows="4"></textarea></label>
-      <label class="check wide"><input type="checkbox" name="consent" required><span>Alaga Aesthetics may store these details to contact me about the consultation. <a href="privacy/">Privacy statement</a></span></label>
+      <div class="field wide"><label for="f-notes">Notes (optional)</label><textarea id="f-notes" name="notes" rows="4"></textarea></div>
+      <div class="field wide"><label class="check"><input type="checkbox" name="consent" required data-error="e-consent"><span>Alaga Aesthetics may store these details to contact me about the consultation.</span></label><a class="privacy-link" href="privacy/">Privacy statement</a><span class="err" id="e-consent">Tick the box to agree to the privacy statement.</span></div>
       <button class="pill pill-solid wide" type="submit">Request my free consultation</button>
       <p class="form-status wide" id="form-status" role="status" hidden></p>
     </form>
@@ -414,7 +417,7 @@
 <footer class="foot">
   <div class="foot-frame" aria-hidden="true"></div>
   <div class="wrap foot-in">
-    <a class="brand brand-light" href="#top"><img src="assets/img/logo-160.webp" alt="" width="40" height="41"><span>Alaga Aesthetics</span></a>
+    <a class="brand brand-light" href="#top"><img src="assets/img/logo-160.webp" alt="" width="40" height="41" loading="lazy"><span>Alaga Aesthetics</span></a>
     <p>Leading the future of Global, Holistic Regenerative Medicine.</p>
     <p><a href="mailto:info@alagaaesthetics.nl">info@alagaaesthetics.nl</a> · <a href="privacy/">Privacy statement</a></p>
     <p class="fine">© 2026 Alaga Aesthetics, the Netherlands.</p>
