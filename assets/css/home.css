@@ -493,3 +493,115 @@ input[type="range"]::-moz-range-thumb { width: 14px; height: 14px; border-radius
 }
 
 .machine :focus-visible, .ledger :focus-visible { outline-color: var(--gold); }
+
+/* =========================================================
+   Home: Meet the experts (Erik Jan opens finance, Dr. Sarah opens clinic and products)
+   ========================================================= */
+.experts, .clinic-hero { position: relative; overflow: hidden; margin-top: -64px; padding: calc(64px + clamp(30px, 5vw, 60px)) 0 clamp(56px, 7vw, 96px); }
+.experts::after, .clinic-hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 120px; background: linear-gradient(transparent, var(--glaze)); pointer-events: none; }
+.experts-head { position: relative; z-index: 1; text-align: center; max-width: 720px; margin: 0 auto clamp(26px, 4vw, 44px); padding: 0 var(--gutter); }
+.experts-logo { width: clamp(86px, 10vw, 120px); margin: 0 auto 14px; }
+.experts-head h1 { font-size: clamp(2.6rem, 5.6vw, 4.6rem); margin-bottom: 12px; }
+.experts-head p { font-size: 1.15rem; color: var(--ink-2); margin: 0 auto; max-width: 46ch; }
+.experts-grid { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(14px, 4vw, 56px); max-width: 1040px; margin: 0 auto; padding: 0 var(--gutter); }
+
+.expert {
+  display: flex; flex-direction: column; overflow: hidden; border-radius: 12px;
+  background: #fff; color: var(--ink); text-decoration: none;
+  border: 1px solid var(--line-2); box-shadow: var(--shadow-up);
+  transition: transform 300ms var(--ease), box-shadow 300ms, opacity 300ms;
+}
+.portrait {
+  position: relative; display: block; aspect-ratio: 4 / 5; overflow: hidden;
+  background: radial-gradient(120% 90% at 50% 10%, #2e5bb8, #142f6c 60%, #0b1d4a);
+}
+.portrait::before { content: ""; position: absolute; inset: 0; background: url(../img/engraving-white.webp) center / 170% no-repeat; opacity: .14; }
+.portrait-sarah { background: radial-gradient(120% 90% at 50% 10%, #c45479, #7f2a4a 62%, #4b1830); }
+.portrait-empty { position: absolute; inset: 0; display: grid; place-items: center; }
+.portrait-empty .plate-sm { width: 38%; height: auto; aspect-ratio: 1; margin: 0; font-size: clamp(1.6rem, 4vw, 3.2rem); }
+.portrait img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 15%; transition: transform 700ms var(--ease); }
+.expert-body { display: flex; flex-direction: column; gap: 4px; flex: 1; padding: clamp(16px, 2.4vw, 26px); border-top: 3px solid var(--gold); }
+.expert-k { font: 700 .76rem var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--cobalt); }
+.expert-clinic .expert-k { color: var(--rose); }
+.expert-name { display: block; font: 400 clamp(1.25rem, 2.4vw, 1.9rem)/1.15 var(--display); }
+.expert-role { display: block; font-weight: 700; font-size: .9rem; color: var(--ink-2); }
+.expert-line { color: var(--ink-2); margin: 8px 0 16px; flex: 1; }
+.expert-go { align-self: flex-start; }
+@media (hover: hover) and (pointer: fine) {
+  .expert:hover { transform: translateY(-6px); box-shadow: 0 30px 60px -20px rgba(11, 29, 74, .45); }
+  .expert:hover .portrait img { transform: scale(1.04); }
+  .experts-grid:hover .expert:not(:hover) { opacity: .8; }
+  .expert-finance:hover .expert-go { background: var(--navy); }
+  .expert-clinic:hover .expert-go { background: var(--rose-2); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .expert:hover, .expert:hover .portrait img { transform: none; }
+}
+
+/* About and contact on the home page */
+.about { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: clamp(24px, 5vw, 72px); align-items: center; }
+.about .sec-head { margin-bottom: 0; }
+.about-plate .plate-disc { width: min(100%, 340px); }
+.contact-sec { padding-top: 0; }
+.contact { text-align: center; padding: clamp(30px, 5vw, 56px); border-radius: 30px; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow); }
+.contact h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 12px; }
+.contact p { color: var(--ink-2); font-size: 1.1rem; }
+.contact .hero-ctas { justify-content: center; }
+
+/* Cross-link between the two sides */
+.cross-sec { padding-top: 0; }
+.cross { display: grid; grid-template-columns: 180px minmax(0, 1fr); align-items: stretch; overflow: hidden; border-radius: 20px; background: #fff; border: 1px solid var(--line-2); color: var(--ink); text-decoration: none; box-shadow: var(--shadow); transition: transform 260ms var(--ease), box-shadow 260ms; }
+.cross .portrait { aspect-ratio: auto; min-height: 200px; }
+.cross .portrait-empty .plate-sm { width: 56%; font-size: 1.8rem; }
+.cross-text { display: flex; flex-direction: column; gap: 6px; justify-content: center; padding: clamp(20px, 3vw, 32px); }
+.cross-k { font: 700 .76rem var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--rose); }
+.cross-finance .cross-k { color: var(--cobalt); }
+.cross-h { font: 400 clamp(1.4rem, 2.6vw, 2rem)/1.15 var(--display); }
+.cross-p { color: var(--ink-2); max-width: 60ch; }
+.cross-go { font-weight: 700; color: var(--cobalt); margin-top: 6px; }
+.cross-go::after { content: " →"; }
+@media (hover: hover) and (pointer: fine) { .cross:hover { transform: translateY(-3px); box-shadow: var(--shadow-up); } }
+
+/* =========================================================
+   Clinic and products
+   ========================================================= */
+.clinic-hero .wrap { position: relative; z-index: 1; }
+.clinic-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 340px) minmax(0, 1fr); gap: clamp(14px, 3vw, 36px); align-items: center; }
+.clinic-sarah { margin: 0; display: grid; gap: 12px; text-align: center; }
+.clinic-sarah .portrait { border-radius: 12px; box-shadow: var(--shadow-up); outline: 1px solid var(--gold); outline-offset: 6px; }
+.door {
+  display: flex; flex-direction: column; gap: 14px; padding: clamp(22px, 3vw, 32px); border-radius: 20px;
+  background: rgba(255,255,255,.92); border: 1px solid var(--line-2); color: var(--ink); text-decoration: none; box-shadow: var(--shadow);
+  transition: transform 260ms var(--ease), box-shadow 260ms;
+}
+.door-k { font: 400 clamp(1.5rem, 2.6vw, 2.1rem)/1.1 var(--display); }
+.door-pat .door-k { color: var(--rose); }
+.door-pro .door-k { color: var(--cobalt); }
+.door-list { display: grid; gap: 8px; }
+.door-list span { position: relative; padding: 10px 12px 10px 36px; border-radius: 12px; background: #f1f4fb; font-weight: 600; font-size: .95rem; }
+.door-pat .door-list span { background: #fbf0f3; }
+.door-list span::before { content: ""; position: absolute; left: 12px; top: 50%; width: 12px; height: 12px; margin-top: -6px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 3px #fff; }
+.door-go { font-weight: 700; color: var(--cobalt); }
+.door-pat .door-go { color: var(--rose); }
+.door-go::after { content: " ↓"; }
+@media (hover: hover) and (pointer: fine) { .door:hover { transform: translateY(-4px); box-shadow: var(--shadow-up); } }
+.alliance-sec { padding-top: clamp(64px, 9vw, 120px); }
+.alliance-draft { margin-top: 28px; }
+.foot-links a { font-weight: 600; }
+
+@media (max-width: 860px) {
+  .about { grid-template-columns: 1fr; }
+  .about-plate { justify-self: center; }
+  .clinic-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .clinic-sarah { grid-column: 1 / -1; grid-row: 1; justify-self: center; width: min(70vw, 300px); }
+}
+@media (max-width: 560px) {
+  .expert-body { padding: 12px 12px 14px; }
+  .expert-k { font-size: .68rem; letter-spacing: .1em; }
+  .expert-line { font-size: .88rem; margin: 6px 0 12px; }
+  .expert-go { align-self: stretch; padding: 0 10px; font-size: .86rem; }
+  .cross { grid-template-columns: 110px minmax(0, 1fr); }
+  .cross .portrait { min-height: 160px; }
+  .clinic-grid { grid-template-columns: 1fr; }
+  .door-k { font-size: 1.5rem; }
+}
