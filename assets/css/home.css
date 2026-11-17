@@ -605,3 +605,33 @@ input[type="range"]::-moz-range-thumb { width: 14px; height: 14px; border-radius
   .clinic-grid { grid-template-columns: 1fr; }
   .door-k { font-size: 1.5rem; }
 }
+
+/* Home hero fits the first screen on every device: the head takes its own height and
+   the two cards share the rest, with the portraits shrinking to fit. */
+.experts {
+  display: flex; flex-direction: column;
+  height: max(100vh, 560px); height: max(100svh, 560px);
+  padding: calc(64px + clamp(12px, 2.5vh, 28px)) 0 clamp(14px, 3vh, 32px);
+}
+.experts-head { flex: none; margin-bottom: clamp(12px, 2.6vh, 30px); }
+.experts-logo { width: clamp(48px, 9vh, 104px); margin-bottom: clamp(4px, 1vh, 12px); }
+.experts-head h1 { font-size: clamp(2rem, min(5.6vw, 7.5vh), 4.4rem); margin-bottom: clamp(4px, 1vh, 12px); }
+.experts-head p { font-size: clamp(.95rem, 2.1vh, 1.15rem); max-width: 60ch; }
+.experts-grid { flex: 1 1 auto; min-height: 0; width: 100%; }
+.expert { min-height: 0; }
+.expert .portrait { aspect-ratio: auto; flex: 1 1 0; min-height: 72px; }
+.expert .portrait-empty .plate-sm { width: auto; height: 46%; max-height: 150px; }
+.expert-body { flex: none; padding-block: clamp(10px, 2vh, 24px); }
+.expert-line { flex: none; margin: 6px 0 12px; }
+@media (max-height: 800px), (max-width: 560px) { .expert-line { display: none; } .expert-go { margin-top: 10px; } }
+@media (max-height: 640px) { .expert-role { display: none; } }
+/* Both cards share one row grid so the portraits and the text blocks line up. */
+@supports (grid-template-rows: subgrid) {
+  .experts-grid { grid-template-rows: minmax(0, 1fr) auto; row-gap: 0; }
+  .expert { display: grid; grid-row: span 2; grid-template-rows: subgrid; }
+  .expert .portrait { min-height: 72px; }
+}
+@media (max-width: 380px) { .expert-go { font-size: .8rem; padding: 0 8px; } }
+.expert .expert-go { margin-top: auto; }
+.expert-line { margin-bottom: 14px; }
+.expert .expert-name { font-size: clamp(1.2rem, min(2.2vw, 3.6vh), 1.75rem); }
