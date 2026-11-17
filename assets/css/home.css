@@ -541,6 +541,7 @@ input[type="range"]::-moz-range-thumb { width: 14px; height: 14px; border-radius
 /* About and contact on the home page */
 .about { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: clamp(24px, 5vw, 72px); align-items: center; }
 .about .sec-head { margin-bottom: 0; }
+.about-plate { grid-area: auto; }
 .about-plate .plate-disc { width: min(100%, 340px); }
 .contact-sec { padding-top: 0; }
 .contact { text-align: center; padding: clamp(30px, 5vw, 56px); border-radius: 30px; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow); }
@@ -685,4 +686,29 @@ input[type="range"]::-moz-range-thumb { width: 14px; height: 14px; border-radius
 @supports not (height: 1cqh) {
   .experts-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .expert { height: auto; max-width: none; }
+}
+
+/* Tile wall: every picture is square so the labels line up across a row,
+   and the label strip takes whatever height is left. */
+.dtile:not(.dtile-big) .dtile-art { flex: none; aspect-ratio: 1; min-height: 0; }
+.dtile-label { flex: 1; align-content: start; }
+
+/* Phones: tighter section spacing. */
+@media (max-width: 560px) {
+  section { padding: 52px 0; }
+  .tiles-sec { padding-top: 36px; }
+  .sec-head { margin-bottom: 22px; }
+  .about { gap: 24px; }
+  .about-plate .plate-disc { width: min(72vw, 280px); }
+}
+.foot-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 2px 22px; }
+/* Phones: steps sit as rows (tile left, text right), and the faint drawings behind
+   text on cards are dropped since they sat under the words. */
+@media (max-width: 560px) {
+  .steps { gap: 18px; }
+  .steps li { display: grid; grid-template-columns: 84px minmax(0, 1fr); column-gap: 16px; align-items: start; }
+  .steps .step-tile { grid-row: span 2; width: 84px; margin: 0; }
+  .steps .step-tile b { width: 28px; height: 28px; font-size: .95rem; left: 6px; bottom: 6px; }
+  .steps h3 { margin: 4px 0 4px; }
+  .map-tile, .pat-store img { display: none; }
 }
