@@ -47,7 +47,7 @@
   const MAP = {
     equipment: { tile: "tile-microscope-r", amt: 50000, years: 5,
       h: "Equipment",
-      p: "Lasers, HIFU, RF and IPL devices, bought or leased.",
+      p: "Lasers, HIFU, RF and IPL devices, financed or leased so you keep cash in the clinic.",
       l: ["Buying or leasing", "Repayment period against the device's working life", "Treatments a month to cover the repayment"] },
     expand: { tile: "tile-cells-tr", amt: 120000, years: 7,
       h: "New treatment room",
@@ -59,8 +59,8 @@
       l: ["A short loan or a credit line", "What the repayment does to your monthly figures", "How long until the renovation pays for itself"] },
     start: { tile: "tile-dna-top", amt: 250000, years: 10,
       h: "New clinic",
-      p: "A first clinic needs a business plan and a first-year forecast before a bank will lend.",
-      l: ["Business plan and first-year forecast", "How much of your own money goes in", "What the bank asks a new clinic for"] },
+      p: "Financing for the equipment, the fit-out, stock and working capital of a first clinic.",
+      l: ["Business plan and first-year forecast the bank will accept", "How much of your own money goes in", "What the bank asks a new clinic for"] },
     premises: { tile: "tile-cell-tl", amt: 450000, years: 10,
       h: "Clinic premises",
       p: "Buying your clinic building or refinancing the one you own. Our financing partner handles this.",
@@ -94,6 +94,7 @@
     });
   });
   $$(".map-chips .chip").forEach((c) => c.addEventListener("click", () => pick(c.dataset.key)));
+  $$("[data-pick]").forEach((a) => a.addEventListener("click", () => pick(a.dataset.pick)));
   $("#m-go").addEventListener("click", () => {
     const d = MAP[current];
     amount.value = d.amt;
