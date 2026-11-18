@@ -712,3 +712,14 @@ input[type="range"]::-moz-range-thumb { width: 14px; height: 14px; border-radius
   .steps h3 { margin: 4px 0 4px; }
   .map-tile, .pat-store img { display: none; }
 }
+
+/* New logo (Nov 2026): the full lockup sits in the header, the hero and the footer;
+   the microscope, DNA and tulip mark alone sits on the porcelain plates. */
+.brand img { width: auto; height: 40px; }
+.brand span { display: none; }
+.experts-logo { width: auto; height: clamp(56px, 13vh, 140px); max-width: 86vw; margin: 0 auto clamp(8px, 1.6vh, 18px); }
+.plate-disc img { width: 58%; }
+.form-head img { width: auto; height: 40px; }
+.brand-light { background: #fff; padding: 12px 20px; border-radius: 14px; box-shadow: 0 10px 30px rgba(0,0,0,.25); }
+.brand-light img { background: none; border-radius: 0; padding: 0; width: auto; height: 46px; }
+@media (max-width: 560px) { .brand img { height: 34px; } }
