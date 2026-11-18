@@ -848,3 +848,8 @@ input[type="range"]::-moz-range-thumb { width: 14px; height: 14px; border-radius
 @media (max-width: 860px) { .people { grid-template-columns: 1fr; } }
 .about-sec, .meet-sec { padding: clamp(48px, 7vw, 88px) 0; }
 .pat-store img { opacity: .16; }
+/* Who we are: the founders' photo */
+.founders { margin: 0; justify-self: center; width: min(100%, 440px); }
+.founders img { width: 100%; height: auto; border-radius: 18px; box-shadow: var(--shadow-up); outline: 1px solid var(--gold); outline-offset: 6px; }
+.founders figcaption { margin-top: 14px; text-align: center; font: 400 1rem/1.4 var(--display); color: var(--navy); }
+.meet-photo img { object-position: 50% 10%; }
