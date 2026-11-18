@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ask Erik | Alaga Aesthetics</title>
+<meta name="description" content="Erik Jan Bosselaar answers clinic owners' questions about financing equipment, a new room, a new clinic and clinic premises.">
+<meta name="theme-color" content="#F4F7FC">
+<link rel="icon" href="../assets/img/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+<link rel="stylesheet" href="../assets/css/fonts.css">
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="stylesheet" href="../ask/ask.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="bar">
+  <a class="brand" href="../" aria-label="Alaga Aesthetics home">
+    <img src="../assets/img/logo-mark-160.webp" alt="" class="brand-mark">
+    <span class="brand-name">Alaga Aesthetics</span>
+  </a>
+  <nav class="bar-nav" aria-label="Main">
+    <a href="../finance/">Alaga Finance</a>
+    <a href="../alliance/">Clinical Alliance</a>
+    <a href="../skin-concierge/">Skin Concierge</a>
+    <a href="../ask-erik/" aria-current="page">Ask Erik</a>
+    <a href="../ask/">Ask Dr. Sarah</a>
+    <a href="../#contact">Contact</a>
+  </nav>
+</header>
+
+<main id="main" class="ask ask-erik" data-who="Erik Jan" data-key="alaga.questions.erik" data-products="off">
+  <aside class="desk" aria-labelledby="ask-h">
+    <figure class="desk-photo"><img src="../assets/img/experts/erik-office.webp" alt="Erik Jan Bosselaar" width="960" height="1200"></figure>
+    <h1 id="ask-h">Ask Erik</h1>
+    <p class="desk-who">Erik Jan Bosselaar, co-founder and registered financial adviser</p>
+    <p>Send him a question about financing your clinic: equipment, a new room, a new clinic or your premises. The ones many people ask end up on this board, without your name. The rest he answers by email, in the order they come in.</p>
+
+    <form class="ask-form" data-ask novalidate>
+      <label for="q">Your question</label>
+      <textarea id="q" name="q" rows="4" required placeholder="Example: Should I lease a laser or buy it with a loan?"></textarea>
+      <label for="about">It's about</label>
+      <select id="about" name="about" data-about>
+        <option value="Equipment">Equipment</option>
+        <option value="A new room">A new treatment room</option>
+        <option value="A new clinic">A new clinic</option>
+        <option value="Premises">Clinic premises</option>
+        <option value="">Something else</option>
+      </select>
+      <label for="email">Email for the answer</label>
+      <input id="email" name="email" type="email" autocomplete="email" required placeholder="name@clinic.nl">
+      <label class="ask-ok"><input type="checkbox" name="publish" checked> Erik Jan may put my question on the board, without my name</label>
+      <button type="submit" class="btn btn-cobalt">Send to Erik Jan</button>
+      <p class="ask-msg" data-ask-msg role="status"></p>
+      <p class="ask-fine">Preview: questions aren't sent yet. For a full look at your plans, book a <a href="../finance/#consult">complimentary consultation</a>.</p>
+    </form>
+
+    <div class="mine" data-mine hidden>
+      <h2>Your questions</h2>
+      <ul data-mine-list></ul>
+    </div>
+  </aside>
+
+  <section class="board" aria-labelledby="board-h">
+    <h2 id="board-h" class="visually-hidden">Answered questions</h2>
+    <div class="board-tools">
+      <label class="search"><span class="visually-hidden">Search the answers</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input type="search" placeholder="Search the answers" data-search>
+      </label>
+      <div class="chips" role="group" aria-label="Topics" data-topics></div>
+    </div>
+    <div class="tiles" data-tiles></div>
+    <p class="board-empty" data-empty hidden>No answer matches that yet. Ask it on the left and it may end up here.</p>
+    <p class="board-fine">Sample answers for the preview. Erik Jan writes or approves every answer before the board goes live. Answers here are general information and don't replace advice on your own situation.</p>
+  </section>
+</main>
+
+<footer class="foot">
+  <img src="../assets/img/logo-mark-160.webp" alt="" class="foot-mark">
+  <p>© 2026 Alaga Aesthetics, the Netherlands.</p>
+  <a href="../privacy/">Privacy statement</a>
+</footer>
+
+<script src="erik-qa.js"></script>
+<script src="../ask/ask.js"></script>
+</body>
+</html>

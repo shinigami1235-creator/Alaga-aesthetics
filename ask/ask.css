@@ -52,12 +52,10 @@
   .tile { animation: tile-in 500ms var(--ease-out) both; animation-delay: calc(var(--i) * 45ms); }
 }
 @keyframes tile-in { from { opacity: 0; transform: translateY(10px); } }
-.tile-in {
-  all: unset; box-sizing: border-box; position: relative; display: block; width: 100%; height: 100%; cursor: pointer;
-  transform-style: preserve-3d; transition: transform 700ms var(--ease-in-out);
-}
-.tile-in[aria-expanded="true"] { transform: rotateY(180deg); }
-.tile-in:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 4px; border-radius: var(--r-lg); }
+.tile-card { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform 700ms var(--ease-in-out); }
+.tile.is-open .tile-card { transform: rotateY(180deg); }
+.tile-front { all: unset; box-sizing: border-box; cursor: pointer; }
+.tile-front:focus-visible, .tile-back:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 4px; }
 .tile-front, .tile-back {
   position: absolute; inset: 0; display: flex; flex-direction: column; gap: 10px; padding: 24px 26px; border-radius: var(--r-lg);
   backface-visibility: hidden; -webkit-backface-visibility: hidden; overflow: hidden;
@@ -72,8 +70,8 @@
   transition: box-shadow 260ms var(--ease-out);
 }
 @media (hover: hover) and (pointer: fine) {
-  .tile-in:hover .tile-front { box-shadow: inset 0 0 0 1px rgba(36,72,154,.25), var(--shadow-lift); }
-  .tile-in:not([aria-expanded="true"]):hover { transform: translateY(-3px) rotateX(2deg); }
+  .tile-front:hover { box-shadow: inset 0 0 0 1px rgba(36,72,154,.25), var(--shadow-lift); }
+  .tile:not(.is-open) .tile-card:hover { transform: translateY(-3px) rotateX(2deg); }
 }
 .tile-topic { font: 700 .76rem var(--sans); letter-spacing: .1em; text-transform: uppercase; color: var(--ochre); }
 .tile-q { font: 400 clamp(1.3rem, 1.9vw, 1.6rem)/1.25 var(--display); color: var(--ink); text-wrap: balance; }
@@ -94,6 +92,7 @@
 .tile-sign { font: 400 1.25rem var(--display); color: #fff; margin-top: auto; }
 .tile-sign::before { content: "— "; }
 .tile-prods { display: flex; flex-wrap: wrap; gap: 6px; }
+.tile-close { align-self: flex-start; border: 0; background: rgba(255,255,255,.14); color: #fff; font: 700 .86rem var(--sans); padding: 8px 14px; border-radius: 999px; cursor: pointer; min-height: 36px; }
 .tile-prods a { font-weight: 700; font-size: .86rem; color: var(--cobalt); background: #fff; padding: 5px 11px; border-radius: 999px; text-decoration: none; }
 
 .board-empty { padding: 24px; border-radius: var(--r-lg); background: var(--tile); color: var(--ink-soft); }
@@ -109,3 +108,8 @@
   .tile, .tile.is-featured { height: 300px; }
   .is-featured .tile-front::after { display: none; }
 }
+
+/* Portrait on the desk (Ask Dr. Sarah and Ask Erik) */
+.desk-photo { margin: 0 0 6px; aspect-ratio: 4 / 5; max-height: 360px; border-radius: 16px; overflow: hidden; outline: 1px solid #b08840; outline-offset: 5px; background: #eef1f8; }
+.desk-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 15%; display: block; }
+@media (max-width: 900px) { .desk-photo { max-height: 300px; aspect-ratio: auto; height: 300px; } }

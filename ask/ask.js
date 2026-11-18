@@ -2,6 +2,8 @@
    The form is a preview: questions are kept on this device until the backend sends them on. */
 (function () {
   const QA = window.ALAGA_QA, P = window.ALAGA_PRODUCTS || [];
+  const BOARD = document.querySelector('main.ask');
+  const WHO = BOARD.dataset.who || 'Dr. Sarah';
   const $ = (s, el = document) => el.querySelector(s), $$ = (s, el = document) => [...el.querySelectorAll(s)];
   const esc = s => String(s).replace(/[&<>"]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]));
   const fmt = d => new Date(d + 'T12:00:00').toLocaleDateString('en-GB', {day: 'numeric', month: 'short'});
@@ -24,43 +26,54 @@
     const prods = (x.product || []).map(id => P.find(p => p.id === id)).filter(Boolean)
       .map(p => `<a href="../store/?p=${p.id}">${esc(p.name)}</a>`).join('');
     return `<article class="tile${x.featured && !term && topic === 'All' ? ' is-featured' : ''}" style="--i:${i}">
-      <button type="button" class="tile-in" aria-expanded="false" aria-controls="a-${x.id}">
-        <span class="tile-front">
+      <div class="tile-card">
+        <button type="button" class="tile-front" aria-expanded="false" aria-controls="a-${x.id}">
           <span class="tile-topic">${esc(x.topic)}</span>
           <span class="tile-q">${esc(x.q)}</span>
-          <span class="tile-meta">${x.asked} people asked · answered ${fmt(x.date)}</span>
+          <span class="tile-meta">${x.asked ? x.asked + ' people asked · ' : ''}answered ${fmt(x.date)}</span>
           <span class="tile-turn" aria-hidden="true">Read the answer</span>
-        </span>
-        <span class="tile-back" id="a-${x.id}">
+        </button>
+        <div class="tile-back" id="a-${x.id}" role="region" aria-label="Answer to: ${esc(x.q)}" tabindex="0" inert>
           <span class="tile-q-sm">${esc(x.q)}</span>
           <span class="tile-a">${esc(x.a)}</span>
-          <span class="tile-sign">Dr. Sarah</span>
+          <span class="tile-sign">${esc(WHO)}</span>
           ${prods ? `<span class="tile-prods">${prods}</span>` : ''}
-        </span>
-      </button>
+          <button type="button" class="tile-close">Back to the question</button>
+        </div>
+      </div>
     </article>`;
   }
   function render(){
     const list = QA.filter(x => (topic === 'All' || x.topic === topic) &&
       (!term || (x.q + ' ' + x.a + ' ' + x.topic).toLowerCase().includes(term)))
-      .sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0) || b.asked - a.asked);
+      .sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0) || (b.asked || 0) - (a.asked || 0));
     $('[data-tiles]').innerHTML = list.map(tile).join('');
     $('[data-empty]').hidden = list.length > 0;
   }
   // tiles turn over to show the answer; one open at a time
+  function setOpen(t, open){
+    t.classList.toggle('is-open', open);
+    t.querySelector('.tile-front').setAttribute('aria-expanded', String(open));
+    t.querySelector('.tile-back').inert = !open;
+  }
   $('[data-tiles]').addEventListener('click', e => {
-    if (e.target.closest('a')) return;
-    const b = e.target.closest('.tile-in');
-    if (!b) return;
-    const open = b.getAttribute('aria-expanded') !== 'true';
-    $$('.tile-in[aria-expanded="true"]').forEach(x => x !== b && x.setAttribute('aria-expanded', 'false'));
-    b.setAttribute('aria-expanded', String(open));
+    const front = e.target.closest('.tile-front'), close = e.target.closest('.tile-close');
+    if (front) {
+      const t = front.closest('.tile');
+      $$('.tile.is-open').forEach(x => x !== t && setOpen(x, false));
+      setOpen(t, true);
+      t.querySelector('.tile-back').focus({preventScroll: true});
+    } else if (close) {
+      const t = close.closest('.tile');
+      setOpen(t, false);
+      t.querySelector('.tile-front').focus({preventScroll: true});
+    }
   });
   render();
 
   /* ---------- the form ---------- */
   const about = $('[data-about]');
-  about.insertAdjacentHTML('beforeend', [
+  if (P.length && BOARD.dataset.products !== 'off') about.insertAdjacentHTML('beforeend', [
     '<option value="Skin check results">My skin check results</option>',
     '<option value="After a treatment">The weeks after a treatment</option>',
     '<optgroup label="A product">' + P.filter(p => p.shelf === 'skin').map(p => `<option value="${esc(p.name)}" data-id="${p.id}">${esc(p.name)}</option>`).join('') + '</optgroup>',
@@ -76,12 +89,12 @@
   }
   if (params.get('from') === 'skin-check') about.value = 'Skin check results';
 
-  const KEY = 'alaga.questions';
+  const KEY = BOARD.dataset.key || 'alaga.questions';
   const load = () => { try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch (e) { return []; } };
   function mine(){
     const list = load();
     $('[data-mine]').hidden = !list.length;
-    $('[data-mine-list]').innerHTML = list.map(x => `<li><span>${esc(x.q)}</span><small>Waiting for Dr. Sarah · ${esc(x.about || 'General')}</small></li>`).join('');
+    $('[data-mine-list]').innerHTML = list.map(x => `<li><span>${esc(x.q)}</span><small>Waiting for ${esc(WHO)} · ${esc(x.about || 'General')}</small></li>`).join('');
   }
   mine();
 
@@ -94,7 +107,7 @@
     list.unshift({q, about: about.value, at: Date.now()});
     try { localStorage.setItem(KEY, JSON.stringify(list.slice(0, 10))); } catch (err) {}
     $('#q').value = '';
-    msg.textContent = 'Saved on this device. In the preview nothing is sent to Dr. Sarah yet.';
+    msg.textContent = `Saved on this device. In the preview nothing is sent to ${WHO} yet.`;
     mine();
   });
 })();

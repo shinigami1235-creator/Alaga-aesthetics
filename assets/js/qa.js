@@ -47,7 +47,7 @@ window.ALAGA_QA = [
   {
     id: "no-code", topic: "Orders and codes", date: "2026-10-16", asked: 12,
     q: "Can I order without a doctor code?",
-    a: "Yes. Everything in the skincare shop is open to everyone at the normal price. The code only adds the discount and the link to your clinic."
+    a: "Yes. Everything in the skincare shop is open to everyone at the normal price. The code only links your order to your clinic."
   },
   {
     id: "buy-plla", topic: "Treatments", date: "2026-10-14", asked: 21,

@@ -11,9 +11,9 @@
   --cobalt-deep: #1a3678;
   --ink: #0b1d4a;
   --ink-soft: #414d75;
-  --blush: #f6dde1;
-  --blush-deep: #eec6cd;
-  --blush-ink: #883451;
+  --blush: #f5ecda;
+  --blush-deep: #e8d5ae;
+  --blush-ink: #7a5414;
   --ochre: #d9a441;
 
   --display: "Marcellus", "Times New Roman", serif;
@@ -149,7 +149,7 @@ p { margin: 0 0 1em; text-wrap: pretty; }
 .btn-blush { background: var(--blush-deep); color: var(--ink); }
 @media (hover: hover) and (pointer: fine) {
   .btn-cobalt:hover { background: var(--cobalt-deep); }
-  .btn-blush:hover { background: #e9b7c0; }
+  .btn-blush:hover { background: #dcc391; }
 }
 
 /* ---------- Sections ---------- */

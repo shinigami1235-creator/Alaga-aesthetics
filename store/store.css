@@ -171,7 +171,7 @@ section.scope { max-width: 1280px; padding-top: clamp(28px, 4vw, 48px); }
   font: 700 .74rem var(--sans); letter-spacing: .06em; opacity: .55; transition: opacity 200ms ease;
 }
 .lane-bar.is-am { background: linear-gradient(90deg, var(--ochre), #e7bd67); color: var(--ink); }
-.lane-bar.is-pm { background: linear-gradient(90deg, var(--blush-ink), #a64a6b); }
+.lane-bar.is-pm { background: linear-gradient(90deg, var(--blush-ink), #b08840); }
 .lane-bar.is-today { opacity: 1; }
 @media (prefers-reduced-motion: no-preference) {
   .plan-lanes li .lane-bar { animation: grow 600ms var(--ease-out) both; animation-delay: calc(var(--i) * 70ms); transform-origin: left; }
@@ -207,7 +207,7 @@ section.scope { max-width: 1280px; padding-top: clamp(28px, 4vw, 48px); }
 .code-steps li { display: grid; gap: 8px; align-content: start; justify-items: start; padding: 24px; border-radius: var(--r-lg); background: var(--tile); box-shadow: var(--shadow-soft); color: var(--ink-soft); }
 .code-steps strong { font: 400 1.3rem/1.2 var(--display); color: var(--ink); }
 .code-chip { font: 800 .95rem ui-monospace, "SFMono-Regular", Menlo, monospace; letter-spacing: .06em; color: var(--cobalt); padding: 6px 12px; border-radius: 10px; border: 1.5px dashed #9fb0dc; background: #fff; margin-bottom: 6px; }
-.code-chip.is-off { color: var(--blush-ink); border-color: var(--blush-deep); background: #fdf3f5; }
+.code-chip.is-off { color: var(--blush-ink); border-color: var(--blush-deep); background: #fbf6ec; }
 .code-chip.is-link { color: #8a6417; border-color: #e7cf98; background: #fdf8ec; }
 
 /* ---------- Professional cabinet ---------- */
