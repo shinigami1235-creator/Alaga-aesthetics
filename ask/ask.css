@@ -145,3 +145,10 @@
 .profile-text h3 { font: 400 1.35rem var(--display); color: var(--cobalt); margin: 14px 0 0; padding-bottom: 8px; border-bottom: 1px solid #b08840; }
 .profile-text h3:first-child { margin-top: 0; }
 .profile-text p { margin: 0; color: var(--ink-soft); line-height: 1.7; }
+
+/* Profile paragraphs: justified, with hyphenation so the gaps between words stay even */
+@media (min-width: 700px) {
+.profile-head p:not(.profile-cred):not(.profile-fields),
+.profile-text p { text-align: justify; text-justify: inter-word; hyphens: auto; -webkit-hyphens: auto; hyphenate-limit-chars: 7 3 3; }
+}
+.profile-text { max-width: 760px; }
