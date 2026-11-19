@@ -1,3 +1,6 @@
 .impeccable/
 .DS_Store
 _lab/
+mock-*.html
+finance/mock-*.html
+assets/img/experts/*-thumb.webp
