@@ -113,3 +113,30 @@
 .desk-photo { margin: 0 0 6px; aspect-ratio: 4 / 5; max-height: 360px; border-radius: 16px; overflow: hidden; outline: 1px solid #b08840; outline-offset: 5px; background: #F0F2F6; }
 .desk-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 15%; display: block; }
 @media (max-width: 900px) { .desk-photo { max-height: 300px; aspect-ratio: auto; height: 300px; } }
+
+/* Dr. Sarah's profile, from her speaker profile (Nov 2026) */
+.desk-cred { margin: -6px 0 0; font-size: .8rem; letter-spacing: .08em; color: #8A6528; font-weight: 700; }
+.desk-more { justify-self: start; font-weight: 700; font-size: .92rem; color: var(--cobalt); }
+.profile { padding: 0 var(--gutter) clamp(64px, 9vw, 112px); }
+.profile-in { max-width: 1280px; margin: 0 auto; display: grid; gap: clamp(22px, 3vw, 34px); padding: clamp(24px, 3.4vw, 48px); border-radius: var(--r-xl); background: var(--tile); box-shadow: var(--shadow-soft); scroll-margin-top: 90px; }
+.profile-head { display: grid; gap: 10px; max-width: 760px; }
+.profile-head h2 { font: 400 clamp(1.9rem, 3.2vw, 2.6rem)/1.1 var(--display); color: var(--cobalt); margin: 0; }
+.profile-head p { margin: 0; color: var(--ink-soft); }
+.profile-cred { font-weight: 700; color: var(--ink) !important; }
+.profile-fields { color: #8A6528 !important; font-weight: 700; font-size: .95rem; }
+.profile-stats { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.profile-stats li { padding: 18px 16px; border-radius: var(--r-md); background: var(--cobalt); color: #fff; border-bottom: 3px solid #b08840; }
+.profile-stats b { display: block; font: 400 clamp(1.8rem, 3vw, 2.4rem)/1 var(--display); color: #fff; }
+.profile-stats span { display: block; margin-top: 6px; font-size: .86rem; color: rgba(255,255,255,.82); }
+.profile-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(18px, 2.4vw, 32px); }
+.profile-block h3 { font: 400 1.3rem var(--display); color: var(--cobalt); margin: 0 0 10px; padding-bottom: 8px; border-bottom: 1px solid #b08840; }
+.profile-block h3:not(:first-child) { margin-top: 22px; }
+.profile-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.profile-list li { display: grid; gap: 2px; font-size: .93rem; line-height: 1.45; }
+.profile-list b { color: var(--ink); }
+.profile-list span { color: var(--ink-soft); }
+.profile-list i { font-style: normal; font-size: .82rem; font-weight: 700; color: #8A6528; }
+.profile-chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.profile-chips li { padding: 7px 14px; border-radius: 999px; border: 1px solid var(--line); background: #fff; font-size: .9rem; color: var(--ink); }
+@media (max-width: 980px) { .profile-grid { grid-template-columns: 1fr 1fr; } .profile-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .profile-grid { grid-template-columns: 1fr; } }
