@@ -34,19 +34,19 @@
      card shows what to check before signing. */
   if ($(".map")) {
     const MAP = {
-      equipment: { tile: "tile-microscope-r", h: "Equipment",
+      equipment: { tile: "https://images.unsplash.com/photo-1689103722266-1f2f837145e7?ixlib=rb-4.1.0&auto=format&fit=crop&crop=entropy&cs=srgb&q=70&w=720&h=405", h: "Equipment",
         p: "Lasers, HIFU, RF and IPL devices, financed or leased so you keep cash in the clinic.",
         l: ["Buying or leasing", "Repayment period against the device's working life", "Treatments a month to cover the repayment"] },
-      expand: { tile: "tile-cells-tr", h: "New treatment room",
+      expand: { tile: "https://images.unsplash.com/photo-1630699144919-681cf308ae82?ixlib=rb-4.1.0&auto=format&fit=crop&crop=entropy&cs=srgb&q=70&w=720&h=405", h: "New treatment room",
         p: "A second room, a new team member or a new treatment line.",
         l: ["What the room earns in its first year", "Who works in it and how long the fit-out takes", "Cash to keep aside while it fills up"] },
-      fitout: { tile: "tile-tissue-bl", h: "Fit-out and working capital",
+      fitout: { tile: "https://images.unsplash.com/photo-1625585598750-3535fe40efb3?ixlib=rb-4.1.0&auto=format&fit=crop&crop=entropy&cs=srgb&q=70&w=720&h=405", h: "Fit-out and working capital",
         p: "A renovation, new interiors or cash for a slow quarter.",
         l: ["A short loan or a credit line", "What the repayment does to your monthly figures", "How long until the renovation pays for itself"] },
-      start: { tile: "tile-dna-top", h: "New clinic",
+      start: { tile: "https://images.unsplash.com/photo-1762625570087-6d98fca29531?ixlib=rb-4.1.0&auto=format&fit=crop&crop=entropy&cs=srgb&q=70&w=720&h=405", h: "New clinic",
         p: "Financing for the equipment, the fit-out, stock and working capital of a first clinic.",
         l: ["Business plan and first-year forecast the bank will accept", "How much of your own money goes in", "What the bank asks a new clinic for"] },
-      premises: { tile: "tile-cell-tl", h: "Clinic premises",
+      premises: { tile: "https://images.unsplash.com/photo-1580679047231-7d32a0b78079?ixlib=rb-4.1.0&auto=format&fit=crop&crop=entropy&cs=srgb&q=70&w=720&h=405", h: "Clinic premises",
         p: "Buying your clinic building or refinancing the one you own, arranged through Hypotheekadvies Drechtsteden.",
         l: ["Buying or renting", "Business mortgage terms", "Refinancing your current mortgage"] },
     };
@@ -62,7 +62,7 @@
       card.classList.remove("is-in");
       void card.offsetWidth;
       card.classList.add("is-in");
-      const mt = $("#m-tile"); mt.src = mt.src.replace(/[^/]+\.webp$/, d.tile + ".webp");
+      const mt = $("#m-tile"); mt.src = d.tile;
       $("#m-h").textContent = d.h;
       $("#m-p").textContent = d.p;
       $("#m-l").innerHTML = d.l.map((x) => `<li>${x}</li>`).join("");

@@ -925,3 +925,8 @@ html.intro .home-logo { opacity: 0; }
 .intro-stage.is-video { aspect-ratio: 552 / 706; }
 .intro-stage video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
 .intro-stage .intro-still { opacity: 0; inset: auto; left: 2.54%; top: .99%; width: 96.01%; height: 92.07%; }
+
+/* Placeholder photos from Unsplash (Nov 2026): shown as photos, not as faint engravings */
+.step-tile img.is-photo { mix-blend-mode: normal; padding: 0; }
+.map-card .map-tile.is-photo { display: block !important; position: static !important; z-index: auto; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; opacity: 1; mix-blend-mode: normal; border-radius: 14px; margin: 0 0 14px; }
+.pat-store img.is-photo { display: block !important; position: static; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; opacity: 1; mix-blend-mode: normal; border-radius: 16px; margin-bottom: 6px; }
