@@ -715,14 +715,14 @@ input[type="range"]::-moz-range-thumb { width: 14px; height: 14px; border-radius
 
 /* New logo (Nov 2026): the full lockup sits in the header, the hero and the footer;
    the microscope, DNA and tulip mark alone sits on the porcelain plates. */
-.brand img { width: auto; height: 40px; }
+.brand img { width: auto; height: 46px; }
 .brand span { display: none; }
 .experts-logo { width: auto; height: clamp(56px, 13vh, 140px); max-width: 86vw; margin: 0 auto clamp(8px, 1.6vh, 18px); }
 .plate-disc img { width: 58%; }
 .form-head img { width: auto; height: 40px; }
 .brand-light { background: #fff; padding: 12px 20px; border-radius: 14px; box-shadow: 0 10px 30px rgba(0,0,0,.25); }
-.brand-light img { background: none; border-radius: 0; padding: 0; width: auto; height: 46px; }
-@media (max-width: 560px) { .brand img { height: 34px; } }
+.brand-light img { background: none; border-radius: 0; padding: 0; width: auto; height: 120px; }
+@media (max-width: 560px) { .brand img { height: 40px; } }
 
 /* =========================================================
    Rework, 18 Nov 2026: the red is gone (gold carries the warm side),
@@ -735,7 +735,7 @@ input[type="range"]::-moz-range-thumb { width: 14px; height: 14px; border-radius
 .home-hero { position: relative; overflow: hidden; margin-top: -64px; padding: calc(64px + clamp(18px, 3.5vh, 44px)) 0 clamp(20px, 4vh, 48px); min-height: max(100svh, 560px); display: flex; align-items: center; }
 .home-hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 120px; background: linear-gradient(transparent, var(--glaze)); pointer-events: none; }
 .home-hero-in { position: relative; z-index: 1; width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 var(--gutter); text-align: center; }
-.home-logo { width: auto; height: clamp(104px, 23vh, 250px); max-width: 88vw; margin: 0 auto clamp(8px, 2vh, 22px); }
+.home-logo { width: auto; height: clamp(150px, 30vh, 330px); max-width: 88vw; margin: 0 auto clamp(8px, 2vh, 20px); }
 .home-hero h1 { font-size: clamp(2.1rem, min(5vw, 7vh), 4rem); margin-bottom: clamp(6px, 1.2vh, 12px); }
 .home-sub { color: var(--ink-2); font-size: clamp(1rem, 2.1vh, 1.15rem); margin: 0 auto clamp(18px, 3.4vh, 36px); }
 .svc-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(10px, 1.6vw, 18px); text-align: left; }
