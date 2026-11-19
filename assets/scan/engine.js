@@ -201,7 +201,7 @@ export async function guessAge(work){
 }
 
 /* ---------- drawing a reading on the photo, in Alaga's cobalt, blush and ochre ---------- */
-const OCHRE = '#E9C77C', PERI = 'rgba(200,212,240,.95)', DARK = 'rgba(11,29,74,.5)';
+const OCHRE = '#E9C77C', PERI = 'rgba(200,212,240,.95)', DARK = 'rgba(16, 26, 52,.5)';
 export function paint(cv, work, raw, key){
   const {W, H} = raw, g = cv.getContext('2d'), L = work.L;
   cv.width = W; cv.height = H; g.clearRect(0, 0, W, H);
@@ -267,7 +267,7 @@ export function paint(cv, work, raw, key){
       const m = {x: (L[a].x + L[b].x) / 2, y: (L[a].y + L[b].y) / 2};
       g.font = '700 15px "Nunito Sans", sans-serif'; g.textAlign = 'center';
       const w = g.measureText(label).width + 12;
-      g.fillStyle = 'rgba(11,29,74,.75)'; g.beginPath(); g.roundRect(m.x - w / 2, m.y - 12, w, 22, 11); g.fill();
+      g.fillStyle = 'rgba(16, 26, 52,.75)'; g.beginPath(); g.roundRect(m.x - w / 2, m.y - 12, w, 22, 11); g.fill();
       g.fillStyle = '#fff'; g.fillText(label, m.x, m.y + 4);
     };
     tick(234, 454, mm && mm.faceWidth + ' mm');

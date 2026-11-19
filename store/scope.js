@@ -7,7 +7,7 @@
   window.AlagaScope.mount(canvas) returns { show(product), focus(level), thumb(product, size) }
 */
 (function () {
-  const COB = "#24489a", COB2 = "#5f7fd0", INK = "#0b1d4a", PERI = "#8a96c6";
+  const COB = "#20305E", COB2 = "#7889B7", INK = "#0E162A", PERI = "#98A0B8";
   const BLUSH = "#f6dde1", BLUSHD = "#eec6cd", BINK = "#883451", OCH = "#d9a441", HEMA = "#6c4f9e";
   const TAU = Math.PI * 2;
 
@@ -119,20 +119,20 @@
 
     // Floor shadow
     const sh = ctx.createRadialGradient(0, H / 2 + 0.07, 0, 0, H / 2 + 0.07, W * 0.85);
-    sh.addColorStop(0, "rgba(11,29,74,.25)"); sh.addColorStop(1, "rgba(11,29,74,0)");
+    sh.addColorStop(0, "rgba(16, 26, 52,.25)"); sh.addColorStop(1, "rgba(16, 26, 52,0)");
     ctx.save(); ctx.scale(1, 0.16); ctx.fillStyle = sh;
     ctx.beginPath(); ctx.arc(0, (H / 2 + 0.07) / 0.16, W * 0.85, 0, TAU); ctx.fill(); ctx.restore();
 
     // Side and top faces
-    ctx.fillStyle = pro ? "#183274" : "#cfd7ec";
+    ctx.fillStyle = pro ? "#172445" : "#D6DAE5";
     ctx.beginPath(); ctx.moveTo(x0 + W, y0); ctx.lineTo(x0 + W + D, y0 - D * 0.6); ctx.lineTo(x0 + W + D, y0 + H - D * 0.6); ctx.lineTo(x0 + W, y0 + H); ctx.fill();
-    ctx.fillStyle = pro ? "#3a62c0" : "#f2f5fc";
+    ctx.fillStyle = pro ? "#2F4276" : "#F4F6FA";
     ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x0 + D, y0 - D * 0.6); ctx.lineTo(x0 + W + D, y0 - D * 0.6); ctx.lineTo(x0 + W, y0); ctx.fill();
 
     // Front
     const fg = ctx.createLinearGradient(x0, y0, x0 + W, y0 + H);
-    if (pro) { fg.addColorStop(0, "#3159b8"); fg.addColorStop(0.6, COB); fg.addColorStop(1, "#1a3678"); }
-    else { fg.addColorStop(0, "#ffffff"); fg.addColorStop(0.6, "#f5f7fd"); fg.addColorStop(1, "#e6ebf7"); }
+    if (pro) { fg.addColorStop(0, "#293C71"); fg.addColorStop(0.6, COB); fg.addColorStop(1, "#182548"); }
+    else { fg.addColorStop(0, "#ffffff"); fg.addColorStop(0.6, "#F7F8FB"); fg.addColorStop(1, "#EAECF3"); }
     ctx.fillStyle = fg;
     ctx.fillRect(x0, y0, W, H);
 
@@ -156,7 +156,7 @@
     txt(ctx, p.no, tx + tw * 0.08, ty + th * 0.17, tw * 0.1, NS, "left");
     txt(ctx, p.dose, tx + tw * 0.92, ty + th * 0.17, tw * 0.1, NS, "right");
     txt(ctx, p.sym, tx + tw / 2, ty + th * 0.64, tw * (p.sym.length > 3 ? 0.28 : 0.38), MS);
-    ctx.fillStyle = pro ? "#d6def4" : "#414d75";
+    ctx.fillStyle = pro ? "#DDE1ED" : "#2E364A";
     txt(ctx, p.el, tx + tw / 2, ty + th * 0.85, tw * 0.075, '600 SIZE "Nunito Sans", sans-serif', "center", tw * 0.9);
     if (H > 0.55) {
       ctx.fillStyle = pro ? "#ffffff" : INK;
@@ -198,7 +198,7 @@
       for (let i = 0; i < 3; i++) { const a = -Math.PI / 2 + i * TAU / 3; ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(Math.cos(a) * 1.3, Math.sin(a) * 1.3); ctx.stroke(); }
       return;
     }
-    const bg = { gel: "#f7f2f8", liquid: "#f6f9ff", mineral: "#f8f8f6", powder: "#f6f4f7", spheres: "#f3f0f7", cream: "#fbfbfd" }[k];
+    const bg = { gel: "#f7f2f8", liquid: "#F8F9FD", mineral: "#f8f8f6", powder: "#f6f4f7", spheres: "#f3f0f7", cream: "#FBFCFD" }[k];
     ctx.fillStyle = bg; ctx.fillRect(-1.3, -1.3, 2.6, 2.6);
 
     if (k === "cream") {
@@ -249,7 +249,7 @@
         ctx.restore();
       } else if (k === "spheres") {
         const rad = 0.025 + b.r * 0.05;
-        atom(ctx, x, y, rad, b.k > 0.5 ? "#c9d3ef" : "#e8d3dc");
+        atom(ctx, x, y, rad, b.k > 0.5 ? "#D2D7E6" : "#e8d3dc");
         ctx.strokeStyle = "rgba(36,72,154,.35)"; ctx.lineWidth = 0.005; ctx.beginPath(); ctx.arc(x, y, rad, 0, TAU); ctx.stroke();
       }
     });
@@ -349,7 +349,7 @@
     } else if (s.kind === "surface") {
       ctx.fillStyle = "#fbf4f6"; ctx.fillRect(-1.3, -1.3, 2.6, 2.6);
       // Air above the skin
-      ctx.fillStyle = "#f4f7fc"; ctx.fillRect(-1.3, -1.3, 2.6, 0.62);
+      ctx.fillStyle = "#F6F7FA"; ctx.fillRect(-1.3, -1.3, 2.6, 0.62);
       s.cells.forEach((c) => {
         if (c.brick) {
           ctx.fillStyle = "rgba(240,206,214,.95)"; ctx.strokeStyle = "rgba(136,52,81,.4)"; ctx.lineWidth = 0.006;
@@ -386,7 +386,7 @@
       s.fibres.forEach((f) => fibre(ctx, f, t, Math.min(1, Math.max(0.15, grow - f.d * 0.4))));
       s.parts.forEach((p) => {
         if (p.k > 0.45) {
-          atom(ctx, p.x, p.y, p.r, "#c9d3ef");
+          atom(ctx, p.x, p.y, p.r, "#D2D7E6");
         } else {
           blob(ctx, p.x, p.y, p.r, p.pts, 0.7);
           ctx.fillStyle = "rgba(231,236,248,.95)"; ctx.fill(); ctx.strokeStyle = "rgba(36,72,154,.5)"; ctx.lineWidth = 0.006; ctx.stroke();
@@ -426,7 +426,7 @@
 
   function drawMol(ctx, s, t) {
     const bg = ctx.createRadialGradient(0, 0, 0.1, 0, 0, 1.3);
-    bg.addColorStop(0, "#ffffff"); bg.addColorStop(1, "#eef2fb");
+    bg.addColorStop(0, "#ffffff"); bg.addColorStop(1, "#F1F3F8");
     ctx.fillStyle = bg; ctx.fillRect(-1.3, -1.3, 2.6, 2.6);
     s.layers.forEach((L) => {
       const k = L.kind;
@@ -474,7 +474,7 @@
           const prev = pts[i - 1] || { x: c.x + Math.sin(t * 0.2 + c.ph) * 0.03, y: c.y };
           pts.push(i ? { x: prev.x + Math.cos(a) * 0.115, y: prev.y + Math.sin(a) * 0.115 } : prev);
         }
-        ctx.strokeStyle = "rgba(11,29,74,.45)"; ctx.lineWidth = 0.014;
+        ctx.strokeStyle = "rgba(16, 26, 52,.45)"; ctx.lineWidth = 0.014;
         ctx.beginPath(); pts.forEach((p, i) => (i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y))); ctx.stroke();
         if (c.cu) {
           const cx = pts.reduce((s, p) => s + p.x, 0) / pts.length, cy = pts.reduce((s, p) => s + p.y, 0) / pts.length + 0.05;
@@ -510,16 +510,16 @@
           const yy = c.y + Math.sin(u * 2 + c.ph + t * 0.25) * 0.08 + (i % 2 ? 0.035 : -0.035);
           pts.push({ x: u * Math.cos(c.a) - yy * Math.sin(c.a), y: u * Math.sin(c.a) + yy * Math.cos(c.a) });
         }
-        ctx.strokeStyle = "rgba(11,29,74,.55)"; ctx.lineWidth = 0.009;
+        ctx.strokeStyle = "rgba(16, 26, 52,.55)"; ctx.lineWidth = 0.009;
         ctx.beginPath(); pts.forEach((p, i) => (i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y))); ctx.stroke();
         pts.forEach((p, i) => {
           if (i % oEvery === 0) atom(ctx, p.x, p.y, 0.026, BINK);
-          else atom(ctx, p.x, p.y, 0.019, "#9aa5c2");
+          else atom(ctx, p.x, p.y, 0.019, "#A3A9B9");
           if (k === "plla" && i % 3 === 1) {
-            ctx.strokeStyle = "rgba(11,29,74,.45)"; ctx.lineWidth = 0.006;
+            ctx.strokeStyle = "rgba(16, 26, 52,.45)"; ctx.lineWidth = 0.006;
             const ny = i % 2 ? 0.05 : -0.05;
             ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p.x, p.y + ny); ctx.stroke();
-            atom(ctx, p.x, p.y + ny, 0.014, "#c3cad9");
+            atom(ctx, p.x, p.y + ny, 0.014, "#C8CBD4");
           }
         });
       });
@@ -555,7 +555,7 @@
     txt(ctx, label, 0, 0.77, 0.05, '700 SIZE "Nunito Sans", sans-serif');
     ctx.globalAlpha = 1;
     const v = ctx.createRadialGradient(0, 0, 0.72, 0, 0, 1.0);
-    v.addColorStop(0, "rgba(11,29,74,0)"); v.addColorStop(1, "rgba(11,29,74,.32)");
+    v.addColorStop(0, "rgba(16, 26, 52,0)"); v.addColorStop(1, "rgba(16, 26, 52,.32)");
     ctx.fillStyle = v; ctx.fillRect(-1.1, -1.1, 2.2, 2.2);
   }
 
@@ -574,7 +574,7 @@
     function drawLevel(p, l, t) {
       if (l === 0) {
         const g = ctx.createRadialGradient(0, -0.2, 0.1, 0, 0, 1.2);
-        g.addColorStop(0, "#ffffff"); g.addColorStop(1, "#e7ecf8");
+        g.addColorStop(0, "#ffffff"); g.addColorStop(1, "#EBEDF4");
         ctx.fillStyle = g; ctx.fillRect(-1.3, -1.3, 2.6, 2.6);
         drawProduct(ctx, p, t);
       } else if (l === 1) drawTexture(ctx, scene(p, 1), t);

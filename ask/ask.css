@@ -21,7 +21,7 @@
 .ask-form label { font-weight: 700; font-size: .92rem; margin-top: 6px; }
 .ask-form textarea, .ask-form input[type="email"], .ask-form select {
   width: 100%; font: 400 1rem/1.5 var(--sans); color: var(--ink); background: var(--glaze);
-  border: 1px solid #ccd4e7; border-radius: var(--r-sm); padding: 11px 13px; resize: vertical;
+  border: 1px solid #D2D6E1; border-radius: var(--r-sm); padding: 11px 13px; resize: vertical;
 }
 .ask-form :is(textarea, input, select):focus { outline: none; background: #fff; border-color: var(--cobalt); box-shadow: 0 0 0 4px rgba(36,72,154,.14); }
 .ask-ok { display: flex; gap: 10px; align-items: flex-start; font-weight: 600 !important; font-size: .9rem !important; color: var(--ink-soft); }
@@ -65,7 +65,7 @@
   background:
     radial-gradient(circle at 100% 0, transparent 0 46px, rgba(36,72,154,.9) 47px 49px, transparent 50px 60px, rgba(36,72,154,.35) 61px 62px, transparent 63px) ,
     radial-gradient(circle at 100% 0, rgba(36,72,154,.08) 0 46px, transparent 47px),
-    linear-gradient(160deg, #ffffff, #f3f6fd);
+    linear-gradient(160deg, #ffffff, #F5F7FB);
   box-shadow: inset 0 0 0 1px rgba(36,72,154,.12), var(--shadow-soft);
   transition: box-shadow 260ms var(--ease-out);
 }
@@ -76,14 +76,14 @@
 .tile-topic { font: 700 .76rem var(--sans); letter-spacing: .1em; text-transform: uppercase; color: var(--ochre); }
 .tile-q { font: 400 clamp(1.3rem, 1.9vw, 1.6rem)/1.25 var(--display); color: var(--ink); text-wrap: balance; }
 .is-featured .tile-q { font-size: clamp(1.6rem, 2.6vw, 2.2rem); max-width: 26ch; }
-.is-featured .tile-front::after { content: "Asked most this month"; position: absolute; right: 26px; bottom: 24px; font: 700 .76rem var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--cobalt); background: #e7ecf8; padding: 5px 10px; border-radius: 999px; }
+.is-featured .tile-front::after { content: "Asked most this month"; position: absolute; right: 26px; bottom: 24px; font: 700 .76rem var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--cobalt); background: #EBEDF4; padding: 5px 10px; border-radius: 999px; }
 .tile-meta { margin-top: auto; font-size: .86rem; color: var(--ink-soft); }
 .tile-turn { font-weight: 700; color: var(--cobalt); font-size: .92rem; display: inline-flex; align-items: center; gap: 6px; }
 .tile-turn::after { content: "↻"; font-size: 1.05rem; }
 
 /* back: cobalt glaze with her answer */
 .tile-back {
-  transform: rotateY(180deg); background: linear-gradient(160deg, #2c54ad, var(--cobalt) 55%, var(--cobalt-deep)); color: #e6ecfa;
+  transform: rotateY(180deg); background: linear-gradient(160deg, #26386A, var(--cobalt) 55%, var(--cobalt-deep)); color: #EBEDF5;
   box-shadow: inset 0 0 0 1px rgba(255,255,255,.14), var(--shadow-lift); overflow-y: auto;
 }
 .tile-q-sm { font: 700 .82rem var(--sans); color: #e9c77c; }
@@ -110,6 +110,6 @@
 }
 
 /* Portrait on the desk (Ask Dr. Sarah and Ask Erik) */
-.desk-photo { margin: 0 0 6px; aspect-ratio: 4 / 5; max-height: 360px; border-radius: 16px; overflow: hidden; outline: 1px solid #b08840; outline-offset: 5px; background: #eef1f8; }
+.desk-photo { margin: 0 0 6px; aspect-ratio: 4 / 5; max-height: 360px; border-radius: 16px; overflow: hidden; outline: 1px solid #b08840; outline-offset: 5px; background: #F0F2F6; }
 .desk-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 15%; display: block; }
 @media (max-width: 900px) { .desk-photo { max-height: 300px; aspect-ratio: auto; height: 300px; } }

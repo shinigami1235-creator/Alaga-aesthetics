@@ -322,7 +322,7 @@ section.pro { padding-bottom: clamp(72px, 10vw, 128px); }
 /* Dr. Sarah's answers under the buy block */
 .spec-qa { margin-top: 18px; padding-top: 14px; border-top: 1px dashed var(--line); display: grid; gap: 6px; }
 .spec-qa:empty { display: none; }
-.qa-h { margin: 0; font: 700 .78rem var(--sans); letter-spacing: .1em; text-transform: uppercase; color: var(--ochre); }
+.qa-h { margin: 0; font: 700 .78rem var(--sans); letter-spacing: .1em; text-transform: uppercase; color: #8A6528; }
 .spec-qa details { border-radius: var(--r-sm); background: var(--glaze); padding: 9px 12px; }
 .spec-qa summary { cursor: pointer; font-weight: 700; font-size: .92rem; color: var(--ink); }
 .spec-qa details p { margin: 6px 0 0; font-size: .9rem; color: var(--ink-soft); }

@@ -78,10 +78,10 @@
     const style = document.createElement("style");
     style.textContent = `
       .preview-switch{position:fixed;left:16px;bottom:16px;z-index:9999;display:flex;gap:2px;padding:4px;
-        background:rgba(11,29,74,.92);border-radius:999px;box-shadow:0 6px 18px rgba(11,29,74,.28);font:600 13px/1 system-ui,sans-serif}
-      .preview-switch a{color:#dfe5f7;text-decoration:none;width:30px;height:30px;display:grid;place-items:center;border-radius:999px}
+        background:rgba(16, 26, 52,.92);border-radius:999px;box-shadow:0 6px 18px rgba(16, 26, 52,.28);font:600 13px/1 system-ui,sans-serif}
+      .preview-switch a{color:#E4E8F2;text-decoration:none;width:30px;height:30px;display:grid;place-items:center;border-radius:999px}
       .preview-switch a:hover{background:rgba(255,255,255,.14)}
-      .preview-switch a[aria-current]{background:#fff;color:#0b1d4a}
+      .preview-switch a[aria-current]{background:#fff;color:#0E162A}
       .preview-switch a:focus-visible{outline:2px solid #f2b8c6;outline-offset:2px}
       @media print{.preview-switch{display:none}}`;
     document.head.appendChild(style);
