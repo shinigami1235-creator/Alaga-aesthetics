@@ -22,7 +22,7 @@
   };
   addEventListener("pointerdown", done, { once: true });
   addEventListener("keydown", done, { once: true });
-  setTimeout(done, 7000);
+  setTimeout(done, 11000);
 
   const ua = navigator.userAgent;
   const safari = /Safari\//.test(ua) && !/(Chrome|Chromium|CriOS|Edg|OPR|Android)/.test(ua);
@@ -67,7 +67,7 @@
     if (!img0.complete) await new Promise(r => { img0.onload = img0.onerror = r; });
     await appear();
     await stage.animate([{ transform: "rotateY(0deg)" }, { transform: "rotateY(360deg)" }],
-      { duration: 1600, easing: "cubic-bezier(.65,0,.35,1)", fill: "forwards" }).finished;
+      { duration: 2800, easing: "cubic-bezier(.37,0,.63,1)", fill: "forwards" }).finished;
     await flyIn();
   };
 
@@ -87,7 +87,7 @@
     if (!ready) { stage.replaceChildren(); stage.classList.remove("is-video"); return runFlat(); }
     await appear();
     await v.play().catch(() => {});
-    await new Promise(r => { v.onended = r; setTimeout(r, 4000); });
+    await new Promise(r => { v.onended = r; setTimeout(r, 6500); });
     // hand over to the flat logo image, then fly into place
     await still.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 220, fill: "forwards" }).finished;
     await flyIn(still);
