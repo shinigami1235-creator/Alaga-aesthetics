@@ -930,3 +930,17 @@ html.intro .home-logo { opacity: 0; }
 .step-tile img.is-photo { mix-blend-mode: normal; padding: 0; }
 .map-card .map-tile.is-photo { display: block !important; position: static !important; z-index: auto; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; opacity: 1; mix-blend-mode: normal; border-radius: 14px; margin: 0 0 14px; }
 .pat-store img.is-photo { display: block !important; position: static; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; opacity: 1; mix-blend-mode: normal; border-radius: 16px; margin-bottom: 6px; }
+
+/* Who we are: founder cards with the portrait on top and the bio underneath (Nov 2026) */
+.about-sec .meet-grid { margin-top: clamp(20px, 3vw, 32px); }
+.about-sec .meet { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
+.about-sec .meet-photo { min-height: 0; aspect-ratio: 1 / 1; }
+.about-sec .meet-photo img { object-position: 50% 18%; }
+.about-sec .meet-body { border-left: 0; border-top: 3px solid var(--gold); gap: 6px; }
+.about-sec .meet-name { margin: 4px 0 0; font-weight: 400; }
+.about-sec .meet-cred { font-size: .88rem; line-height: 1.45; color: var(--ink-2); }
+.about-sec .meet-bio { margin-top: 6px; line-height: 1.65; color: var(--ink-2); }
+.about-sec .meet-go { text-decoration: none; }
+.about-sec .meet-go:hover { text-decoration: underline; }
+@media (hover: hover) and (pointer: fine) { .about-sec .meet:hover { transform: none; box-shadow: var(--shadow); } }
+@media (max-width: 420px) { .about-sec .meet { grid-template-columns: 1fr; } .about-sec .meet-photo { min-height: 0; } }
