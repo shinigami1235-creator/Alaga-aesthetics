@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Repayment calculator | Alaga Finance</title>
+<meta name="description" content="Work out the monthly repayment on a loan for clinic equipment, an expansion or a new clinic in the Netherlands, and how many treatments a month cover it.">
+<meta name="theme-color" content="#F7F8FA">
+<link rel="icon" href="../../assets/img/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="../../assets/img/apple-touch-icon.png">
+<link rel="preload" href="../../assets/fonts/marcellus-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../assets/fonts/hanken-grotesk-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../assets/css/home.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="bar">
+  <a class="brand" href="../../" aria-label="Alaga Aesthetics, home">
+    <img src="../../assets/img/logo-monogram-160.webp" alt="" width="173" height="160">
+  </a>
+  <nav class="bar-nav" aria-label="Main">
+    <a href="../#who">Who we help</a>
+    <a href="../#finance">Investments</a>
+    <a href="../#how">How it works</a>
+    <a href="../#why">Why Alaga</a>
+    <a href="../../ask-erik/">Ask Erik</a>
+  </nav>
+  <a class="pill pill-solid bar-cta" href="#consult"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 5h12v8H9l-4 3v-3H4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Book a consultation</a>
+  <button class="menu" type="button" popovertarget="drawer" aria-label="Menu"><span></span><span></span></button>
+</header>
+<nav class="drawer" id="drawer" popover aria-label="Menu">
+  <a href="../#who">Who we help</a>
+  <a href="../#finance">Investments</a>
+  <a href="../#how">How it works</a>
+  <a href="../#why">Why Alaga</a>
+  <a href="../../ask-erik/">Ask Erik</a>
+  <a class="pill pill-solid" href="#consult">Book a consultation</a>
+</nav>
+
+<main id="main">
+
+<!-- INTRO: what the calculator is for. Ads on LinkedIn and Instagram land here. -->
+<section class="calc-intro" aria-labelledby="calc-page-h">
+  <div class="wrap"><div class="sec-head">
+    <p class="crumb"><a href="../">Alaga Finance</a></p>
+    <h1 id="calc-page-h">Repayment calculator</h1>
+    <p>Work out the monthly repayment on new equipment, an expansion or a new clinic, and how many treatments a month cover it. These are example figures, and Erik Jan works out your real ones in the complimentary consultation.</p>
+  </div></div>
+</section>
+
+<!-- CALCULATOR in a dark Delft band: the number, and the treatments that cover it. -->
+<section class="machine" id="calc" aria-labelledby="calc-h">
+  <div class="machine-bg" aria-hidden="true"></div>
+  <div class="wrap machine-grid">
+    <div class="machine-in">
+      <h2 id="calc-h">Your investment</h2>
+      <label class="slide">
+        <span class="slide-row"><span>Investment</span><output id="o-amount">€50,000</output></span>
+        <input type="range" id="amount" min="10000" max="600000" step="5000" value="50000">
+      </label>
+      <fieldset class="slide">
+        <legend>Repayment period</legend>
+        <div class="seg">
+          <label><input type="radio" name="years" value="3"><span>3 years</span></label>
+          <label><input type="radio" name="years" value="5" checked><span>5 years</span></label>
+          <label><input type="radio" name="years" value="7"><span>7 years</span></label>
+          <label><input type="radio" name="years" value="10"><span>10 years</span></label>
+        </div>
+      </fieldset>
+      <label class="slide">
+        <span class="slide-row"><span>Interest rate</span><output id="o-rate">7.0%</output></span>
+        <input type="range" id="rate" min="3" max="12" step="0.5" value="7">
+      </label>
+      <label class="slide">
+        <span class="slide-row"><span>Profit per treatment after costs</span><output id="o-margin">€150</output></span>
+        <input type="range" id="margin" min="50" max="600" step="10" value="150">
+      </label>
+    </div>
+    <div class="machine-out">
+      <p class="out-k">Monthly repayment</p>
+      <p class="out-big" id="r-month">€990</p>
+      <dl class="out-dl">
+        <div><dt>Total repaid</dt><dd id="r-total">€59,404</dd></div>
+        <div><dt>Interest</dt><dd id="r-interest">€9,404</dd></div>
+      </dl>
+      <p class="out-k">Treatments a month to cover it</p>
+      <div class="tray" id="tray" aria-hidden="true"></div>
+      <p class="out-treat"><strong id="r-treat">7</strong> treatments</p>
+      <a class="pill pill-solid" href="#consult">Book a complimentary consultation</a>
+      <p class="sr" id="calc-live" aria-live="polite"></p>
+      <p class="fine">Example of an ordinary loan at a fixed rate. Advisory fees, lender charges and VAT are not included, and a lease works out differently.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ + CONSULTATION -->
+<section class="consult-sec" id="consult" aria-labelledby="consult-h">
+  <div class="wrap consult-grid">
+    <div>
+      <h2 id="consult-h">Book a complimentary consultation</h2>
+      <p class="lead">Tell us what you're planning and we'll contact you to set a time.</p>
+      <div class="faq">
+        <details><summary>Is Alaga the lender?</summary><p>No. Alaga and our financing partner advise you and take your case to banks and leasing companies, who give the loan or lease.</p></details>
+        <details><summary>What do I need for the first consultation?</summary><p>The investment you have in mind and roughly what it costs. Figures and statements come later through a secure route if you go ahead.</p></details>
+        <details><summary>What happens after the consultation?</summary><p>You get your options and the advisory fee in writing, and nothing starts until you agree.</p></details>
+        <details><summary>Can you help a clinic that opened recently?</summary><p>Yes. A newer clinic needs more of its plan on paper, and we go through what the bank will ask for in the consultation.</p></details>
+        <details><summary>Do you recommend a particular bank?</summary><p>No. We compare the financing options available and recommend the one that fits your clinic.</p></details>
+        <details><summary>Do I still need my accountant?</summary><p>Yes. We work alongside your accountant or financial adviser.</p></details>
+        <details><summary>Who will I deal with?</summary><p>One contact person from your first question until the financing is signed.</p></details>
+      </div>
+    </div>
+    <form class="form" id="consult-form" novalidate data-mailto="Complimentary consultation">
+      <div class="form-head"><img src="../../assets/img/logo-monogram-160.webp" alt="" width="173" height="160" loading="lazy"><span>Consultation request</span></div>
+      <div class="field"><label for="f-name">Full name</label><input id="f-name" name="name" autocomplete="name" required data-error="e-name"><span class="err" id="e-name">Enter your name.</span></div>
+      <div class="field"><label for="f-clinic">Clinic name</label><input id="f-clinic" name="clinic" autocomplete="organization"></div>
+      <div class="field wide"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required data-error="e-email"><span class="err" id="e-email">Enter an email address like name@clinic.nl.</span></div>
+      <fieldset class="wide"><legend>What are you planning?</legend>
+        <div class="seg seg-light">
+          <label><input type="radio" name="need" value="New equipment" checked><span>New equipment</span></label>
+          <label><input type="radio" name="need" value="Expanding my clinic"><span>Expanding</span></label>
+          <label><input type="radio" name="need" value="Starting a clinic"><span>New clinic</span></label>
+          <label><input type="radio" name="need" value="Financing my premises"><span>Premises</span></label>
+          <label><input type="radio" name="need" value="Something else"><span>Something else</span></label>
+        </div>
+      </fieldset>
+      <div class="field wide"><label for="f-notes">Notes (optional)</label><textarea id="f-notes" name="notes" rows="4"></textarea></div>
+      <div class="field wide"><label class="check"><input type="checkbox" name="consent" required data-error="e-consent"><span>Alaga Aesthetics may store these details to contact me about the consultation.</span></label><a class="privacy-link" href="../../privacy/">Privacy statement</a><span class="err" id="e-consent">Tick the box to agree to the privacy statement.</span></div>
+      <button class="pill pill-solid wide" type="submit">Request my consultation</button>
+      <p class="form-status wide" id="form-status" role="status" hidden></p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="foot-frame" aria-hidden="true"></div>
+  <div class="wrap foot-in">
+    <a class="brand brand-light" href="../../" aria-label="Alaga Aesthetics, home"><img src="../../assets/img/logo-full-360.webp" alt="" width="294" height="360" loading="lazy"></a>
+    <p>Leading the future of Global, Holistic Regenerative Medicine.</p>
+    <p class="foot-links"><a href="../../finance/">Alaga Finance</a><a href="../../alliance/">Clinical Alliance</a><a href="../../skin-concierge/">Skin Concierge</a><a href="../../alliance/#academy">Alaga Academy</a><a href="../../testimonials/">Testimonials</a></p>
+    <p class="foot-links"><a href="../../ask-erik/">Ask Erik</a><a href="../../ask/">Ask Dr. Sarah</a><a href="mailto:info@alagaaesthetics.nl">info@alagaaesthetics.nl</a><a href="../../privacy/">Privacy statement</a></p>
+    <p class="fine">© 2026 Alaga Aesthetics, the Netherlands. Placeholder photos from <a href="https://unsplash.com/">Unsplash</a>.</p>
+  </div>
+</footer>
+
+<script src="../../assets/js/home.js" defer></script>
+<script src="../../assets/js/calc.js" defer></script>
+</body>
+</html>

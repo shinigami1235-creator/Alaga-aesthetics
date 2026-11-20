@@ -944,3 +944,13 @@ html.intro .home-logo { opacity: 0; }
 .about-sec .meet-go:hover { text-decoration: underline; }
 @media (hover: hover) and (pointer: fine) { .about-sec .meet:hover { transform: none; box-shadow: var(--shadow); } }
 @media (max-width: 420px) { .about-sec .meet { grid-template-columns: 1fr; } .about-sec .meet-photo { min-height: 0; } }
+
+/* Calculator page (/finance/calculator/) */
+.calc-intro { padding: clamp(110px, 14vw, 150px) 0 clamp(28px, 4vw, 44px); }
+.calc-intro .sec-head { margin-bottom: 0; }
+.calc-intro .crumb { margin: 0 0 6px; font-weight: 700; font-size: .9rem; }
+.calc-intro .crumb a { color: var(--cobalt); text-decoration: none; }
+.calc-intro .crumb a::before { content: "← "; }
+.calc-intro .crumb a:hover { text-decoration: underline; }
+.calc-intro h1 { font: 400 clamp(2.2rem, 4.6vw, 3.4rem)/1.1 var(--display); color: var(--navy); margin: 0 0 12px; }
+.machine-out .pill { align-self: flex-start; margin-top: 4px; }
