@@ -50,7 +50,7 @@
     <div class="hero-copy">
       <h1 id="hero-h">Alaga Finance</h1>
       <p class="hero-tag">Your Ambition. Our Expertise. The Right Financing.</p>
-      <p class="hero-sub">Financing for doctors, clinic owners and medical professionals in the Netherlands, from your first clinic to new equipment and expansion. The first consultation is complimentary.</p>
+      <p class="hero-sub">Good clinic investments start with sound financial decisions. Alaga Finance helps doctors, clinic owners and medical professionals in the Netherlands finance new equipment, an expansion or their first clinic, and the first consultation is complimentary.</p>
       <div class="hero-ctas">
         <a class="pill pill-solid" href="#consult">Book a complimentary consultation</a>
         <a class="pill pill-line" href="calculator/">Repayment calculator</a>
@@ -81,16 +81,16 @@
     </div>
     <div class="worries">
       <article class="worry rise">
-        <img data-ph="Unsplash: Amy Vosters" class="wimg is-photo" src="https://images.unsplash.com/photo-1762625570087-6d98fca29531?ixlib=rb-4.1.0&auto=format&fit=crop&crop=entropy&cs=srgb&q=70&w=560&h=560" alt="" width="560" height="560" loading="lazy" decoding="async">
-        <h3>Established clinic owners</h3>
-        <p>You want to expand, modernise, buy new equipment or buy your clinic building.</p>
-        <a class="wgo" href="#finance" data-pick="expand">Expansion financing</a>
-      </article>
-      <article class="worry rise">
         <img data-ph="Unsplash: Mélyna Côté" class="wimg is-photo" src="https://images.unsplash.com/photo-1689103722266-1f2f837145e7?ixlib=rb-4.1.0&auto=format&fit=crop&crop=entropy&cs=srgb&q=70&w=560&h=560" alt="" width="560" height="560" loading="lazy" decoding="async">
         <h3>Equipment investors</h3>
         <p>You want to finance or lease a medical or aesthetic device and keep cash in the clinic.</p>
         <a class="wgo" href="#finance" data-pick="equipment">Equipment financing</a>
+      </article>
+      <article class="worry rise">
+        <img data-ph="Unsplash: Amy Vosters" class="wimg is-photo" src="https://images.unsplash.com/photo-1762625570087-6d98fca29531?ixlib=rb-4.1.0&auto=format&fit=crop&crop=entropy&cs=srgb&q=70&w=560&h=560" alt="" width="560" height="560" loading="lazy" decoding="async">
+        <h3>Established clinic owners</h3>
+        <p>You want to expand, modernise, buy new equipment or buy your clinic building.</p>
+        <a class="wgo" href="#finance" data-pick="expand">Expansion financing</a>
       </article>
       <article class="worry rise">
         <img data-ph="Unsplash: Andrew Neel" class="wimg is-photo" src="https://images.unsplash.com/photo-1625585598750-3535fe40efb3?ixlib=rb-4.1.0&auto=format&fit=crop&crop=entropy&cs=srgb&q=70&w=560&h=560" alt="" width="560" height="560" loading="lazy" decoding="async">
@@ -278,7 +278,8 @@
       <div class="form-head"><img src="../assets/img/logo-monogram-160.webp" alt="" width="173" height="160" loading="lazy"><span>Consultation request</span></div>
       <div class="field"><label for="f-name">Full name</label><input id="f-name" name="name" autocomplete="name" required data-error="e-name"><span class="err" id="e-name">Enter your name.</span></div>
       <div class="field"><label for="f-clinic">Clinic name</label><input id="f-clinic" name="clinic" autocomplete="organization"></div>
-      <div class="field wide"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required data-error="e-email"><span class="err" id="e-email">Enter an email address like name@clinic.nl.</span></div>
+      <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required data-error="e-email"><span class="err" id="e-email">Enter an email address like name@clinic.nl.</span></div>
+      <div class="field"><label for="f-phone">Phone (optional)</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel"></div>
       <fieldset class="wide"><legend>What are you planning?</legend>
         <div class="seg seg-light">
           <label><input type="radio" name="need" value="New equipment" checked><span>New equipment</span></label>
@@ -288,8 +289,17 @@
           <label><input type="radio" name="need" value="Something else"><span>Something else</span></label>
         </div>
       </fieldset>
+      <fieldset class="wide"><legend>When are you planning this?</legend>
+        <div class="seg seg-light">
+          <label><input type="radio" name="when" value="Within 3 months" checked><span>Within 3 months</span></label>
+          <label><input type="radio" name="when" value="In 3 to 6 months"><span>3 to 6 months</span></label>
+          <label><input type="radio" name="when" value="In 6 to 12 months"><span>6 to 12 months</span></label>
+          <label><input type="radio" name="when" value="Not sure yet"><span>Not sure yet</span></label>
+        </div>
+      </fieldset>
       <div class="field wide"><label for="f-notes">Notes (optional)</label><textarea id="f-notes" name="notes" rows="4"></textarea></div>
       <div class="field wide"><label class="check"><input type="checkbox" name="consent" required data-error="e-consent"><span>Alaga Aesthetics may store these details to contact me about the consultation.</span></label><a class="privacy-link" href="../privacy/">Privacy statement</a><span class="err" id="e-consent">Tick the box to agree to the privacy statement.</span></div>
+      <input type="hidden" name="Came from" data-source>
       <button class="pill pill-solid wide" type="submit">Request my consultation</button>
       <p class="form-status wide" id="form-status" role="status" hidden></p>
     </form>

@@ -144,3 +144,17 @@
     });
   });
 })();
+
+/* Lead source: remembers where the visitor came from (ad, supplier link, event QR) for
+   this visit and adds it to the consultation email as "Came from". */
+(() => {
+  const fields = document.querySelectorAll("input[data-source]");
+  let src = "";
+  try { src = sessionStorage.getItem("alaga-source") || ""; } catch (e) {}
+  const q = new URLSearchParams(location.search);
+  const parts = ["utm_source", "utm_medium", "utm_campaign", "utm_content"].map((k) => q.get(k)).filter(Boolean);
+  if (parts.length) src = parts.join(" / ");
+  else if (!src && document.referrer && !document.referrer.startsWith(location.origin)) src = new URL(document.referrer).hostname;
+  if (src) { try { sessionStorage.setItem("alaga-source", src); } catch (e) {} }
+  fields.forEach((f) => { f.value = src || "Direct visit"; });
+})();
