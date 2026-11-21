@@ -971,3 +971,16 @@ html.intro .home-logo { opacity: 0; }
 .mv-ask { margin: clamp(22px, 3vw, 32px) 0 0; }
 @media (max-width: 900px) { .mv-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 520px) { .mv-grid { grid-template-columns: 1fr; } .mv-card img { aspect-ratio: 4 / 3; } }
+
+/* Before and after cases (Clinical Alliance and Skin Concierge) */
+.cases-sec { padding: clamp(48px, 7vw, 88px) 0; }
+.cases-sec .sec-head { max-width: 760px; }
+.cases-grid { list-style: none; margin: clamp(20px, 3vw, 30px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: clamp(14px, 2vw, 24px); }
+.case-card { background: #fff; border-radius: 18px; padding: 10px 10px 14px; box-shadow: 0 1px 2px rgba(16, 26, 52, .05), 0 12px 32px rgba(16, 26, 52, .07); }
+.case-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.case-pair figure { position: relative; margin: 0; }
+.case-pair img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 12px; }
+.case-pair figcaption { position: absolute; left: 8px; bottom: 8px; padding: 3px 10px; border-radius: 999px; background: rgba(24, 38, 75, .82); color: #fff; font-size: .75rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+.case-pair figure + figure figcaption { background: #8A6528; }
+.case-no { display: block; margin: 10px 4px 0; font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #1F305E; }
+@media (max-width: 640px) { .academy .cross-art img[src*="sarah-corridor"] { object-position: 50% 52% !important; } }
