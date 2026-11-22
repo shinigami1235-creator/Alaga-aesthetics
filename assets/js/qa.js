@@ -62,7 +62,7 @@ window.ALAGA_QA = [
   {
     id: "pregnant", topic: "Products", date: "2026-10-10", asked: 15,
     q: "I'm pregnant. Can I use these products?",
-    a: "Check with your own doctor or midwife before starting anything new while pregnant or breastfeeding. Mineral SPF is fine. For the actives, I'd rather your doctor looks at the ingredient list with you."
+    a: "Check with your own doctor or midwife before starting anything new while pregnant or breastfeeding. Mineral SPF is fine. For the actives, Dr. Sarah advises going through the ingredient list with your doctor."
   },
   {
     id: "kit-how-long", topic: "After treatment", product: ["kit"], date: "2026-10-08", asked: 17,
