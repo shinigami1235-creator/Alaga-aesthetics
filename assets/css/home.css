@@ -986,3 +986,8 @@ html.intro .home-logo { opacity: 0; }
 @media (max-width: 640px) { .academy .cross-art img[src*="sarah-corridor"] { object-position: 50% 52% !important; } }
 .cases-two { grid-template-columns: repeat(auto-fit, minmax(300px, 460px)); }
 .case-what { display: block; margin: 2px 4px 0; font-size: .92rem; color: #4A536E; }
+.follow .soc { list-style: none; margin: 16px 0 0; padding: 0; display: grid; gap: 10px; }
+.follow .soc a { display: flex; justify-content: space-between; align-items: center; gap: 12px; min-height: 48px; padding: 10px 16px; border-radius: 14px; border: 1px solid var(--line); color: var(--cobalt); font-weight: 700; text-decoration: none; background: #F6F7FA; }
+.follow .soc a span { font-weight: 400; color: var(--ink-2); font-size: .92rem; }
+.follow .soc a:hover { border-color: var(--gold); }
+.follow .soc a:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 2px; }
