@@ -22,7 +22,7 @@ window.ALAGA_QA = [
   {
     id: "accountant", topic: "The process", date: "2026-11-05",
     q: "Do I still need my own accountant?",
-    a: "Yes. Alaga works alongside your accountant or financial adviser and shares what they need."
+    a: "Yes. Erik Jan works alongside your accountant or financial adviser and shares what they need."
   },
   {
     id: "buy-or-rent", topic: "Premises", date: "2026-11-03",
